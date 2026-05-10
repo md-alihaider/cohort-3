@@ -30,7 +30,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 _A beautifully styled, responsive layout built using modern CSS practices._
 
-![CSS Design Assignment 1 Screenshot](<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/c84005f1-d1bd-4645-8db9-58285b0eb32c" />
+![CSS Design Assignment 1 Screenshot]((<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/e2096fb8-38f5-47f3-aae2-a4ff2bcbb30c" />
 )
 
 ---
