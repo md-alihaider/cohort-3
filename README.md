@@ -20,6 +20,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 | :--- | :--- | :--- | :--- | :--- |
 | **01. CSS Design Assignment 1** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment1-Css) | [Code 📂](./Assingment1-Css/) | [View 📸](#01-css-design-assignment-1-preview) |
 | **02. CSS Design Assignment 2 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/) | [Code 📂](./Assingment2-Css/Design1/) | [View 📸](#02-css-design-assignment-2-design-1-preview) |
+| **03. CSS Design Assignment 2 (Design 2)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design2/) | [Code 📂](./Assingment2-Css/Design2/) | [View 📸](#03-css-design-assignment-2-design-2-preview) |
 
 ---
 
@@ -39,6 +40,13 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 ---
 
+### 03. CSS Design Assignment 2 (Design 2) Preview
+*An alternative modern layout emphasizing clean spacing and structured typography.*
+
+![CSS Design Assignment 2 Design 2](./Assingment2-Css/Design2/Assignment2-css-design2.png)
+
+---
+
 ## 🛠️ How to Run Locally
 
 If you want to clone this repository and test the projects locally, follow these steps:
@@ -46,7 +54,6 @@ If you want to clone this repository and test the projects locally, follow these
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/md-alihaider/cohort-3.git](https://github.com/md-alihaider/cohort-3.git)
-
 2.  **Navigate to the root directory:**
 
     ```bash
