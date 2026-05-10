@@ -8,8 +8,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 ## 🌐 Live Portfolio & Project Dashboard
 
-- **GitHub Pages Live Link:** [https://md-alihaider.github.io/cohort-3/](https://md-alihaider.github.io/cohort-3/)
-- **Custom Domain (Optional):** [https://yourdomain.com](https://yourdomain.com) _(If you decide to link one later)_
+- **GitHub Pages Live Link:** [https://md-alihaider.github.io/cohort-3/](https://md-alihaider.github.io/cohort-3/Assingment1-Css)
 
 > 💡 **Tip:** To view any individual assignment, simply navigate to `https://md-alihaider.github.io/cohort-3/folder-name/`.
 
@@ -19,18 +18,20 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 | Assignment Name               | Tech Stack                | Live Preview                                                                   | Source Code                         | Screenshot                                           |
 | :---------------------------- | :------------------------ | :----------------------------------------------------------------------------- | :---------------------------------- | :--------------------------------------------------- |
-| **01. CSS Design Assignment** | HTML5, CSS3, Flexbox/Grid | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/css-design-assignment/) | [Code 📂](./css-design-assignment/) | [View Screenshot](#01-css-design-assignment-preview) |
-| **02. Future Assignment**     | HTML, CSS, JS             | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/future-folder/)         | [Code 📂](./future-folder/)         | [View Screenshot](#02-future-assignment-preview)     |
+| **01. CSS Design Assignment 1** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment1-Css) | [Code 📂](./Assingment1-Css/) | [View Screenshot]<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/e2096fb8-38f5-47f3-aae2-a4ff2bcbb30c" />
+ |
+| **02. CSS Design Assignment 2 Design1**     | HTML, CSS | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/)         | [Code 📂]([./future-folder/](https://github.com/md-alihaider/cohort-3/tree/main/Assingment2-Css/Design1))         | [View Screenshot]<img width="1620" height="1138" alt="Assignment2-css-design1" src="https://github.com/user-attachments/assets/c749cabe-208a-4616-890c-726e8c422967" />
 
 ---
 
 ## 🖼️ Assignment Previews
 
-### 01. CSS Design Assignment Preview
+### 01. CSS Design Assignment 1 Preview
 
 _A beautifully styled, responsive layout built using modern CSS practices._
 
-![CSS Design Assignment Screenshot](./css-design-assignment/screenshot.png)
+![CSS Design Assignment 1 Screenshot]((<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/e2096fb8-38f5-47f3-aae2-a4ff2bcbb30c" />
+)
 
 ---
 
