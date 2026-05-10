@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 100%;
+}
+
+nav {
+  padding: 6px 90px 6px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .left {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+nav .left img {
+  margin-right: 10px;
+}
+
+nav p {
+  font-size: 13px;
+}
+
+nav .right {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.ri-search-line {
+  font-size: 15px;
+}
+.ri-shopping-cart-line {
+  font-size: 16px;
+}
+.profile {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-image: url("https://images.unsplash.com/photo-1776660969588-64e468f0ad64?q=80&w=684&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  align-self: center;
+}
+
+section img {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
+
+.content h1 {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.content p {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.content button {
+  width: fit-content;
+  padding: 11px;
+  background-color: #005ca5;
+  color: white;
+  border: none;
+}
+
+.Quick-link {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  margin-top: 30px;
+}
+
+.Quick-link .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.Quick-link .box img {
+  width: 40px;
+}
+
+.Quick-link .box p {
+  color: #005ca5;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.container {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 0 90px 0 90px;
+  margin-top: 30px;
+}
+
+.container .box {
+  height: 95%;
+  width: 40%;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.096);
+}
+
+.container .box img {
+  width: 100%;
+  height: 55%;
+  object-fit: cover;
+}
+
+.container .box .cardContent {
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  height: 55%;
+}
+.container .box .cardContent .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardContent .card-text h1 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.cardContent .card-text p {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.cardContent button {
+  width: fit-content;
+  padding: 11px;
+  background-color: #005ca5;
+  color: white;
+  border: none;
+}
+
+.container5 {
+  height: 65%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+.image-container {
+  height: 100%;
+  width: 88%;
+  background-color: yellow;
+  background-image: url("https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Windows11-GlobalLaunch:VP5-1596x600");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  gap: 20px;
+  padding-left: 100px;
+
+}
+
+.image-container h1 {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+}
+
+.image-container p {
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.image-container button{
+  width: fit-content;
+  padding: 11px;
+  background-color: #005ca5;
+  color: white;
+  border: none;
+}
