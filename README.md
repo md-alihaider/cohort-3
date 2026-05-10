@@ -1,6 +1,6 @@
 # 🎓 Cohort 3 - Web Development Assignments
 
-Welcome to my repository for **Cohort 3**! This repository serves as a centralized hub for all the projects, challenges, and design assignments I complete throughout the program.
+Welcome to my repository for **Cohort 3**! This repository serves as a centralized hub for all the projects, challenges, and design assignments I complete throughout the program. 
 
 Every assignment is organized into its own subdirectory, with live static page deployments automatically hosted via GitHub Pages.
 
@@ -8,7 +8,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 ## 🌐 Live Portfolio & Project Dashboard
 
-- **GitHub Pages Live Link:** [https://md-alihaider.github.io/cohort-3/](https://md-alihaider.github.io/cohort-3/Assingment1-Css)
+* **GitHub Pages Live Link:** [https://md-alihaider.github.io/cohort-3/](https://md-alihaider.github.io/cohort-3/)
 
 > 💡 **Tip:** To view any individual assignment, simply navigate to `https://md-alihaider.github.io/cohort-3/folder-name/`.
 
@@ -16,30 +16,26 @@ Every assignment is organized into its own subdirectory, with live static page d
 
 ## 📂 Assignment Directory
 
-| Assignment Name               | Tech Stack                | Live Preview                                                                   | Source Code                         | Screenshot                                           |
-| :---------------------------- | :------------------------ | :----------------------------------------------------------------------------- | :---------------------------------- | :--------------------------------------------------- |
-| **01. CSS Design Assignment 1** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment1-Css) | [Code 📂](./Assingment1-Css/) | [View Screenshot]<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/e2096fb8-38f5-47f3-aae2-a4ff2bcbb30c" />
- |
-| **02. CSS Design Assignment 2 Design1**     | HTML, CSS | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/)         | [Code 📂]([./future-folder/](https://github.com/md-alihaider/cohort-3/tree/main/Assingment2-Css/Design1))         | [View Screenshot]<img width="1620" height="1138" alt="Assignment2-css-design1" src="https://github.com/user-attachments/assets/c749cabe-208a-4616-890c-726e8c422967" />
+| Assignment Name | Tech Stack | Live Preview | Source Code | Screenshot |
+| :--- | :--- | :--- | :--- | :--- |
+| **01. CSS Design Assignment 1** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment1-Css) | [Code 📂](./Assingment1-Css/) | [View 📸](#01-css-design-assignment-1-preview) |
+| **02. CSS Design Assignment 2 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/) | [Code 📂](./Assingment2-Css/Design1/) | [View 📸](#02-css-design-assignment-2-design-1-preview) |
 
 ---
 
 ## 🖼️ Assignment Previews
 
 ### 01. CSS Design Assignment 1 Preview
+*A beautifully styled, responsive layout built using modern CSS practices.*
 
-_A beautifully styled, responsive layout built using modern CSS practices._
-
-![CSS Design Assignment 1 Screenshot]((<img width="1620" height="958" alt="Assignment1-css" src="https://github.com/user-attachments/assets/e2096fb8-38f5-47f3-aae2-a4ff2bcbb30c" />
-)
+![CSS Design Assignment 1](./Assingment1-Css/Assignment1-css.png)
 
 ---
 
-### 02. Future Assignment Preview
+### 02. CSS Design Assignment 2 (Design 1) Preview
+*Clean and modern UI design crafted with precision layout techniques.*
 
-_Description of your next assignment will go here._
-
-![Future Assignment Screenshot](./future-folder/screenshot.png)
+![CSS Design Assignment 2 Design 1](./Assingment2-Css/Design1/Assignment2-css-design1.png)
 
 ---
 
@@ -47,11 +43,9 @@ _Description of your next assignment will go here._
 
 If you want to clone this repository and test the projects locally, follow these steps:
 
-1.  **Clone the repository:**
-
-    ```bash
-    git clone [https://github.com/md-alihaider/cohort-3.git](https://github.com/md-alihaider/cohort-3.git)
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/md-alihaider/cohort-3.git](https://github.com/md-alihaider/cohort-3.git)
 
 2.  **Navigate to the root directory:**
 
