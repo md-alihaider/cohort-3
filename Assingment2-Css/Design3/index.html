@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insect UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      
+      <div class="panel left-panel">
+        <header class="left-header">
+          <div class="logo">INSECT</div>
+          <div class="search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search..." />
+          </div>
+        </header>
+
+        <div class="classification-container">
+          <h1 class="side-title">Classification</h1>
+          <div class="classification-list">
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Class:</h3>
+                <p>Insecta</p>
+              </div>
+            </div>
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Order:</h3>
+                <p>Coleoptera</p>
+              </div>
+            </div>
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Family:</h3>
+                <p>Cerambycidae</p>
+              </div>
+            </div>
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Sub-Family:</h3>
+                <p>Cerambycinae</p>
+              </div>
+            </div>
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Tribe:</h3>
+                <p>Callichromatini</p>
+              </div>
+            </div>
+            <div class="item">
+              <span class="dot"></span>
+              <div class="content">
+                <h3>Genus:</h3>
+                <p>Pachyteria</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel right-panel">
+        <nav class="right-nav">
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">About</a>
+          <a href="#">Gallery</a>
+          <a href="#">Contact</a>
+        </nav>
+
+        <div class="details">
+          <h1 class="product-title">Pachyteria<br>equestris</h1>
+
+          <div class="info-grid">
+            <div class="beetle-metric">
+              <svg class="beetle-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M50,15 C50,15 42,25 42,35 C42,45 42,85 50,90 C58,85 58,45 58,35 C58,25 50,15 50,15 Z" />
+                <path d="M50,35 L30,45 M50,55 L25,60 M50,75 L30,85" stroke-linecap="round"/>
+                <path d="M50,35 L70,45 M50,55 L75,60 M50,75 L70,85" stroke-linecap="round"/>
+                <path d="M46,18 C40,12 30,10 25,12 M54,18 C60,12 70,10 75,12" stroke-linecap="round"/>
+              </svg>
+              <span class="metric-label">32 mm</span>
+            </div>
+
+            <div class="specs">
+              <div class="spec-item">
+                <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <div>
+                  <h4>Locality:</h4>
+                  <p>Malaysia</p>
+                </div>
+              </div>
+
+              <div class="spec-item">
+                <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="10" cy="14" r="6"/>
+                  <line x1="14" y1="10" x2="20" y2="4"/>
+                  <polyline points="14 4 20 4 20 10"/>
+                </svg>
+                <div>
+                  <h4>Sex:</h4>
+                  <p>Male</p>
+                </div>
+              </div>
+
+              <div class="spec-item">
+                <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="4" y1="9" x2="20" y2="9"/>
+                  <line x1="4" y1="15" x2="20" y2="15"/>
+                  <line x1="10" y1="9" x2="10" y2="15"/>
+                  <line x1="14" y1="9" x2="14" y2="15"/>
+                </svg>
+                <div>
+                  <h4>Size:</h4>
+                  <p>32 mm / 12 mm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price">$5.99</div>
+
+          <div class="controls">
+            <div class="toggle-row">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+              <span>View detailed antennae</span>
+            </div>
+
+            <div class="toggle-row">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+              <span>View underside</span>
+            </div>
+          </div>
+
+          <button class="cta-btn">Add to collection</button>
+        </div>
+      </div>
+
+      <div class="center-display-single">
+        <img src="./assets/beetle-image.png" alt="Beetle Display" />
+      </div>
+
+    </div>
+  </body>
+</html>
