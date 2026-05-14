@@ -22,6 +22,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 | **02. CSS Design Assignment 2 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/) | [Code 📂](./Assingment2-Css/Design1/) | [View 📸](#02-css-design-assignment-2-design-1-preview) |
 | **03. CSS Design Assignment 2 (Design 2)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design2/) | [Code 📂](./Assingment2-Css/Design2/) | [View 📸](#03-css-design-assignment-2-design-2-preview) |
 | **04. CSS Design Assignment 2 (Design 3)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design3/) | [Code 📂](./Assingment2-Css/Design3/) | [View 📸](#04-css-design-assignment-2-design-3-preview) |
+| **05. CSS Design Assignment 3 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment3-Css/Design1/) | [Code 📂](Assignment3-Css/Design1) | [View 📸](#05-css-design-assignment-3-design-1-preview) |
 
 ---
 
@@ -52,6 +53,13 @@ Every assignment is organized into its own subdirectory, with live static page d
 *An elegant, editorial split-screen UI layout featuring interactive elements and a stunning centered glass display dome.*
 
 ![CSS Design Assignment 2 Design 3](./Assingment2-Css/Design3/Assignment2-css-design3.png)
+
+---
+
+### 05. CSS Design Assignment 3 (Design 1) Preview
+*An elegant, editorial split-screen UI layout featuring interactive elements and a stunning centered glass display dome.*
+
+![CSS Design Assignment 2 Design 3](Assignment3-Css/Design1/Assignment3-css-Design1.png)
 
 ---
 
