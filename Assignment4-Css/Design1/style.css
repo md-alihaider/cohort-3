@@ -2,12 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "helvetica neue";
+  
 }
 html,
 body {
   height: 100%;
   width: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -71,13 +72,79 @@ main {
   }
 }
 .left-bottom {
-  background-color: var(--surface-background);
+  background-color: #080808;
   grid-area: left-bottom;
   border-radius: 40px;
   margin: 2.5px;
   border: 2px solid #d5f255;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.up-content {
+  height: 45%;
+  width: 100%;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start; */
+  padding: 5px;
+  line-height: 0.9;
+
+  h1{
+    font-size: 7rem;
+  }
+  p{
+    font-size: 2rem;
+    color: #914cc7;
+  }
+}
+.line{
+  width: 90%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  align-self: center;
+}
+.down-content {
+  height: 45%;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  padding: 10px;
+}
+.bitcoin{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 18px;
+  img{
+    height: 50px;
+    width: 50px;
+    border-radius: 20%;
+  }
+  p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+}
+.ri-barcode-line{
+  font-size: 100px;
+  align-self: center;
+  color: #ffffff;
+}
 .center1 {
   background-color: var(--surface-background);
   grid-area: center1;
@@ -135,13 +202,16 @@ main {
   grid-area: right-top;
   border-radius: 40px;
   margin: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .right-top-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   color: #fcfcff;
   span {
     height: 1px;
@@ -160,8 +230,8 @@ main {
   gap: 10px;
 
   img {
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
     color: #fcfcff;
   }
   p {
@@ -178,8 +248,8 @@ main {
   gap: 10px;
 
   img {
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     color: #fcfcff;
   }
   p {
