@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  /* overflow: hidden; Prevents any accidental scrollbars */
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  background-color: #131414;
+  padding: 10px; /* Optional: Adds a nice padding around the entire grid edge */
+
+  /* Changed from % to fr */
+  grid-template-columns: 22fr 20fr 7fr 27fr 22fr;
+  grid-template-rows: 30fr 25fr 7fr 13fr 25fr;
+
+  grid-template-areas:
+    "left-top top1 top1 top2 right-top"
+    "left-top center center center right-top"
+    "left-bottom center center center right-top"
+    "left-bottom center center center right-bottom"
+    "left-bottom bottom1 bottom2 bottom2 right-bottom";
+}
+
+.left-top {
+  grid-area: left-top;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.top1 {
+  grid-area: top1;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.top2 {
+  grid-area: top2;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.right-top {
+  grid-area: right-top;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.center {
+  grid-area: center;
+  border-radius: 30px;
+  background-color: #fce6e6;
+  margin: 5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.center img {
+  height: 420px;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+.center .bar-chart {
+  height: auto;
+  width: 280px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  z-index: 2;
+}
+
+.center .growth-chart {
+  height: auto;
+  width: 180px;
+  position: absolute;
+  border-radius: 20px;
+  top: 20%;
+  left: 5%;
+  z-index: 2;
+}
+
+.center .total-plays {
+  height: auto;
+  width: 180px;
+  position: absolute;
+  border-radius: 20px;
+  top: 70%;
+  left: 10%;
+  z-index: 2;
+}
+
+.center .engagement-chart{
+  height: auto;
+  width: 180px;
+  position: absolute;
+  border-radius: 20px;
+  top: 70%;
+  right: 15%;
+  z-index: 2;
+}
+.circle {
+  height: 100%;
+  width: 50%;
+  border-radius: 50%;
+  background: radial-gradient(#fccfd4, #fccfd4);
+}
+
+.left-bottom {
+  grid-area: left-bottom;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.bottom1 {
+  grid-area: bottom1;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.bottom2 {
+  grid-area: bottom2;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
+
+.right-bottom {
+  grid-area: right-bottom;
+  border-radius: 30px;
+  background-color: #fce6e7;
+  margin: 5px;
+}
