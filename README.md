@@ -27,6 +27,7 @@ Every assignment is organized into its own subdirectory, with live static page d
 | **04. CSS Design Assignment 2 (Design 3)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design3/) | [Code 📂](./Assingment2-Css/Design3/) | [View 📸](#04-css-design-assignment-2-design-3-preview) |
 | **05. CSS Design Assignment 3 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment3-Css/Design1/) | [Code 📂](Assignment3-Css/Design1) | [View 📸](#05-css-design-assignment-3-design-1-preview) |
 | **06. CSS Design Assignment 4 (Design 1)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design1/) | [Code 📂](Assignment4-Css/Design1) | [View 📸](#06-css-design-assignment-4-design-1-preview) |
+| **07. CSS Design Assignment 4 (Design 2)** | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design2/) | [Code 📂](Assignment4-Css/Design2) | [View 📸](#07-css-design-assignment-4-design-2-preview) |
 
 ---
 
@@ -63,14 +64,21 @@ Every assignment is organized into its own subdirectory, with live static page d
 ### 05. CSS Design Assignment 3 (Design 1) Preview
 *A visually balanced modern layout focused on typography, spacing, and component alignment.*
 
-![CSS Design Assignment 2 Design 3](Assignment3-Css/Design1/Assignment3-css-Design1.png)
+![CSS Design Assignment 3 Design 1](Assignment3-Css/Design1/Assignment3-css-Design1.png)
 
 ---
 
 ### 06. CSS Design Assignment 4 (Design 1) Preview
 *A clean responsive interface featuring advanced CSS positioning and modern design aesthetics.*
 
-![CSS Design Assignment 2 Design 3](Assignment4-Css/Design1/Assignment4-css-Design1.png)
+![CSS Design Assignment 4 Design 1](Assignment4-Css/Design1/Assignment4-css-Design1.png)
+
+---
+
+### 07. CSS Design Assignment 4 (Design 2) Preview
+*A clean responsive interface featuring advanced CSS positioning and modern design aesthetics.*
+
+![CSS Design Assignment 4 Design 2](Assignment4-Css/Design2/Assignment4-css-Design2.png)
 
 ---
 
