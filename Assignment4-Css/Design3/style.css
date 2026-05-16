@@ -513,6 +513,85 @@ main {
   border-radius: 30px;
   background-color: #faf5f6;
   margin: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.b-up{
+  height: 35%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  h1{
+    font-size: 1.5rem;
+  }
+  h2{
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  h3{
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #fadcdd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.b-center{
+  height: 35%;
+  width: 100%;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.b-center .color-card{
+  height: 100%;
+  width: 25%;
+  border-radius: 10px;
+  background-color: blue;
+}
+
+.color-card:nth-child(1){
+  background-color: #242526;
+}
+
+.color-card:nth-child(2){
+  background-color: #b0aeae;
+}
+
+.color-card:nth-child(3){
+  background-color: #fc778b;
+}
+
+.color-card:nth-child(4){
+  background-color: #fc778b;
+}
+
+.b-down{
+  height: 30%;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+    font-size: 1rem;
+  }
+  i{
+    font-size: 1.2rem;
+  }
 }
 
 .bottom2 {
@@ -575,4 +654,60 @@ main {
   border-radius: 30px;
   background-color: #faf5f6;
   margin: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-bottom-up{
+  height: 40%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  img{
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+  }
+}
+
+.right-bottom-down{
+  height: 60%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+.rbd-up{
+  h1{
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  p{
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+.right-bottom-down button{
+  background-color: #ffc9d0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: black;
+  padding: 10px 38px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  i{
+    font-size: 1rem;
+  }
 }
