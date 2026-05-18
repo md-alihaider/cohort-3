@@ -1,10 +1,342 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 }
-html , body{
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  --surface-background: #ffffff;
+  --foreground-color: #0d0c21;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --btn-hover: #0d0c21bb;
+}
+
+@media (min-width: 1280px) {
+  /* Desktops */
+  main {
     height: 100%;
     width: 100%;
+    background-color: var(--surface-background);
+    padding: 0 40px;
+  }
+
+  nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    i {
+      font-weight: 600;
+    }
+  }
+
+  .left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    img {
+      height: 50px;
+    }
+  }
+
+  .ri-menu-2-fill {
+    display: none;
+  }
+  .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13px;
+  }
+
+  .sign-up-btn {
+    color: var(--text-black);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  .sign-up-btn:hover {
+    color: var(--btn-hover);
+  }
+
+  .log-in-btn {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--foreground-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .log-in-btn:hover {
+    background-color: var(--btn-hover);
+  }
+
+  /* hero section  */
+  .hero{
+    height: 60%;
+    width: 100%;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 0 0;
+    background-color: red;
+  }
+  .hero-container{
+    height: 100%;
+    width: 70%;
+    background-color: blue;
+  }
+
+
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  /* Small laptops */
+
+  main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--surface-background);
+    padding: 0 40px;
+  }
+
+  nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+   nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    i {
+      font-weight: 600;
+    }
+  }
+
+  .left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    img {
+      height: 50px;
+    }
+  }
+
+  .ri-menu-2-fill {
+    display: none;
+  }
+  .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13px;
+  }
+
+  .sign-up-btn {
+    color: var(--text-black);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  .sign-up-btn:hover {
+    color: var(--btn-hover);
+  }
+
+  .log-in-btn {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--foreground-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .log-in-btn:hover {
+    background-color: var(--btn-hover);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Tablets */
+  main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--surface-background);
+    padding: 0 40px;
+  }
+  nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav ul {
+    display: none;
+  }
+  .left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    img {
+      height: 50px;
+    }
+  }
+
+  .ri-menu-2-fill {
+    margin-top: 10px;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13px;
+  }
+
+  .sign-up-btn {
+    color: var(--text-black);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  .sign-up-btn:hover {
+    color: var(--btn-hover);
+  }
+
+  .log-in-btn {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--foreground-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .log-in-btn:hover {
+    background-color: var(--btn-hover);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Large phones / small tablets */
+  main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--surface-background);
+    padding: 0 40px;
+  }
+  nav {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav ul {
+    display: none;
+  }
+  .left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    img {
+      height: 50px;
+    }
+  }
+  .ri-menu-2-fill {
+    margin-top: 10px;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13px;
+  }
+
+  .sign-up-btn {
+    display: none;
+  }
+  .sign-up-btn:hover {
+    color: var(--btn-hover);
+  }
+
+  .log-in-btn {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--foreground-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .log-in-btn:hover {
+    background-color: var(--btn-hover);
+  }
 }
