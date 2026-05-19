@@ -36,7 +36,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 | 06 | CSS Design Assignment 4 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design1/) | [Code 📂](./Assignment4-Css/Design1/) |
 | 07 | CSS Design Assignment 4 – Design 2 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design2/) | [Code 📂](./Assignment4-Css/Design2/) |
 | 08 | CSS Design Assignment 4 – Design 3 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design3/) | [Code 📂](./Assignment4-Css/Design3/) |
-| 09 | CSS Design Assignment 5 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment5-Css/Design1/) | [Code 📂](./Assignment5-Css/Design1/) |
+| 09 | CSS Design Assignment 5 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment5-Css/) | [Code 📂](./Assignment5-Css/) |
 
 ---
 
