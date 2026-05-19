@@ -279,21 +279,75 @@ body {
   .card {
     margin: 0 15px 60px 15px;
     border-radius: 10px;
-    background-color: blue;
     cursor: pointer;
+
     .image-part {
       height: 85%;
       width: 100%;
       border-radius: 10px;
-      background-color: red;
       overflow: hidden;
-      img{
+      img,
+      video {
+        display: block;
         height: 100%;
         width: 100%;
         object-fit: cover;
       }
     }
-    
+
+    .content {
+      height: 15%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        h3 {
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        img {
+          height: 25px;
+          width: 25px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        span {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          color: var(--text-white);
+          background-color: #a2a2ab;
+          padding: 0 5px;
+        }
+      }
+
+      .right-content {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+
+        .likes,
+        .views {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+
+          i {
+            color: #a2a2ab;
+          }
+        }
+      }
+    }
   }
   .card1 {
     grid-area: card1;
@@ -330,6 +384,76 @@ body {
   }
   .card12 {
     grid-area: card12;
+  }
+
+  .signup-continue {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    button {
+      padding: 5px 10px;
+      border-radius: 30px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      color: var(--text-white);
+      background-color: var(--foreground-color);
+    }
+    .ri-arrow-up-long-line {
+      position: absolute;
+      right: 0;
+      top: 10%;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: var(--text-white);
+      background-color: #a2a2ab;
+    }
+  }
+
+  .slider-bar {
+    height: 180px;
+    width: auto;
+    margin-left: -40px;
+    margin-right: -40px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .slider-bar .container {
+    height: 80%;
+    width: max-content; 
+    display: flex; 
+    align-items: center;
+    gap: 80px; 
+    padding-right: 80px;
+    flex-shrink: 0;
+    animation: marquee 25s linear infinite;
+  }
+  .slider-bar:hover .container{
+    animation-play-state: paused;
+  }
+  .slider-bar .container img {
+    height: 50%;
+    width: auto; 
+    object-fit: contain;
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  footer {
+    height: 200px;
+    width: 100%;
+    background-color: yellow;
   }
 }
 
