@@ -46,7 +46,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 *A beautifully styled responsive layout built using modern CSS practices.*
 
-![CSS Design Assignment 1](./Assingment1-Css/Assignment1-css.png)
+![CSS Design Assignment 1](Assignment1-Css/Assignment1-css.png)
 
 ---
 
@@ -54,7 +54,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 *Clean and modern UI crafted with precision layout techniques.*
 
-![CSS Design Assignment 2 Design 1](./Assingment2-Css/Design1/Assignment2-css-design1.png)
+![CSS Design Assignment 2 Design 1](Assignment2-Css/Design1/Assignment2-css-design1.png)
 
 ---
 
@@ -62,7 +62,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 *An alternative modern layout emphasizing spacing and typography.*
 
-![CSS Design Assignment 2 Design 2](./Assingment2-Css/Design2/Assignment2-css-design2.png)
+![CSS Design Assignment 2 Design 2](Assignment2-Css/Design2/Assignment2-css-design2.png)
 
 ---
 
@@ -70,7 +70,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 *An elegant editorial split-screen UI featuring interactive elements and a glass display dome.*
 
-![CSS Design Assignment 2 Design 3](./Assingment2-Css/Design3/Assignment2-css-design3.png)
+![CSS Design Assignment 2 Design 3](Assignment2-Css/Design3/Assignment2-css-design3.png)
 
 ---
 
@@ -110,7 +110,7 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 *A modern clean layout emphasizing responsive UI design.*
 
-![CSS Design Assignment 5 Design 1](./Assignment5-Css/Design1/Assignment5-css-Design1.png)
+![CSS Design Assignment 5 Design 1](Assignment5-Css/Assignment5-css-Design1.png)
 
 ---
 
