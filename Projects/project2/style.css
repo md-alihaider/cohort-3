@@ -74,7 +74,9 @@ nav .nav-part-2 {
 }
 
 .nav-part-3 svg {
-  width: 30%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 #section-1 {
@@ -89,14 +91,15 @@ nav .nav-part-2 {
   flex-direction: column;
   padding: 3rem 0.5rem;
   gap: 1vw;
+  
+  text-align: center;
 }
 
 #section-1 h1 {
-  font-size: clamp(4rem, 4vw, 4rem);
+  font-size: clamp(3.5rem, 4vw, 5rem);
   font-family: Reckless;
   color: white;
   font-weight: 500;
-  text-align: center;
 }
 
 #section-1 p {
@@ -162,5 +165,14 @@ nav .nav-part-2 {
     font-size: 1.5rem;
     display: block;
     white-space: nowrap;
+  }
+
+  #section-1{
+    width: 100%;
+    text-align: start;
+    padding: 3rem 2rem;
+  }
+  #section-1 h1{
+    width: 20%;
   }
 }
