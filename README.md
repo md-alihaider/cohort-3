@@ -28,10 +28,10 @@ Each assignment is organized into its own subdirectory, with live deployments ho
 
 | # | Assignment | Tech Stack | Live Preview | Source Code |
 |---|---|---|---|---|
-| 01 | CSS Design Assignment 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment1-Css/) | [Code 📂](./Assingment1-Css/) |
-| 02 | CSS Design Assignment 2 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design1/) | [Code 📂](./Assingment2-Css/Design1/) |
-| 03 | CSS Design Assignment 2 – Design 2 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design2/) | [Code 📂](./Assingment2-Css/Design2/) |
-| 04 | CSS Design Assignment 2 – Design 3 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assingment2-Css/Design3/) | [Code 📂](./Assingment2-Css/Design3/) |
+| 01 | CSS Design Assignment 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment1-Css) | [Code 📂](./Assingment1-Css/) |
+| 02 | CSS Design Assignment 2 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment2-Css/Design1/) | [Code 📂](./Assingment2-Css/Design1/) |
+| 03 | CSS Design Assignment 2 – Design 2 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment2-Css/Design2/) | [Code 📂](./Assingment2-Css/Design2/) |
+| 04 | CSS Design Assignment 2 – Design 3 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment2-Css/Design3/) | [Code 📂](./Assingment2-Css/Design3/) |
 | 05 | CSS Design Assignment 3 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment3-Css/Design1/) | [Code 📂](./Assignment3-Css/Design1/) |
 | 06 | CSS Design Assignment 4 – Design 1 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design1/) | [Code 📂](./Assignment4-Css/Design1/) |
 | 07 | CSS Design Assignment 4 – Design 2 | HTML5, CSS3 | [Live Demo 🔗](https://md-alihaider.github.io/cohort-3/Assignment4-Css/Design2/) | [Code 📂](./Assignment4-Css/Design2/) |
