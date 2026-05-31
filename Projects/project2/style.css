@@ -476,6 +476,86 @@ nav .nav-part-2 {
   }
 }
 
+#section-5 {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+.section-5-top{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0 1.5rem;
+  flex: 2;
+  background-color: blue;
+}
+.section-5-top .btn-section-5 {
+  padding: 0 0.2rem;
+  font-size: clamp(2.5rem, 2vw, 1rem);
+  font-family: Midnight;
+  font-weight: 600;
+  background-color: #ff8030;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  rotate: -2deg;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.section-5-btm{
+  width: 100%;
+  flex: 8;
+  padding:0 0 1.5rem 0;
+  background-color: red;
+  display: flex;
+}
+
+.section-5-btm .card-btm{
+  flex: 1;
+  width: 20rem;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 0.1rem 2rem 2rem 2rem;
+  background-color: #F5AF8A;
+  border: .0625rem solid #201c1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-btm .card-part1{
+  width: 100%;
+  flex: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  p{
+    font-size: 2rem;
+    font-family: Reckless;
+    color:#201c1a;
+    text-align: center;
+    font-weight: 400;
+  }
+  span{
+    font-size: 0.8rem;
+    font-family: Figtree;
+    color: #201c1a;
+    text-align: center;
+    font-weight: 400;
+  }
+}
+.card-btm .card-part2{
+  width: 100%;
+  flex: 3;
+  background-color: #EA6D44;
+  border: .0625rem solid #201c1a;
+  border-radius: 0.75rem;
+}
+
 @media (min-width: 768px) {
 }
 
