@@ -30,6 +30,7 @@ main {
   width: 100%;
   min-height: 100vh; /* min height is used for giving minimum height to element*/
   background-color: #fbf9eb;
+  /* overflow: hidden; */
 }
 
 nav {
@@ -43,7 +44,7 @@ nav {
   border-bottom: 1px solid #000;
   font-size: 0.8rem;
   position: sticky;
-  top: 0; 
+  top: 0;
   z-index: 999;
 }
 nav i {
@@ -284,13 +285,13 @@ nav .nav-part-2 {
 #section-3 {
   width: 100%;
   min-height: 100vh;
+  margin-bottom: 3rem;
   padding: 1rem;
   border-top: #000 solid 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
- 
 }
 
 #section-3 .top-section {
@@ -318,7 +319,7 @@ nav .nav-part-2 {
   font-family: Reckless;
 }
 
-.top-section input{
+.top-section input {
   margin-top: 3rem;
   font-family: Reckless;
   width: 100%;
@@ -326,7 +327,7 @@ nav .nav-part-2 {
   border-radius: 0.5rem;
   font-size: 2rem;
   line-height: 1.15em;
-  letter-spacing: -.005em;
+  letter-spacing: -0.005em;
   background-color: transparent;
   border: 1px solid #000;
   outline: 0;
@@ -346,17 +347,17 @@ nav .nav-part-2 {
   display: flex;
   flex-wrap: wrap;
 }
-.btm-section .search-block-tag{
-  padding: .6875rem 1.25rem;
+.btm-section .search-block-tag {
+  padding: 0.6875rem 1.25rem;
   font-size: 2rem;
   font-family: Reckless;
-  letter-spacing: -.005em;
-  border: .0625rem solid #201c1a ;
+  letter-spacing: -0.005em;
+  border: 0.0625rem solid #201c1a;
   border-radius: 0.8rem;
   background-color: #daeaff;
-  margin: 0.2rem ;
+  margin: 0.2rem;
 }
-#section-3 h3{
+#section-3 h3 {
   font-family: Figtree;
   font-weight: 400;
   text-transform: uppercase;
@@ -364,6 +365,85 @@ nav .nav-part-2 {
   margin-bottom: 1.5rem;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
+#section-4 {
+  width: 100%;
+  min-height: 150vh;
+  position: relative;
+  background-image: url(https://www.twoleavestea.com/cdn/shop/files/adam-vradenburg-_gu7E90QChU-unsplash_1_1.webp?v=1771592855&width=1600);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+#section-4 .kettle-image {
+  position: absolute;
+  top: -5%;
+  right: 5%;
+  z-index: 1;
+  width: 33%;
+}
+
+#section-4 .section-4-content {
+  padding: 2rem;
+  width: 100%;
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 255, 0.304);
+}
+
+.section-4-content .part1-content {
+  width: 100%;
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5rem;
+  padding: 2rem;
+}
+.part1-content .btn-section-4 {
+  padding: 0 0.2rem;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-family: Midnight;
+  font-weight: 600;
+  background-color: #a2c9fc;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  margin-top: 5rem;
+  rotate: -2deg;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.part1-content h1 {
+  font-family: Midnight;
+  color: #ffffff;
+  font-size: 5.5rem;
+  font-weight: 600;
+  line-height: 4.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+.section-4-content .part2-content {
+  width: 100%;
+  flex: 0.8;
+}
+.part2-content p{
+  font-size: clamp(2rem, 4vw, 6rem);
+  font-family: Reckless;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 400;
+}
+.section-4-content .part3-content {
+  width: 100%;
+  flex: 1;
+  background-color: blue;
+}
+
 @media (min-width: 768px) {
 }
 
@@ -413,7 +493,7 @@ nav .nav-part-2 {
     display: block;
     text-transform: uppercase;
     font-size: 0.8rem;
-    white-space: nowrap; 
+    white-space: nowrap;
   }
 
   #section-1 {
@@ -447,26 +527,40 @@ nav .nav-part-2 {
   .card-container {
     /* margin-top: 8rem; */
   }
-  #section-3 .top-section{
+  #section-3 .top-section {
     max-width: 70%;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
   }
-  #section-3 .text-section-3{
+  #section-3 .text-section-3 {
     max-width: 60%;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
   }
-  #section-3 .top-section input{
+  #section-3 .top-section input {
     max-width: 60%;
   }
-  #section-3 .btm-section{
+  #section-3 .btm-section {
     max-width: 70%;
   }
-
+  #section-4 .kettle-image {
+    position: absolute;
+    top: -1%;
+    right: 10%;
+    z-index: 1;
+    width: 10%;
+  }
+  .section-4-content .part1-content {
+    gap: 10rem;
+  }
+  .part1-content h1 {
+    font-size: 11rem;
+    line-height: 10rem;
+    width: 45%;
+  }
   
 }
