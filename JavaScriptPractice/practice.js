@@ -104,3 +104,32 @@
 // let expensiveProd = prices.filter((prices) => prices > 300);
 
 // console.log(expensiveProd);
+
+// Question 2 (Moderate) — Student Average
+
+// let marks = [80, 90, 70, 85, 95];
+
+// let sumOfMarks = marks.reduce((acc, crValue) => {
+//   return (acc += crValue);
+// }, 0);
+
+// let averageMarks = sumOfMarks / marks.length;
+// console.log(averageMarks);
+
+// Question 3 (Hard) — Most Frequent Number
+// let numbers = [1, 2, 3, 2, 4, 2, 5, 1, 1, 1];
+
+// let freq = {};
+// let maxFreq = 0;
+// let mostFreq;
+
+// for (let num of numbers) {
+//   freq[num] = (freq[num] || 0) + 1;
+
+//   if (freq[num] > maxFreq) {
+//     maxFreq = freq[num];
+//     mostFreq = num;
+//   }
+// }
+
+// console.log(mostFreq);
