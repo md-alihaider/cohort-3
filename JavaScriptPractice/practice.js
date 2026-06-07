@@ -264,3 +264,4 @@
 // };
 
 // generateReport(students);
+// console.log(generateReport(students));
