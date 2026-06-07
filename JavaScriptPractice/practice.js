@@ -189,3 +189,78 @@
 // let calculateDiscount = (price) => price * 0.9  // 90%
 
 // console.log(calculateDiscount(price));
+
+// Question 9 (Hard) — Dynamic Sum Function
+
+// let sum = (...numbers) => {
+//   let total = numbers.reduce((acc, crValue) => {
+//     return (acc += crValue);
+//   }, 0);
+//   return total;
+// };
+
+// console.log(sum(1, 2, 43, 6)); // 51
+// let sum = (...numbers) => numbers.reduce((acc, crValue) => acc + crValue, 0);
+
+// console.log(sum(1, 2, 43, 6)); // 51
+
+// Question 10 (Easy) — Find Adult Users
+
+// let users = [
+//   { name: "Ritik", age: 20 },
+//   { name: "Aman", age: 16 },
+//   { name: "Priya", age: 25 },
+// ];
+
+// let findAdult = users.filter(({ age }) => age >= 18);
+
+// console.log(findAdult);
+
+// Question 11 (Moderate) — Shopping Cart Total
+
+// let cart = [
+//   { name: "Mouse", price: 500, qty: 2 },
+//   { name: "Keyboard", price: 1000, qty: 1 },
+//   { name: "Monitor", price: 10000, qty: 1 },
+// ];
+
+// let getCartTotal = (cart) =>
+//   cart.reduce((acc, crValue) => acc + crValue.price * crValue.qty, 0);
+
+// getCartTotal(cart); // 12000
+
+// Question 12 (Hard) — Student Grade Report
+
+// let students = [
+//   {
+//     name: "Ritik",
+//     marks: [80, 90, 85],
+//   },
+//   {
+//     name: "Aman",
+//     marks: [50, 40, 60],
+//   },
+// ];
+
+// let getGrade = (average) => {
+//   if (average >= 80) return "A";
+//   if (average >= 60) return "B";
+//   if (average >= 40) return "C";
+//   return "F";
+// };
+// let generateReport = (studentsArray) => {
+//   return studentsArray.map((student) => {
+//     let totalMarks = student.marks.reduce((acc, crValue) => acc + crValue, 0);
+//     let average = totalMarks / student.marks.length;
+
+//     let grade = getGrade(average);
+
+//     return {
+//       name: student.name,
+//       average: Number(average.toFixed(2)),
+//       grade: grade,
+//     };
+//   });
+// };
+
+// generateReport(students);
