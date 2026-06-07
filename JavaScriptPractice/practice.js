@@ -96,3 +96,11 @@
 // const countDigits = (num) => String(Math.abs(num)).length;
 
 // console.log(countDigits(20345));
+
+// Question 1 (Easy) — Find Expensive Products
+
+// let prices = [100, 250, 500, 150, 700];
+
+// let expensiveProd = prices.filter((prices) => prices > 300);
+
+// console.log(expensiveProd);
