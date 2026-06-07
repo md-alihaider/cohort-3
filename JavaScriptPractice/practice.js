@@ -173,3 +173,19 @@
 // }
 
 // console.log(highestSalaryEmployee);
+
+// Question 7 (Easy) — Greeting Function
+
+// function greet(name) {
+//   console.log(`Hello, ${name}`);
+// }
+
+// greet("Ali");
+
+// Question 8 (Moderate) — Discount Calculator
+
+// let price = Number(prompt("Enter the PRICE of product: "));
+
+// let calculateDiscount = (price) => price * 0.9  // 90%
+
+// console.log(calculateDiscount(price));
