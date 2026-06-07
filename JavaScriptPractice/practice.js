@@ -133,3 +133,43 @@
 // }
 
 // console.log(mostFreq);
+
+// Question 4 (Easy) — Update User Age
+
+// letuser = {
+//   name: "Ritik",
+//   age: 20,
+// };
+
+// user.age = 21;
+// console.log(user);
+
+// Question 5 (Moderate) — Print User Information
+
+// let user = {
+//   name: "Ritik",
+//   age: 20,
+//   city: "Bhopal",
+// };
+
+// for (let [key, value] of Object.entries(user)) {
+//   console.log(key, value);
+// }
+
+// Question 6 (Hard) — Highest Paid Employee
+
+// let employees = {
+//   aman: 25000,
+//   ritik: 50000,
+//   priya: 45000,
+// };
+// let highestSalary = 0;
+// let highestSalaryEmployee;
+// for (let [name, salary] of Object.entries(employees)) {
+//   if (salary > highestSalary) {
+//     highestSalary = salary;
+//     highestSalaryEmployee = name;
+//   }
+// }
+
+// console.log(highestSalaryEmployee);
