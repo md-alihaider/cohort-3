@@ -339,3 +339,10 @@
 // let usersUppercase = users.map((user) => user.toUpperCase());
 
 // console.log(usersUppercase); // ["RITIK", "AMAN", "PRIYA"]
+
+// Question 13 — Find First Adult
+// let ages = [12, 15, 17, 19, 22];
+
+// let findAdult = ages.find((age) => age >= 18);
+
+// console.log(findAdult);
