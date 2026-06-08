@@ -265,3 +265,73 @@
 
 // generateReport(students);
 // console.log(generateReport(students));
+
+// Final Challenge (Very Hard)
+// Mini Library Management System
+
+// Question 2 — Last Student in Class
+
+// let students = ["Aman", "Ritik", "Priya", "Rahul"];
+
+// let lastStudent = students.at(-1);
+
+// console.log(lastStudent); // Rahul
+
+// Question 3 — Add New Product
+// let products = ["Laptop", "Mouse", "Keyboard"];
+
+// products.push("Monitor");
+// console.log(products); // ["Laptop", "Mouse", "Keyboard", "Monitor"]
+
+// Question 4 — Remove Last Notification
+// let notifications = ["Order Placed", "Order Shipped", "Order Delivered"];
+// notifications.pop();
+// console.log(notifications); // ["Order Placed", "Order Shipped"]
+
+// Question 5 — Check User Exists
+// let users = ["Aman", "Ritik", "Priya"];
+
+// console.log(users.includes("Ritik")); // true
+
+// Question 6 — Convert Marks to Percentage
+// let marks = [80, 90, 70];
+
+// let percentageMarks = marks.map((mark) => mark + "%");
+
+// console.log(percentageMarks);
+
+// Question 7 — Count Products
+// let cart = ["Mouse", "Keyboard", "Monitor", "Laptop"];
+
+// console.log(cart.length);
+
+// Question 8 — Student Average
+// let marks = [80, 90, 70, 85, 95];
+
+// let averageMarks = (marks) => {
+//   let total = marks.reduce((acc, crValue) => acc + crValue, 0);
+//   let average = total / marks.length;
+//   return average + "%";
+// };
+// console.log(averageMarks(marks)); // 84%
+
+// Question 9 — Even Numbers Finder
+// let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+
+// let allEvenNumber = numbers.filter((n) => n % 2 === 0);
+// console.log(allEvenNumber); // [2, 4, 6, 8]
+
+// Question 10 — Product Search
+// let products = ["Laptop", "Mouse", "Keyboard", "Monitor"];
+
+// console.log(products.indexOf("Keyboard")); // 2
+
+// Question 11 — Total Revenue
+// let sales = [500, 700, 1000, 300];
+
+// let totalSales = sales.reduce((acc, current) => acc + current, 0);
+
+// console.log(totalSales); // 2500
+
+
+// Question 12 — Uppercase Usernames
