@@ -413,3 +413,12 @@
 // console.log(longestWord);
 
 
+// Question 19 — Rotate Array Right
+let nums = [1, 2, 3, 4, 5];
+
+let rotedArray = (arr) => {
+  let lastElem = arr.pop();
+  arr.unshift(lastElem);
+  return arr;
+};
+console.log(rotedArray(nums));
