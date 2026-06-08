@@ -333,5 +333,9 @@
 
 // console.log(totalSales); // 2500
 
-
 // Question 12 — Uppercase Usernames
+// let users = ["ritik", "aman", "priya"];
+
+// let usersUppercase = users.map((user) => user.toUpperCase());
+
+// console.log(usersUppercase); // ["RITIK", "AMAN", "PRIYA"]
