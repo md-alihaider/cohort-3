@@ -412,13 +412,28 @@
 
 // console.log(longestWord);
 
-
 // Question 19 — Rotate Array Right
-let nums = [1, 2, 3, 4, 5];
+// let nums = [1, 2, 3, 4, 5];
 
-let rotedArray = (arr) => {
-  let lastElem = arr.pop();
-  arr.unshift(lastElem);
-  return arr;
-};
-console.log(rotedArray(nums));
+// let rotedArray = (arr) => {
+//   let lastElem = arr.pop();
+//   arr.unshift(lastElem);
+//   return arr;
+// };
+// console.log(rotedArray(nums));
+
+// Question 20 — Best Selling Product
+// let sales = ["Mouse", "Keyboard", "Mouse", "Laptop", "Mouse", "Keyboard"];
+// let freq = {};
+// let maxFreq = 0;
+// let mostFreq;
+
+// for (let prod of sales) {
+//   freq[prod] = (freq[prod] || 0) + 1;
+
+//   if (freq[prod] > maxFreq) {
+//     maxFreq = freq[prod];
+//     mostFreq = prod;
+//   }
+// }
+// console.log(mostFreq);
