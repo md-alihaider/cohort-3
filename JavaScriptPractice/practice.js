@@ -346,3 +346,70 @@
 // let findAdult = ages.find((age) => age >= 18);
 
 // console.log(findAdult);
+
+// Question 14 — Positive Number Check
+// let nums = [5, 8, 10, 3];
+
+// console.log(nums.every((num) => num > 0));
+
+// Question 15 — Most Frequent Number
+// let numbers = [1, 2, 3, 2, 4, 2, 5, 1, 1, 1];
+// let freq = {};
+// let maxFreq = 0;
+// let mostFreq;
+
+// for (let num of numbers) {
+//   freq[num] = (freq[num] || 0) + 1;
+
+//   if (freq[num] > maxFreq) {
+//     maxFreq = freq[num];
+//     mostFreq = num;
+//   }
+// }
+
+// console.log(mostFreq);
+
+// Question 16 — Second Largest Number
+// let nums = [10, 50, 20, 80, 40];
+
+// let secondLargest = (n) => {
+//   let sortedArray = n.sort((a, b) => a - b);
+//   return sortedArray.at(-2);
+// };
+
+// console.log(secondLargest(nums));
+
+// Question 17 — Remove Duplicates
+// let ids = [1, 2, 2, 3, 4, 4, 5, 5];
+// let idsWithoutDuplicate = [];
+// const removeDuplicate = (ids) => {
+//   for (let i = 0; i <= ids.length - 1; i++) {
+//     if (!idsWithoutDuplicate.includes(ids[i])) {
+//       idsWithoutDuplicate.push(ids[i]);
+//     }
+//   }
+// };
+// removeDuplicate(ids);
+// console.log(idsWithoutDuplicate); // [1, 2, 3, 4, 5]
+// let ids = [1, 2, 2, 3, 4, 4, 5, 5];
+// const idsWithoutDuplicate = ids.filter(
+//   (item, index) => ids.indexOf(item) === index,
+// );
+// console.log(idsWithoutDuplicate); // [1, 2, 3, 4, 5]
+
+// Question 18 — Longest Word
+// let words = ["JavaScript", "HTML", "CSS", "Programming"];
+
+// let wordStringCount = 0;
+// let longestWord;
+
+// for (let word of words) {
+//   if (word.length > wordStringCount) {
+//     wordStringCount = word.length;
+//     longestWord = word;
+//   }
+// }
+
+// console.log(longestWord);
+
+
