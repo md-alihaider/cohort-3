@@ -455,4 +455,10 @@
 // user.age = 22;
 // console.log(user);
 
-
+// Question 3 — Add Country
+// let user = {
+//   name: "Ritik",
+//   city: "Bhopal",
+// };
+// user.country = "India";
+// console.log(user);
