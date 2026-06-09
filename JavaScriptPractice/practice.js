@@ -621,3 +621,44 @@
 
 
 
+// Question 16 — Most Used Programming Language
+// let votes = {
+//   JavaScript: 25,
+//   Python: 30,
+//   Java: 15,
+//   Cpp: 10,
+// };
+// let highestSalary = (emObj) =>
+//   Object.keys(emObj).reduce((a, b) => (emObj[a] > emObj[b] ? a : b));
+// console.log(highestSalary(votes));
+
+
+// Question 17 — Reverse Key Value
+// let countries = {
+//   India: "Delhi",
+//   Japan: "Tokyo",
+//   France: "Paris",
+// };
+
+// let reverseKeyValue = {};
+
+// for (let [country, capital] of Object.entries(countries)) {
+//   reverseKeyValue[capital] = country;
+// }
+
+// console.log(reverseKeyValue);
+// let countries = {
+//   India: "Delhi",
+//   Japan: "Tokyo",
+//   France: "Paris",
+// };
+
+// let reverseKeyValue = Object.entries(countries).reduce(
+//   (acc, [country, capital]) => {
+//     acc[capital] = country;
+//     return acc;
+//   },
+//   {},
+// );
+// console.log(reverseKeyValue);
+
