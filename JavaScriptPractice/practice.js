@@ -657,8 +657,6 @@
 // let percentage = (totalMarks / 300) * 100;
 // console.log(percentage);
 
-
-
 // Question 19 — Find Missing Property
 // let user = {
 //   name: "Ritik",
@@ -670,3 +668,21 @@
 // } else {
 //   console.log(`email:"NOT Provided"`);
 // }
+
+// Question 20 — Product Inventory Analyzer
+// let inventory = {
+//   mouse: 25,
+//   keyboard: 10,
+//   monitor: 5,
+//   laptop: 2,
+// };
+
+// let totalItemInStock = Object.values(inventory).length;
+// let prodWithHighestStock = Object.keys(inventory).reduce((a, b) =>
+//   inventory[a] > inventory[b] ? a : b,
+// );
+// let prodWithLowestStock = Object.keys(inventory).reduce((a, b) =>
+//   inventory[a] < inventory[b] ? a : b,
+// );
+
+// console.log(prodWithLowestStock);
