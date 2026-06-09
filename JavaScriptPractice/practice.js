@@ -508,3 +508,12 @@
 // for (let key in user) {
 //   console.log(`${key}: ${user[key]}`);
 // }
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+//   city: "Bhopal",
+// };
+
+// for (let [key, value] of Object.entries(user)) {
+//   console.log(`${key}: ${value}`);
+// }
