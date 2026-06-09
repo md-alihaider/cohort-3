@@ -472,7 +472,6 @@
 // delete user.password;
 // console.log(user);
 
-
 // Question 5 — Check Property Exists
 // let product = {
 //   name: "Laptop",
@@ -480,3 +479,32 @@
 // };
 // console.log("price" in product); // true
 // console.log("quantity" in product); // false
+
+// Question 6 — Print All Keys
+// let car = {
+//   brand: "BMW",
+//   model: "X5",
+//   year: 2025,
+// };
+
+// console.log(Object.keys(car));
+
+// Question 7 — Print All Values
+// let car = {
+//   brand: "BMW",
+//   model: "X5",
+//   year: 2025,
+// };
+
+// console.log(Object.values(car));
+
+// Question 8 — Print User Information Dynamically
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+//   city: "Bhopal",
+// };
+
+// for (let key in user) {
+//   console.log(`${key}: ${user[key]}`);
+// }
