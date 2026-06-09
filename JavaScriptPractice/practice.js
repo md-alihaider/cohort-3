@@ -471,3 +471,12 @@
 // };
 // delete user.password;
 // console.log(user);
+
+
+// Question 5 — Check Property Exists
+// let product = {
+//   name: "Laptop",
+//   price: 60000,
+// };
+// console.log("price" in product); // true
+// console.log("quantity" in product); // false
