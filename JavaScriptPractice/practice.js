@@ -437,3 +437,12 @@
 //   }
 // }
 // console.log(mostFreq);
+
+// Question 1 — Access User Name
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+//   city: "Bhopal",
+// };
+
+// console.log(user.name); // Ritik
