@@ -539,4 +539,26 @@
 //     state: "MP",
 //   },
 // };
-// console.log(user.address.city);
+// console.log(user.address.city); // Bhopal
+
+
+// Question 11 — Object Destructuring
+// let student = {
+//   name: "Priya",
+//   age: 20,
+//   course: "BCA",
+// };
+
+// let { name, age } = student;
+// console.log(name, age);
+
+
+// Question 12 — Rename During Destructuring
+// let student = {
+//   name: "Priya",
+//   age: 20,
+// };
+// let { name: studentName, age: studentAge } = student;
+// console.log(studentName, studentAge); // Priya 20
+
+
