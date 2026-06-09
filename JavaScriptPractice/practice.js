@@ -517,3 +517,26 @@
 // for (let [key, value] of Object.entries(user)) {
 //   console.log(`${key}: ${value}`);
 // }
+
+
+
+// Question 9 — Employee Salary Increase
+// let employee = {
+//   name: "Aman",
+//   salary: 50000,
+// };
+// const upraisalPercentage = 0.1;
+// employee.salary += employee.salary * upraisalPercentage;
+// console.log(employee);
+
+
+
+// Question 10 — Nested Object Access
+// let user = {
+//   name: "Ritik",
+//   address: {
+//     city: "Bhopal",
+//     state: "MP",
+//   },
+// };
+// console.log(user.address.city);
