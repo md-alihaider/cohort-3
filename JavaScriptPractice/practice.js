@@ -518,8 +518,6 @@
 //   console.log(`${key}: ${value}`);
 // }
 
-
-
 // Question 9 — Employee Salary Increase
 // let employee = {
 //   name: "Aman",
@@ -528,8 +526,6 @@
 // const upraisalPercentage = 0.1;
 // employee.salary += employee.salary * upraisalPercentage;
 // console.log(employee);
-
-
 
 // Question 10 — Nested Object Access
 // let user = {
@@ -541,7 +537,6 @@
 // };
 // console.log(user.address.city); // Bhopal
 
-
 // Question 11 — Object Destructuring
 // let student = {
 //   name: "Priya",
@@ -552,7 +547,6 @@
 // let { name, age } = student;
 // console.log(name, age);
 
-
 // Question 12 — Rename During Destructuring
 // let student = {
 //   name: "Priya",
@@ -560,8 +554,6 @@
 // };
 // let { name: studentName, age: studentAge } = student;
 // console.log(studentName, studentAge); // Priya 20
-
-
 
 // Question 13 — Merge User and Address
 // let user = {
@@ -576,8 +568,6 @@
 // let mergeUser = { ...user, ...address };
 // console.log(mergeUser);
 
-
-
 // Question 14 — Count Object Properties
 // let user = {
 //   name: "Ritik",
@@ -587,8 +577,6 @@
 // };
 // let totalKeys = Object.keys(user).length;
 // console.log(totalKeys); // 4
-
-
 
 // Question 15 — Highest Paid Employee
 // let employees = {
@@ -619,8 +607,6 @@
 //   Object.keys(emObj).reduce((a, b) => (emObj[a] > emObj[b] ? a : b));
 // console.log(highestSalary(employees));
 
-
-
 // Question 16 — Most Used Programming Language
 // let votes = {
 //   JavaScript: 25,
@@ -631,7 +617,6 @@
 // let highestSalary = (emObj) =>
 //   Object.keys(emObj).reduce((a, b) => (emObj[a] > emObj[b] ? a : b));
 // console.log(highestSalary(votes));
-
 
 // Question 17 — Reverse Key Value
 // let countries = {
@@ -662,3 +647,26 @@
 // );
 // console.log(reverseKeyValue);
 
+// Question 18 — Student Marks Summary
+// let marks = {
+//   math: 90,
+//   science: 80,
+//   english: 85,
+// };
+// let totalMarks = Object.values(marks).reduce((a, b) => a + b, 0);
+// let percentage = (totalMarks / 300) * 100;
+// console.log(percentage);
+
+
+
+// Question 19 — Find Missing Property
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+// };
+
+// if (Object.hasOwn(user, "email")) {
+//   console.log(`email:"is Provided"`);
+// } else {
+//   console.log(`email:"NOT Provided"`);
+// }
