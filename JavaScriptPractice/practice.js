@@ -446,3 +446,13 @@
 // };
 
 // console.log(user.name); // Ritik
+
+// Question 2 — Update User Age
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+// };
+// user.age = 22;
+// console.log(user);
+
+
