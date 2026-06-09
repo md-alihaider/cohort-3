@@ -562,3 +562,62 @@
 // console.log(studentName, studentAge); // Priya 20
 
 
+
+// Question 13 — Merge User and Address
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+// };
+// let address = {
+//   city: "Bhopal",
+//   state: "MP",
+// };
+
+// let mergeUser = { ...user, ...address };
+// console.log(mergeUser);
+
+
+
+// Question 14 — Count Object Properties
+// let user = {
+//   name: "Ritik",
+//   age: 21,
+//   city: "Bhopal",
+//   country: "India",
+// };
+// let totalKeys = Object.keys(user).length;
+// console.log(totalKeys); // 4
+
+
+
+// Question 15 — Highest Paid Employee
+// let employees = {
+//   aman: 25000,
+//   ritik: 50000,
+//   priya: 45000,
+// };
+
+// let highestSalary = (employeeObject) => {
+//   let highestSalaryEmp = 0;
+//   let nameOfEmp = "";
+//   for (let [name, salary] of Object.entries(employeeObject)) {
+//     if (salary > highestSalaryEmp) {
+//       highestSalaryEmp = salary;
+//       nameOfEmp = name;
+//     }
+//   }
+//   return nameOfEmp;
+// };
+// console.log(highestSalary(employees));
+// let employees = {
+//   aman: 25000,
+//   ritik: 50000,
+//   priya: 45000,
+// };
+
+// let highestSalary = (emObj) =>
+//   Object.keys(emObj).reduce((a, b) => (emObj[a] > emObj[b] ? a : b));
+// console.log(highestSalary(employees));
+
+
+
