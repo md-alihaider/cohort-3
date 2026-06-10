@@ -771,8 +771,6 @@
 
 // countVowels("javascript");
 
-
-
 // Question 12 — Generate Username
 // const generateUsername = (str) => {
 //   return str.toLowerCase().replaceAll(" ", "_");
@@ -784,3 +782,10 @@
 // };
 
 // generateUsername("Ritik Rajput");
+
+
+
+// Question 13 — Dynamic Sum Function
+const sum = (...number) => number.reduce((a, b) => a + b);
+
+sum(3, 5, 8, 9, 9);
