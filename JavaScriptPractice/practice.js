@@ -795,3 +795,13 @@
 //     : "Invalid Credentials";
 
 // login("admin", 1234);
+
+// Question 15 — Factorial Function
+// const factorial = (num) => {
+//   if (num === 0 || num === 1) {
+//     return 1;
+//   }
+//   return num * factorial(num - 1);
+// };
+
+// factorial(5);
