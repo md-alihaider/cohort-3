@@ -723,3 +723,10 @@
 // const multiply = (a, b) => a * b;
 
 // multiply(10, 7);
+
+// Question 8 — Discount Calculator
+// const calculateDiscount = (amount, discountInPercent) => {
+//   return amount - (amount * discountInPercent) / 100;
+// };
+
+// calculateDiscount(500, 10);
