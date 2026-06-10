@@ -783,9 +783,15 @@
 
 // generateUsername("Ritik Rajput");
 
-
-
 // Question 13 — Dynamic Sum Function
-const sum = (...number) => number.reduce((a, b) => a + b);
+// const sum = (...number) => number.reduce((a, b) => a + b);
 
-sum(3, 5, 8, 9, 9);
+// sum(3, 5, 8, 9, 9);
+
+// Question 14 — Login Validation
+// const login = (username, password) =>
+//   username === "admin" && password === 1234
+//     ? "Login Successful"
+//     : "Invalid Credentials";
+
+// login("admin", 1234);
