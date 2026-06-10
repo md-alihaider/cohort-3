@@ -730,3 +730,17 @@
 // };
 
 // calculateDiscount(500, 10);
+
+// Question 9 — Largest of Three Numbers
+// const findLargest = (a, b, c) => {
+//   if (a >= b && a >= c) return a;
+//   if (b >= a && b >= c) return b;
+//   return c;
+// };
+
+// findLargest(4, 7, 40);
+// const findLargest = (...numbers) => {
+//   return Math.max(...numbers);
+// };
+
+// findLargest(4, 70, 40);
