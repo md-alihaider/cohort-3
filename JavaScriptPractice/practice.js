@@ -708,3 +708,18 @@
 // const isEven = (a) => (a % 2 === 0 ? "Even" : "Odd");
 
 // isEven(10);
+
+// Question 5 — Default Username
+// const greet = (name = "Guest") => console.log(`Hello, ${name}`);
+
+// greet("Ritik");
+
+// Question 6 — Celsius to Fahrenheit
+// const convertTemp = (celsius) => (celsius * 9) / 5 + 32;
+
+// convertTemp(10); // 50
+
+// Question 7 — Arrow Function Practice
+// const multiply = (a, b) => a * b;
+
+// multiply(10, 7);
