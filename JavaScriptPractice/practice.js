@@ -686,3 +686,25 @@
 // );
 
 // console.log(prodWithLowestStock);
+
+// Question 1 — Greeting Function
+// const greet = (name) => {
+//   console.log(`Hello, ${name}`);
+// };
+
+// greet("Ali Haider");
+
+// Question 2 — Add Two Numbers
+// const add = (a, b) => a + b;
+
+// add(5, 7);
+
+// Question 3 — Find Square
+// const square = (a) => a * a;
+
+// square(7);
+
+// Question 4 — Check Even Number
+// const isEven = (a) => (a % 2 === 0 ? "Even" : "Odd");
+
+// isEven(10);
