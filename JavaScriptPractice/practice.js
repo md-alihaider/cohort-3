@@ -751,10 +751,36 @@
 // const reverseString = (str) => [...str].reverse().join("");
 // console.log(reverseString("hello 👋"));
 
-
-
 // Question 11 — Count Vowels
 // const countVowels = (str) => {
 //   return str.length - str.replace(/[aeiou]/gi, "").length;
 // };
 // countVowels("javascript");
+// const countVowels = (str) => {
+//   const vowel = "aeiou";
+//   let cnt = 0;
+
+//   for (let char of str.toLowerCase()) {
+//     if (vowel.includes(char)) {
+//       cnt++;
+//     }
+//   }
+
+//   return cnt;
+// };
+
+// countVowels("javascript");
+
+
+
+// Question 12 — Generate Username
+// const generateUsername = (str) => {
+//   return str.toLowerCase().replaceAll(" ", "_");
+// };
+
+// generateUsername("Ritik Rajput");
+// const generateUsername = (str) => {
+//   return str.toLowerCase().split(" ").join("_");
+// };
+
+// generateUsername("Ritik Rajput");
