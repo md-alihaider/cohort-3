@@ -744,3 +744,17 @@
 // };
 
 // findLargest(4, 70, 40);
+
+// Question 10 — Reverse String
+// const reverseString = (str) => str.split("").reverse().join("");
+// reverseString("hello");
+// const reverseString = (str) => [...str].reverse().join("");
+// console.log(reverseString("hello 👋"));
+
+
+
+// Question 11 — Count Vowels
+// const countVowels = (str) => {
+//   return str.length - str.replace(/[aeiou]/gi, "").length;
+// };
+// countVowels("javascript");
