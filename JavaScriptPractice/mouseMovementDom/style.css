@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy', sans-serif;
+    color: #fff;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cursor{
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  pointer-events: none; /* Prevents the cursor from blocking clicks */
+  will-change: transform; /* Tells the browser to optimize for movement */
+}
+h1{
+  font-size: 9vw;
+  font-weight: 900;
+}
