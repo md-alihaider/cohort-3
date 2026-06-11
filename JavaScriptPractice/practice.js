@@ -819,3 +819,24 @@
 
 // console.log(isPalindrome("dam")); // false
 // console.log(isPalindrome("madam")); // true
+
+
+
+// Question 17 — Password Strength Checker
+// function hasNumberLookup(password) {
+//   const digits = "0123456789";
+
+//   for (let char of password) {
+//     if (digits.indexOf(char) !== -1) return true;
+//   }
+//   return false;
+// }
+
+// const checkPassword = (password) => {
+//   const hasMinLength = password.length >= 8;
+//   const hasNumber = hasNumberLookup(password);
+
+//   return hasMinLength && hasNumber;
+// };
+// console.log(checkPassword("Abc12345")); // true
+// console.log(checkPassword("Short1")); // false
