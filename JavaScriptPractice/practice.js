@@ -805,3 +805,17 @@
 // };
 
 // factorial(5);
+
+
+// Question 16 — Palindrome Checker
+// const isPalindrome = (str) => {
+//   let reverseStr = str.split("").reverse().join("");
+//   if (reverseStr === str) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// console.log(isPalindrome("dam")); // false
+// console.log(isPalindrome("madam")); // true
