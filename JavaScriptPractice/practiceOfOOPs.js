@@ -60,3 +60,30 @@
 
 // person1.greet(); // Hello, Ritik
 // person2.greet(); // Hello, Aman
+
+
+
+// Question 8 — Student Class System
+// class Students{
+//   constructor(name, marks) {
+//     this.name = name;
+//     this.marks = marks;
+//   }
+//   getGrade() {
+//     if(this.marks >= 90) {
+//       return "A";
+//     } else if (this.marks >= 75) {
+//       return "B";
+//     } else if (this.marks >= 60) {
+//       return "C";
+//     } else {
+//       return "Fail";
+//     }
+//   }
+// }
+
+// const student1 = new Students("Ritik", 80);
+// const student2 = new Students("Aman", 50);
+
+// console.log(student1.getGrade()); // B
+// console.log(student2.getGrade()); // Fail
