@@ -806,7 +806,6 @@
 
 // factorial(5);
 
-
 // Question 16 — Palindrome Checker
 // const isPalindrome = (str) => {
 //   let reverseStr = str.split("").reverse().join("");
@@ -819,8 +818,6 @@
 
 // console.log(isPalindrome("dam")); // false
 // console.log(isPalindrome("madam")); // true
-
-
 
 // Question 17 — Password Strength Checker
 // function hasNumberLookup(password) {
@@ -840,3 +837,14 @@
 // };
 // console.log(checkPassword("Abc12345")); // true
 // console.log(checkPassword("Short1")); // false
+
+// Question 18 — Function Returning Function
+// const makeMultiplier = (multiplier) => {
+//   return (num) => {
+//     return num * multiplier;
+//   };
+// };
+
+// let double = makeMultiplier(3);
+
+// double(10);
