@@ -18,9 +18,6 @@
 // Node.js /global context
 // Strict Mode /undefined
 
-
-
-
 // Question 5 — Fix Lost this
 // const user = {
 //   name: "Ritik",
@@ -33,8 +30,6 @@
 // const fn = user.greet.bind(user);
 // fn();
 
-
-
 // Question 6 — Create an Inheritance Chain
 // const animal = {
 //   eats: true,
@@ -44,12 +39,10 @@
 // dog.barks = true;
 // console.log(dog.eats); // true
 
-
 // Question 7 — Prototype Method
 // function Person(name) {
 //   this.name = name;
 // }
-
 
 // Person.prototype.greet = function () {
 //   console.log(`Hello, ${this.name}`);
@@ -60,8 +53,6 @@
 
 // person1.greet(); // Hello, Ritik
 // person2.greet(); // Hello, Aman
-
-
 
 // Question 8 — Student Class System
 // class Students{
@@ -88,8 +79,6 @@
 // console.log(student1.getGrade()); // B
 // console.log(student2.getGrade()); // Fail
 
-
-
 // Question 9 — Employee Inheritance
 // class Employee {
 //   constructor(name, salary) {
@@ -100,7 +89,6 @@
 //     console.log(`${this.name} is working.`);
 //   }
 // }
-
 
 // class Developer extends Employee {
 //   constructor(name, salary, language) {
@@ -114,4 +102,36 @@
 
 // const developer1 = new Developer("Ali", 50000, "JavaScript");
 // developer1.work(); // Ali  is working.
-// developer1.code(); // Ali is coding in JavaScript. my name is Ali and my salary is 50000  
+// developer1.code(); // Ali is coding in JavaScript. my name is Ali and my salary is 50000
+
+// Question 10 — Bank Account (InterviewLevel)
+// class BankAccount {
+//   #balance = 0;
+
+//   constructor(amount) {
+//     this.#balance = amount;
+//   }
+
+//   deposit(amount) {
+//     if (amount >= 0) { // Fix: check the method argument
+//       this.#balance += amount;
+//       return this.#balance; // Fix: return the new balance
+//     } else {
+//       console.log("Invalid amount");
+//     }
+//   }
+
+//   withdraw(amount) {
+//     if (amount <= this.#balance) { // Fix: check the method argument
+//       this.#balance -= amount;
+//       return this.#balance; // Fix: return the new balance
+//     } else {
+//       console.log("Insufficient balance amount");
+//     }
+//   }
+// }
+
+// const bankAccount = new BankAccount(1000);
+// console.log(bankAccount.deposit(500));  // Output: 1500
+// console.log(bankAccount.withdraw(200)); // Output: 1300
+
