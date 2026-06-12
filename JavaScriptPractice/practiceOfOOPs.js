@@ -87,3 +87,31 @@
 
 // console.log(student1.getGrade()); // B
 // console.log(student2.getGrade()); // Fail
+
+
+
+// Question 9 — Employee Inheritance
+// class Employee {
+//   constructor(name, salary) {
+//     this.name = name;
+//     this.salary = salary;
+//   }
+//   work() {
+//     console.log(`${this.name} is working.`);
+//   }
+// }
+
+
+// class Developer extends Employee {
+//   constructor(name, salary, language) {
+//     super(name, salary);
+//     this.language = language;
+//   }
+//   code() {
+//     console.log(`${this.name} is coding in ${this.language}.`);
+//   }
+// }
+
+// const developer1 = new Developer("Ali", 50000, "JavaScript");
+// developer1.work(); // Ali  is working.
+// developer1.code(); // Ali is coding in JavaScript. my name is Ali and my salary is 50000  
