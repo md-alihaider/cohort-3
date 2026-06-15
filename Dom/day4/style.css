@@ -29,6 +29,7 @@ form {
   display: flex;
   padding: 30px;
   flex-direction: column;
+  justify-content: center;
   border-radius: 5px;
   border: 1px solid white;
   gap: 10px;
