@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>User Management</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <form action="">
-    <input id="name" type="text" placeholder="Enter your name">
-    <input id="email" type="text" placeholder="Enter your email">
-    <input type="url" id="url" placeholder="Enter your image url">
-    <button>Create</button>
+    <input id="name" type="text" placeholder="Enter your name" required>
+    <input id="email" type="email" placeholder="Enter your email" required>
+    <input id="url" type="url" placeholder="Enter your image url" required>
+    <button type="submit">Create</button>
   </form>
 
-  <div class="users">
-    
-  </div>
+  <div class="users"></div>
+
   <script src="./script.js"></script>
 </body>
+
 </html>

@@ -4,6 +4,9 @@ const inp2 = document.querySelector("#email");
 const users = document.querySelector(".users");
 const url = document.querySelector("#url");
 
+// Track the index of the card being edited. -1 means we are adding a NEW card.
+let editIndex = -1;
+
 const usersData = [
   {
     id: 1,
@@ -49,7 +52,7 @@ const usersData = [
 
 const ui = () => {
   users.innerHTML = "";
-  usersData.forEach((elem) => {
+  usersData.forEach((elem, index) => {
     users.innerHTML += `<div class="user_card">
       <div class="img_box">
         <img src="${elem.imageUrl}" alt="image">
@@ -58,31 +61,73 @@ const ui = () => {
         <h3>Name - ${elem.name}</h3>
         <p>Email - ${elem.email}</p>
       </div>
+      <div class="actions">
+        <button onclick="editCard(${index})" id="edit">Edit</button>
+        <button onclick="deleteCard(${index})" id="del">Delete</button>
+      </div>
     </div>`;
   });
 };
 
 ui();
 
+// Handle Form Submission (Both Add and Update)
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let name = inp1.value;
-  let email = inp2.value;
-  let imageUrl = url.value;
+  let name = inp1.value.trim();
+  let email = inp2.value.trim();
+  let imageUrl = url.value.trim();
 
-  if (name.trim() === "" && email.trim() === "" && imageUrl.trim() === "") return;
+  if (name === "" || email === "" || imageUrl === "") return;
 
-  usersData.push({
-    id: usersData.length + 1,
-    name,
-    email,
-    imageUrl,
-    dob: "1993-07-12",
-  });
+  if (editIndex === -1) {
+    // 1. ADD NEW CARD MODE
+    usersData.push({
+      id: Date.now(), // Safer unique ID than usersData.length + 1
+      name,
+      email,
+      imageUrl,
+      dob: "1993-07-12",
+    });
+  } else {
+    // 2. UPDATE EXISTING CARD MODE
+    usersData[editIndex].name = name;
+    usersData[editIndex].email = email;
+    usersData[editIndex].imageUrl = imageUrl;
+
+    // Reset the edit index back to default mode
+    editIndex = -1;
+    form.querySelector("button[type='submit']").innerText = "Submit";
+  }
 
   ui();
-  // inp1.value = "";
-  // inp2.value = "";
-  // url.value = "";
   form.reset();
 });
+
+// Delete Function
+const deleteCard = (index) => {
+  usersData.splice(index, 1);
+  // If we delete the item currently being edited, reset the form state
+  if (editIndex === index) {
+    editIndex = -1;
+    form.reset();
+    form.querySelector("button[type='submit']").innerText = "Submit";
+  }
+  ui();
+};
+
+// Edit Function (Populates form with selected card's data)
+const editCard = (index) => {
+  editIndex = index; // Set global state to current index
+
+  // Populate form fields
+  inp1.value = usersData[index].name;
+  inp2.value = usersData[index].email;
+  url.value = usersData[index].imageUrl;
+
+  // Optional UX touch: Change submit button text to "Update"
+  const submitBtn = form.querySelector("button[type='submit']");
+  if (submitBtn) {
+    submitBtn.innerText = "Update User";
+  }
+};
