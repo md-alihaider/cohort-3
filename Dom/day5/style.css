@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #0d0e15;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
+  padding: 15px;
+}
+
+#top {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #00ffcc;
+}
+
+main {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  max-width: 400px; /* Perfectly scales on desktop and stays edge-to-edge on mobile */
+  border: 2px solid #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+  border-radius: 16px;
+  background-color: #141622;
+  overflow: hidden;
+}
+
+/* Enhanced Box Style */
+.box {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.box:active {
+  transform: scale(0.9);
+}
+
+/* Button UI */
+button {
+  background: linear-gradient(135deg, #00ffcc, #0099ff);
+  color: #0d0e15;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 12px 35px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 204, 0.6);
+}
+
+/* Screen Overlay Rules */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(13, 14, 21, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.overlay-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+#overlay h1 {
+  font-size: 3rem;
+  color: #ff3366;
+  text-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+  text-transform: uppercase;
+}
+
+#overlay p {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  main {
+    height: 65vh;
+  }
+  #overlay h1 {
+    font-size: 2.5rem;
+  }
+}
