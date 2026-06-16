@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav>
+      <h1>E-Commerce</h1>
+      <button id="create">Create Product</button>
+    </nav>
+
+    <div class="products">
+      <div class="product-card">
+
+        <div class="img-box">
+          <img src="https://plus.unsplash.com/premium_photo-1780474533115-8a32887aec51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8" alt="image">
+        </div>
+        <div class="card-content">
+          <h1>Name</h1>
+          <p>Description</p>
+          <p>Price</p>
+        </div>
+        <div class="actions">
+          <button id="edit">Edit</button>
+          <button id="delete">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="create-product">
+      <form>
+        <div class="top-form">
+          <h2>Create Product</h2>
+          <button id="cancel" type="button">X</button>
+        </div>
+        <input type="text" placeholder="Product Name">
+        <input type="text" placeholder="Description">
+        <input type="number" placeholder="Price">
+        <input type="url" placeholder="Image URL">
+        <button id="save" type="button">Save</button>
+      </form>
+    </div>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
