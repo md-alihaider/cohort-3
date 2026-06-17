@@ -6,13 +6,32 @@ const form = document.querySelector("form");
 const taskContainer = document.querySelector(".task-container");
 const createTask = document.querySelector(".btn-create");
 const toggleTheme = document.querySelector(".toggle-theme");
+const themeIcon = toggleTheme.querySelector("i");
+const countActive = document.getElementById("count-active");
+const countPending = document.getElementById("count-pending");
+const countCompleted = document.getElementById("count-completed");
+const savedTheme = localStorage.getItem("theme");
 
-const taskArray = [];
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  themeIcon.className = "ri-moon-fill";
+} else {
+  themeIcon.className = "ri-sun-fill";
+}
+const taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
 let updateTaskId = null;
 
 let ui = () => {
   taskContainer.innerHTML = "";
+  let active = 0,
+    pending = 0,
+    completed = 0;
   taskArray.forEach((task, index) => {
+    if (task.status === "Active") active++;
+    else if (task.status === "Pending") pending++;
+    else if (task.status === "Completed") completed++;
+
     const statusClass =
       task.status === "Completed"
         ? "completed"
@@ -47,10 +66,16 @@ let ui = () => {
         </div>
       </div>`;
   });
+  if (countActive) countActive.innerText = active;
+  if (countPending) countPending.innerText = pending;
+  if (countCompleted) countCompleted.innerText = completed;
 };
 
 toggleTheme.addEventListener("click", () => {
   document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  themeIcon.className = isDark ? "ri-moon-fill" : "ri-sun-fill";
 });
 
 
@@ -82,13 +107,16 @@ form.addEventListener("submit", (e) => {
   if (updateTaskId !== null) {
     taskArray[updateTaskId] = obj;
     updateTaskId = null;
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
   } else {
     taskArray.push(obj);
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
   }
 
   ui();
   form.reset();
   createTaskModal.style.display = "none";
+  setCreateMode();
 });
 
 const editTask = (index) => {
@@ -100,19 +128,32 @@ const editTask = (index) => {
   form[1].value = task.category;
   form[2].value = task.status;
   form[3].value = task.description;
-  createTask.innerHTML = "Update Task";
-  createTask.style.backgroundColor = "green";
-  createTask.style.color = "white";
+
+  setUpdateMode();
   ui();
 };
 
 const completeTask = (index) => {
   const task = taskArray.find((task, i) => i === index);
   task.status = "Completed";
+  localStorage.setItem("tasks", JSON.stringify(taskArray));
   ui();
 };
 
 const deleteTask = (index) => {
   taskArray.splice(index, 1);
+  localStorage.setItem("tasks", JSON.stringify(taskArray));
   ui();
 };
+function setCreateMode() {
+  createTask.innerHTML = "+ Create Task";
+  createTask.style.backgroundColor = "#7c3aed";
+  createTask.style.color = "white";
+}
+
+function setUpdateMode() {
+  createTask.innerHTML = "Update Task";
+  createTask.style.backgroundColor = "green";
+  createTask.style.color = "white";
+}
+ui();
