@@ -21,10 +21,24 @@ body {
   width: 100%;
 }
 
+:root {
+  --bg: whitesmoke;
+  --card-bg: white;
+  --text: #111827;
+  --nav-bg: rgb(18, 19, 88);
+}
+
+.dark {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #f8fafc;
+  --nav-bg: #020617;
+}
+
 main {
   height: 100%;
   width: 100%;
-  background-color: whitesmoke;
+  background-color: var(--bg);
   padding: 10px;
 }
 
@@ -34,7 +48,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(18, 19, 88);
+  background-color: var(--nav-bg);
   color: whitesmoke;
   border-radius: 10px;
   padding: 20px;
@@ -76,9 +90,13 @@ nav {
   font-size: 15px;
   font-weight: 600;
   border-radius: 5px;
-  border: 2px solid darkgoldenrod;
   cursor: pointer;
   background-color: transparent;
+  color: white;
+}
+
+.toggle-theme:hover {
+  border: 2px solid darkgoldenrod;
   color: white;
 }
 .task-container {
@@ -95,6 +113,7 @@ nav {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  background-color: var(--card-bg);
   overflow: hidden;
   padding: 15px;
   box-shadow:
@@ -399,4 +418,44 @@ nav {
 
 .btn-create:hover {
   background: #6d28d9;
+}
+
+.task-status.active {
+  background-color: rgba(0, 128, 0, 0.08);
+}
+
+.task-status.active h3 {
+  color: green;
+}
+
+.task-status.active .circle-status {
+  background-color: green;
+}
+
+/* Pending */
+
+.task-status.pending {
+  background-color: rgba(255, 166, 0, 0.209);
+}
+
+.task-status.pending h3 {
+  color: rgb(179, 116, 0);
+}
+
+.task-status.pending .circle-status {
+  background-color: rgb(179, 116, 0);
+}
+
+/* Completed */
+
+.task-status.completed {
+  background-color: rgba(0, 0, 255, 0.08);
+}
+
+.task-status.completed h3 {
+  color: blue;
+}
+
+.task-status.completed .circle-status {
+  background-color: blue;
 }
