@@ -49,6 +49,65 @@
         </div>
       </div>
     </div>
+
+    <div class="create-task-modal">
+      <div class="modal-content">
+        <div class="modal-top">
+          <div class="modal-left">
+            <h2>Create Task</h2>
+            <p>Fill in the details to create a new task</p>
+          </div>
+    
+          <div class="modal-right">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+    
+        <div class="modal-center">
+          <form class="task-form">
+            <div class="form-group">
+              <label for="title">Task Title <span>*</span></label>
+              <input type="text" id="title" placeholder="Enter task title" required />
+            </div>
+    
+            <div class="form-group">
+              <label for="category">Category <span>*</span></label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option>Frontend</option>
+                <option>Backend</option>
+                <option>Design</option>
+                <option>Testing</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="status">Status <span>*</span></label>
+              <select id="status" required>
+                <option>Active</option>
+                <option>Pending</option>
+                <option>Completed</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" rows="4" placeholder="Enter task description"></textarea>
+            </div>
+    
+            <div class="modal-bottom">
+              <button type="button" class="btn-cancel">
+                Cancel
+              </button>
+    
+              <button type="submit" class="btn-create">
+                + Create Task
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
   
   <script src="./script.js"></script>
