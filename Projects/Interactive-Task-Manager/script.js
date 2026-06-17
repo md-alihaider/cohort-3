@@ -157,3 +157,33 @@ function setUpdateMode() {
   createTask.style.color = "white";
 }
 ui();
+
+// --- Attributes vs Properties Logic ---
+const demoInput = document.getElementById("demo-input");
+const propOutput = document.getElementById("prop-output");
+const attrOutput = document.getElementById("attr-output");
+const syncBtn = document.getElementById("sync-btn");
+
+if (demoInput) {
+  // Listen for every keystroke
+  demoInput.addEventListener("input", (e) => {
+    // 1. Property updates instantly with whatever is typed
+    propOutput.innerText = e.target.value;
+    
+    // 2. Attribute stays STUCK at "Initial Value" (unless synced)
+    attrOutput.innerText = e.target.getAttribute("value");
+  });
+
+  // Sync button logic
+  syncBtn.addEventListener("click", () => {
+    // Force the HTML attribute to update to the current property value
+    demoInput.setAttribute("value", demoInput.value);
+    
+    // Visually update the text on screen to show they match again
+    attrOutput.innerText = demoInput.getAttribute("value");
+    
+    // Brief visual feedback
+    syncBtn.innerText = "Synced ✓";
+    setTimeout(() => syncBtn.innerText = "Sync Attribute (setAttribute)", 1500);
+  });
+}

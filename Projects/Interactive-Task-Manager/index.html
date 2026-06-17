@@ -34,6 +34,7 @@
       </div>
     </div>
 
+   
     <div class="task-container">
      
     </div>
@@ -94,6 +95,22 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Attributes vs Properties</h2>
+      <div class="demo-card">
+        <div class="form-group" style="margin-bottom: 0;">
+          <input type="text" id="demo-input" value="Initial Value" placeholder="Type something..." />
+        </div>
+    
+        <div class="demo-outputs">
+          <p><strong>DOM Property</strong> <code>input.value</code>: <span id="prop-output">Initial Value</span></p>
+          <p><strong>HTML Attribute</strong> <code>input.getAttribute("value")</code>: <span id="attr-output">Initial
+              Value</span></p>
+        </div>
+    
+        <button id="sync-btn" class="btn-create" style="width: auto;">Sync Attribute (setAttribute)</button>
       </div>
     </div>
   </main>
