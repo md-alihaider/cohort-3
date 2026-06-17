@@ -12,7 +12,6 @@ const countPending = document.getElementById("count-pending");
 const countCompleted = document.getElementById("count-completed");
 const savedTheme = localStorage.getItem("theme");
 
-
 if (savedTheme === "dark") {
   document.body.classList.add("dark");
   themeIcon.className = "ri-moon-fill";
@@ -77,7 +76,6 @@ toggleTheme.addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "dark" : "light");
   themeIcon.className = isDark ? "ri-moon-fill" : "ri-sun-fill";
 });
-
 
 openBtn.addEventListener("click", () => {
   createTaskModal.style.display = "flex";
@@ -169,7 +167,7 @@ if (demoInput) {
   demoInput.addEventListener("input", (e) => {
     // 1. Property updates instantly with whatever is typed
     propOutput.innerText = e.target.value;
-    
+
     // 2. Attribute stays STUCK at "Initial Value" (unless synced)
     attrOutput.innerText = e.target.getAttribute("value");
   });
@@ -178,12 +176,42 @@ if (demoInput) {
   syncBtn.addEventListener("click", () => {
     // Force the HTML attribute to update to the current property value
     demoInput.setAttribute("value", demoInput.value);
-    
+
     // Visually update the text on screen to show they match again
     attrOutput.innerText = demoInput.getAttribute("value");
-    
+
     // Brief visual feedback
     syncBtn.innerText = "Synced ✓";
-    setTimeout(() => syncBtn.innerText = "Sync Attribute (setAttribute)", 1500);
+    setTimeout(
+      () => (syncBtn.innerText = "Sync Attribute (setAttribute)"),
+      1500,
+    );
   });
+}
+
+// Event Propagation Logic
+const gp = document.getElementById("grandparent");
+const p = document.getElementById("parent");
+const c = document.getElementById("child");
+
+if (gp && p && c) {
+  // Capturing Phase
+  gp.addEventListener(
+    "click",
+    () => console.log("1. Grandparent (Capturing)"),
+    { capture: true },
+  );
+  p.addEventListener("click", () => console.log("2. Parent (Capturing)"), {
+    capture: true,
+  });
+  c.addEventListener("click", () => console.log("3. Child (Capturing)"), {
+    capture: true,
+  });
+
+  // Bubbling Phase
+  c.addEventListener("click", () => console.log("4. Child (Bubbling)"));
+  p.addEventListener("click", () => console.log("5. Parent (Bubbling)"));
+  gp.addEventListener("click", () =>
+    console.log("6. Grandparent (Bubbling)\n-----------------------"),
+  );
 }

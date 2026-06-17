@@ -113,6 +113,58 @@
         <button id="sync-btn" class="btn-create" style="width: auto;">Sync Attribute (setAttribute)</button>
       </div>
     </div>
+    <div class="demo-section">
+      <h2>Event Propagation Demo</h2>
+      <div class="demo-card" style="background: transparent; box-shadow: none; padding: 0;">
+        <div id="grandparent" class="ep-box grandparent">
+          Grandparent
+          <div id="parent" class="ep-box parent">
+            Parent
+            <button id="child" class="ep-btn child">Child Button</button>
+          </div>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+          <i class="ri-information-line"></i> Open console (F12) to see bubbling and capturing order.
+        </p>
+      </div>
+    </div>
+    
+    <div class="demo-section">
+      <h2>Browser Rendering Pipeline</h2>
+      <div class="demo-card pipeline-container">
+        <div class="pipeline-flow">
+          <div class="flow-step">HTML</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Parsing</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Tokenization</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">DOM Tree</div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">CSS</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">CSSOM Tree</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">DOM Tree + CSSOM Tree</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Render Tree</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="demo-section">
+      <h2>Rendering Explanation</h2>
+      <div class="demo-card rendering-explanation">
+        <ul>
+          <li><strong>Browser parses HTML</strong> and creates the DOM Tree.</li>
+          <li><strong>Browser parses CSS</strong> and creates the CSSOM Tree.</li>
+          <li><strong>DOM + CSSOM</strong> combine to form the Render Tree (only visible elements).</li>
+          <li><strong>Layout</strong> calculates exact positions and sizes on the viewport.</li>
+          <li><strong>Paint</strong> draws the actual pixels (colors, text, shadows) on the screen.</li>
+          <li><strong>Composite</strong> merges overlapping layers together.</li>
+        </ul>
+      </div>
+    </div>
   </main>
   
   <script src="./script.js"></script>
