@@ -78,7 +78,7 @@ section {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-  
+
   gap: var(--padding-xxl);
 }
 
@@ -92,30 +92,30 @@ section .task-column {
   border-radius: var(--border-radius-m);
 }
 
-section .task-column .heading{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+section .task-column .heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-section .task-column .task{
-    background-color: var(--bg-task-color);
-    padding: var(--padding-m);
-    border-radius: var(--border-radius-m);
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-s);
-    cursor: grab;
+section .task-column .task {
+  background-color: var(--bg-task-color);
+  padding: var(--padding-m);
+  border-radius: var(--border-radius-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-s);
+  cursor: grab;
 }
 
-section .task-column .task button{
-    align-self: flex-end;
-    padding: var(--padding-s) var(--padding-m);
-    border-radius: var(--border-radius-s);
-    background-color: var(--delete-color);
-    color: var(--primary-text-color);
-    cursor: pointer;
-    border: none;
-    outline: none;
+section .task-column .task button {
+  align-self: flex-end;
+  padding: var(--padding-s) var(--padding-m);
+  border-radius: var(--border-radius-s);
+  background-color: var(--delete-color);
+  color: var(--primary-text-color);
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
