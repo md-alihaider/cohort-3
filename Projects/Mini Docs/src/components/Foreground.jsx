@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import Card from "./Card";
 
 const Foreground = () => {
+  const ref = useRef(null);
  const data = [
    {
      desc: "Complete guide to React Hooks and state management.",
@@ -40,9 +42,9 @@ const Foreground = () => {
    },
  ];
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-3 flex gap-10 flex-wrap p-5">
+    <div ref={ref} className="fixed top-0 left-0 w-full h-full z-3 flex gap-10 flex-wrap p-5">
       {data.map((item, index) => (
-        <Card data={item} />
+        <Card data={item} reference={ref} key={index} />
       ))}
     </div>
   );
