@@ -1,9 +1,13 @@
 
-
 const Button = () => {
   return (
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Click me</button>
-  )
-}
+    <button className="btn-wave-dark group">
+      {/* The span uses z-10 to stay on top of the ::after pseudo-element */}
+      <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+        Click me
+      </span>
+    </button>
+  );
+};
 
-export default Button
+export default Button;

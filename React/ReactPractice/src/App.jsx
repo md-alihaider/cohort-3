@@ -1,12 +1,13 @@
-import Button from "./components/Button"
-
+import Button from "./components/Button";
 
 const App = () => {
   return (
     <>
-      <Button />
+      <div className="flex justify-center items-center h-screen">
+        <Button />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
