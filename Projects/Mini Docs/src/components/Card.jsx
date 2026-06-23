@@ -1,7 +1,7 @@
 import { FaRegFileAlt } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
-import { motion, scale } from "motion/react";
+import { motion } from "motion/react";
 const Card = ({ data, reference }) => {
   return (
     <motion.div
