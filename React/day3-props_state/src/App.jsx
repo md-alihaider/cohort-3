@@ -7,11 +7,23 @@ const App = () => {
 
   // OneF(); // this is named export and will give error as it should be named same as file name
   
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0) // this useState is a hook and it remembers the state of the component if we normaly use it in a function it will not rerender the component
+
+  function increment() {
+    setCount(count + 1)
+  }
+
+  function decrement() {
+    if (count > 0) {
+      setCount(count - 1)
+    }
+  }
+
   return (
     <div>
-      <h1> Count is - {count}</h1>
-      <button onClick={()=>setCount(count+1)}>Increment</button>
+      <h1> Count is  {count}</h1>
+      <button onClick={() => increment()}>Increment</button>
+      <button onClick={() => decrement()}>Decrement</button>
     </div>
   )
 }
