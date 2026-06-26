@@ -16,11 +16,25 @@
 
 // Question 3 — Display Input Value
 
-const input = document.querySelector("#username");
-const output = document.querySelector("#output");
-const btn = document.querySelector("button");
+// const input = document.querySelector("#username");
+// const output = document.querySelector("#output");
+// const btn = document.querySelector("button");
 
-btn.addEventListener("click", () => {
-  output.textContent = input.value;
-  input.value = "";
-});
+// btn.addEventListener("click", () => {
+//   output.textContent = input.value;
+//   input.value = "";
+// });
+
+
+// Question 4 — Hide and Show Text
+
+// const message = document.querySelector("#message");
+// const btn = document.querySelector("button");
+
+// btn.addEventListener("click", () => {
+//   if (message.style.display === "none") {
+//     message.style.display = "block";
+//   } else {
+//     message.style.display = "none";
+//   }
+// });
