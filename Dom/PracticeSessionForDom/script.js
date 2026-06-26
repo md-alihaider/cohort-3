@@ -101,3 +101,16 @@
 // })
 
 
+// Question 9 — Todo List
+
+// const input = document.querySelector("input");
+// const addBtn = document.querySelector("button");
+// const ul = document.querySelector("ul")
+
+
+// addBtn.addEventListener("click", () => {
+//   let newUl = input.value;
+//   let li = document.createElement("li")
+//   li.textContent = newUl
+//   ul.append(li)
+// })
