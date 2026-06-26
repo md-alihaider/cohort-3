@@ -38,3 +38,21 @@
 //     message.style.display = "none";
 //   }
 // });
+
+
+// Question 5 — Add New List Item
+
+// const list = document.querySelector("#list");
+// const addBtn = document.querySelector("#addBtn");
+// const removeBtn = document.querySelector("#removeBtn");
+
+// addBtn.addEventListener("click", () => {
+//   const li = document.createElement("li");
+//   li.textContent = "Banana";
+//   list.appendChild(li);
+// });
+
+// removeBtn.addEventListener("click", () => {
+//   const li = document.querySelector("li");
+//   li.remove();
+// });

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practice Session For Dom</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white p-10">
   <!-- <h1>Hello World</h1>
   <button id="btn">Change Color</button> -->
 
@@ -14,8 +14,14 @@
   <button>Show</button>
   <p id="output"></p> -->
 
-  <p id="message">Hello World</p>
-  <button>Toggle</button>
+  <!-- <p id="message" class=" text-2xl">Hello World</p>
+  <button class=" px-10 py-5 bg-blue-800">Toggle</button> -->
+
+  <ul id="list" class="text-2xl py-2">
+  <li >Apple</li>
+  </ul>
+  <button class=" px-5 py-2 bg-blue-800" id="addBtn">Add Fruit</button>
+  <button class=" px-5 py-2 bg-blue-800" id="removeBtn">Remove Fruit</button>
   <script src="./script.js"></script>
 </body>
 </html>
