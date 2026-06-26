@@ -89,3 +89,15 @@
 //   }
 //   heading.textContent = count
 // })
+
+
+// Question 8 — Live Character Counter
+
+// const textarea = document.querySelector("textarea");
+// const Character = document.querySelector("p")
+
+// textarea.addEventListener("input", () => {
+//   Character.textContent = `Characters: ${textarea.value.length}`;
+// })
+
+
