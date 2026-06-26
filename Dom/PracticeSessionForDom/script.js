@@ -56,3 +56,36 @@
 //   const li = document.querySelector("li");
 //   li.remove();
 // });
+
+
+// Question 6 — Remove a Card
+
+// const card = document.querySelector(".card");
+// const btn = document.querySelector("button");
+
+
+// btn.addEventListener("click", () => {
+//   card.remove();
+// })
+
+
+
+// Question 7 — Counter App
+
+// const increaseBtn = document.querySelector("#increase");
+// const decreaseBtn = document.querySelector("#decrease");
+// const heading = document.querySelector("h1");
+
+// let count = 0;
+
+// increaseBtn.addEventListener("click", () => {
+//   count += 1;
+//   heading.textContent = count
+// })
+
+// decreaseBtn.addEventListener("click", () => {
+//   if (count > 0) {
+//     count -= 1
+//   }
+//   heading.textContent = count
+// })
