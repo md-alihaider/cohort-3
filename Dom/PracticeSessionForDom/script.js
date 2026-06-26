@@ -114,3 +114,27 @@
 //   li.textContent = newUl
 //   ul.append(li)
 // })
+
+
+
+// Question 10 — Image Gallery
+
+const images = [
+  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
+  "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=150&h=150",
+  "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=150&h=150",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150",
+];
+
+const gallery = document.querySelectorAll("img");
+const nextBtn = document.querySelector("button");
+
+
+nextBtn.addEventListener("click", () => {
+  const currentImage = images.shift();
+  images.push(currentImage);
+  gallery.forEach((image, index) => {
+    image.src = images[index];
+  });
+})
