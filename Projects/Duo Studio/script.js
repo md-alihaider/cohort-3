@@ -31,6 +31,13 @@ function init() {
 
 init();
 
+gsap.from(".page1 h1,.page1 h2", {
+  y: 10,
+  rotate: 10,
+  opacity: 0,
+  delay: 0.3,
+  duration: 0.7,
+});
 var tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".page1 h1",
@@ -62,3 +69,17 @@ tl.to(
   },
   "anim",
 );
+
+var tl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".page1 h1",
+    scroller: "main",
+    // markers:true,
+    start: "top -115%",
+    end: "top -120%",
+    scrub: 3,
+  },
+});
+tl2.to("main", {
+  backgroundColor: "#fff",
+});
