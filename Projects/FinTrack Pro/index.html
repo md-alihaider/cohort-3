@@ -7,6 +7,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="login-container">
+    <div class="login-wrapper">
+      <h1>Welcome Back</h1>
+      <h3>Login to FinTrack Pro</h3>
+      <form>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit" id="login-button">Login</button>
+        <p>Don't have an account? <span id="register-link">Register here</span></p>
+      </form>
+    </div>
+  </div>
+  <div class="register-container">
+    <div class="register-wrapper">
+      <h1>Create Account</h1>
+      <h3>Join FinTrack Pro</h3>
+      <form>
+        <label for="username">Choose a Username</label>
+        <input type="text" name="username" id="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit" id="register-button">Register</button>
+        <p>Already have an account? <span id="login-link">Login here</span></p>
+      </form>
+    </div>
+  </div>
   <script src="./script.js"></script>
 </body>
 </html>
