@@ -3,6 +3,8 @@ function authenticationState() {
   const loginLink = document.querySelector("#login-link");
   const loginContainer = document.querySelector(".login-container");
   const registerContainer = document.querySelector(".register-container");
+  const loginForm = document.querySelector("#login-form");
+  const registerForm = document.querySelector("#register-form");
 
   if (!registerLink || !loginLink || !loginContainer || !registerContainer) {
     return;
@@ -28,6 +30,37 @@ function authenticationState() {
       showLoginForm();
     }
   }
+
+  registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(registerForm);
+    const userData = Object.fromEntries(formData.entries());
+    localStorage.setItem("registeredUser", JSON.stringify(userData));
+
+    alert("Registration successful!");
+    registerForm.reset();
+    showLoginForm();
+  });
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    
+    const formData = new FormData(loginForm);
+    const loginAttempt = Object.fromEntries(formData.entries());
+    const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+    if (
+      savedUser &&
+      savedUser.username === loginAttempt.username &&
+      savedUser.password === loginAttempt.password
+    ) {
+      alert("Welcome back to FinTrack Pro!");
+      // Proceed to dashboard...
+    } else {
+      alert("Invalid username or password.");
+    }
+  });
 
   registerLink.addEventListener("click", (event) => {
     event.preventDefault();
