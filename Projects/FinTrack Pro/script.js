@@ -1,28 +1,45 @@
-const registerLink = document.querySelector("#register-link");
-const loginLink = document.querySelector("#login-link");
-const loginContainer = document.querySelector(".login-container");
-const registerContainer = document.querySelector(".register-container");
+function authenticationState() {
+  const registerLink = document.querySelector("#register-link");
+  const loginLink = document.querySelector("#login-link");
+  const loginContainer = document.querySelector(".login-container");
+  const registerContainer = document.querySelector(".register-container");
 
-const currentForm = localStorage.getItem("currentForm");
-if (currentForm === "register") {
-  loginContainer.classList.remove("active");
-  registerContainer.classList.add("active");
-} else {
-  loginContainer.classList.add("active");
-  registerContainer.classList.remove("active");
+  if (!registerLink || !loginLink || !loginContainer || !registerContainer) {
+    return;
+  }
+
+  function showLoginForm() {
+    registerContainer.classList.remove("active");
+    loginContainer.classList.add("active");
+    localStorage.setItem("currentForm", "login");
+  }
+
+  function showRegisterForm() {
+    loginContainer.classList.remove("active");
+    registerContainer.classList.add("active");
+    localStorage.setItem("currentForm", "register");
+  }
+
+  function initFormState() {
+    const currentForm = localStorage.getItem("currentForm");
+    if (currentForm === "register") {
+      showRegisterForm();
+    } else {
+      showLoginForm();
+    }
+  }
+
+  registerLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    showRegisterForm();
+  });
+
+  loginLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    showLoginForm();
+  });
+
+  initFormState();
 }
 
-
-registerLink.addEventListener("click", (event) => {
-  event.preventDefault();
-  loginContainer.classList.remove("active");
-  registerContainer.classList.add("active");
-  localStorage.setItem("currentForm", "register");
-});
-
-loginLink.addEventListener("click", (event) => {
-  event.preventDefault();
-  registerContainer.classList.remove("active");
-  loginContainer.classList.add("active");
-  localStorage.setItem("currentForm", "login");
-});
+authenticationState();
