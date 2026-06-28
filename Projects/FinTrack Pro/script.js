@@ -5,6 +5,17 @@ function authenticationState() {
   const registerContainer = document.querySelector(".register-container");
   const loginForm = document.querySelector("#login-form");
   const registerForm = document.querySelector("#register-form");
+  const toast = document.querySelector("#toast");
+
+  // Update the helper function inside authenticationState()
+  function showToast(message, type = "success") {
+    toast.textContent = message;
+    toast.classList.remove("success", "error");
+    toast.classList.add(type, "show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
 
   if (!registerLink || !loginLink || !loginContainer || !registerContainer) {
     return;
@@ -38,14 +49,14 @@ function authenticationState() {
     const userData = Object.fromEntries(formData.entries());
     localStorage.setItem("registeredUser", JSON.stringify(userData));
 
-    alert("Registration successful!");
+    showToast("Account created successfully! 🎉", "success");
     registerForm.reset();
     showLoginForm();
   });
 
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    
+
     const formData = new FormData(loginForm);
     const loginAttempt = Object.fromEntries(formData.entries());
     const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
@@ -55,10 +66,10 @@ function authenticationState() {
       savedUser.username === loginAttempt.username &&
       savedUser.password === loginAttempt.password
     ) {
-      alert("Welcome back to FinTrack Pro!");
+      showToast("Welcome back to FinTrack Pro! 🚀", "success");
       // Proceed to dashboard...
     } else {
-      alert("Invalid username or password.");
+      showToast("Invalid username or password. ❌", "error");
     }
   });
 
