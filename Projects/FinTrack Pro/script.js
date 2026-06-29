@@ -6,6 +6,7 @@ function authenticationState() {
   const loginForm = document.querySelector("#login-form");
   const registerForm = document.querySelector("#register-form");
   const toast = document.querySelector("#toast");
+  const app = document.querySelector(".app-container");
 
   // Update the helper function inside authenticationState()
   function showToast(message, type = "success") {
@@ -68,6 +69,11 @@ function authenticationState() {
     ) {
       showToast("Welcome back to FinTrack Pro! 🚀", "success");
       // Proceed to dashboard...
+      loginContainer.classList.remove("active");
+      localStorage.removeItem("currentForm");
+      app.classList.add("active");
+
+      loginForm.reset();
     } else {
       showToast("Invalid username or password. ❌", "error");
     }

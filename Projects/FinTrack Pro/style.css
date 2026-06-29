@@ -25,6 +25,38 @@ body {
   background-color: #f5f7f7;
 }
 
+:root {
+  --bg-main: #f8f9fb;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --text-dark: #1a1d21;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --primary-blue: #dbeafe;
+  --primary-blue-text: #1e40af;
+  --accent-black: #000000;
+  --green-light: #dcfce7;
+  --green-text: #166534;
+  --red-light: #fee2e2;
+  --red-text: #991b1b;
+}
+
+:root.dark {
+  --bg-main: #0f1115;
+  --bg-card: #181b20;
+  --bg-sidebar: #14161a;
+  --text-dark: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #2d3139;
+  --primary-blue: #1e3a8a;
+  --primary-blue-text: #bfdbfe;
+  --accent-black: #ffffff;
+  --green-light: #064e3b;
+  --green-text: #86efac;
+  --red-light: #7f1d1d;
+  --red-text: #fca5a5;
+}
+
 .login-container,
 .register-container {
   height: 100%;
@@ -34,12 +66,12 @@ body {
   align-items: center;
 }
 
-.register-container.active{
-    display: flex;
+.register-container.active {
+  display: flex;
 }
 
-.login-container.active{
-    display: flex;
+.login-container.active {
+  display: flex;
 }
 
 .login-wrapper,
@@ -49,7 +81,7 @@ body {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 10px;
-  padding:35px 30px;
+  padding: 35px 30px;
 }
 
 .login-wrapper h1,
@@ -102,8 +134,8 @@ body {
   cursor: pointer;
 }
 
-.login-wrapper form button{
-    background-color: #0056b3;
+.login-wrapper form button {
+  background-color: #0056b3;
 }
 
 .login-wrapper form button:hover,
@@ -111,8 +143,8 @@ body {
   opacity: 0.8;
 }
 
-.register-wrapper form button{
-    background-color: #28a645;
+.register-wrapper form button {
+  background-color: #28a645;
 }
 
 .login-wrapper form p,
@@ -133,7 +165,6 @@ body {
   text-decoration: underline;
 }
 
-
 .toast {
   position: fixed;
   top: 20px;
@@ -148,16 +179,18 @@ body {
   visibility: hidden;
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0.4s;
 }
 
-
 .toast.success {
-  background-color: darkgreen; 
+  background-color: darkgreen;
 }
 
 .toast.error {
-  background-color: rgb(155, 112, 4); 
+  background-color: rgb(155, 112, 4);
 }
 
 /* Activated state */
@@ -165,4 +198,23 @@ body {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  overflow: hidden;
+}
+
+.app-container.active {
+  display: flex;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: var(--bg-sidebar);
+  border-right: var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
