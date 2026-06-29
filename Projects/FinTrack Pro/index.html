@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FinTrack Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div id="toast" class="toast">Registration Successful! 🎉</div>
-  
+
   <div class="login-container">
     <div class="login-wrapper">
       <h1>Welcome Back</h1>
@@ -40,7 +45,23 @@
   </div>
 
   <div class="app-container">
-    <aside class="sidebar"></aside>
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-layer-group"></i>
+        <div class="logo-content">
+          <h2>FinTrack Pro</h2>
+          <p>Enterprise Finance</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active" data-target="dashboard-view"><i class="fa-solid fa-border-all"></i>
+          Dashboard</a>
+        <a href="#" class="nav-item" data-target="settings-view"><i class="fa-solid fa-gear"></i> Settings</a>
+      </nav>
+      <button class="add-btn" id="openAddModalBtn">
+        <i class="fa-solid fa-plus"></i> Add Transaction
+      </button>
+    </aside>
     <main class="main-content">
       <header class="top-header"></header>
     </main>
@@ -48,4 +69,5 @@
 
   <script src="./script.js"></script>
 </body>
+
 </html>

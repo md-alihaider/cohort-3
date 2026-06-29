@@ -35,12 +35,23 @@ function authenticationState() {
   }
 
   function initFormState() {
-    const currentForm = localStorage.getItem("currentForm");
-    if (currentForm === "register") {
-      showRegisterForm();
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (isLoggedIn) {
+      showApp();
     } else {
-      showLoginForm();
+      const currentForm = localStorage.getItem("currentForm");
+      if (currentForm === "register") {
+        showRegisterForm();
+      } else {
+        showLoginForm();
+      }
     }
+  }
+
+  function showApp() {
+    loginContainer.classList.remove("active");
+    localStorage.removeItem("currentForm");
+    app.classList.add("active");
   }
 
   registerForm.addEventListener("submit", (event) => {
@@ -69,10 +80,8 @@ function authenticationState() {
     ) {
       showToast("Welcome back to FinTrack Pro! 🚀", "success");
       // Proceed to dashboard...
-      loginContainer.classList.remove("active");
-      localStorage.removeItem("currentForm");
-      app.classList.add("active");
-
+      localStorage.setItem("isLoggedIn", "true");
+      showApp();
       loginForm.reset();
     } else {
       showToast("Invalid username or password. ❌", "error");
