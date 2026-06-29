@@ -7,6 +7,8 @@ function authenticationState() {
   const registerForm = document.querySelector("#register-form");
   const toast = document.querySelector("#toast");
   const app = document.querySelector(".app-container");
+  const logoutBtn = document.querySelector("#logoutBtn");
+  const topbarName = document.querySelector("#topbarName");
 
   // Update the helper function inside authenticationState()
   function showToast(message, type = "success") {
@@ -54,6 +56,13 @@ function authenticationState() {
     app.classList.add("active");
   }
 
+  function updateTopbarName() {
+    const savedUser = JSON.parse(localStorage.getItem("registeredUser"));
+    if (savedUser && savedUser.username && topbarName) {
+      topbarName.textContent = savedUser.username;
+    }
+  }
+
   registerForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -82,6 +91,7 @@ function authenticationState() {
       // Proceed to dashboard...
       localStorage.setItem("isLoggedIn", "true");
       showApp();
+      updateTopbarName();
       loginForm.reset();
     } else {
       showToast("Invalid username or password. ❌", "error");
@@ -96,6 +106,11 @@ function authenticationState() {
   loginLink.addEventListener("click", (event) => {
     event.preventDefault();
     showLoginForm();
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    location.reload(); // Reload the page to reset the state and hide the app container
   });
 
   initFormState();
