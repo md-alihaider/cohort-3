@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
 .register-wrapper {
   height: 350px;
   width: 360px;
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 10px;
   padding: 35px 30px;
@@ -142,7 +142,9 @@ h1, h2, h3, h4, h5, h6 {
 .register-wrapper form input {
   height: 35px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
   margin-bottom: 10px;
   padding: 0 10px;
   font-size: 14px;

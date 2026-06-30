@@ -55,7 +55,7 @@
         </div>
       </div>
       <nav class="nav-menu">
-        <a href="#" class="nav-item active" data-target="dashboard-view"><i class="fa-solid fa-border-all"></i>
+        <a href="#" class="nav-item " data-target="dashboard-view"><i class="fa-solid fa-border-all"></i>
           Dashboard</a>
         <a href="#" class="nav-item" data-target="settings-view"><i class="fa-solid fa-gear"></i> Settings</a>
       </nav>
@@ -168,6 +168,43 @@
               <button id="resetDataBtn">
                 <i class="fa-solid fa-trash"></i> Reset All Data
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="settings-view" class="view-section">
+        <div class="page-header">
+          <div>
+            <h1>Settings</h1>
+            <p>Manage your account profile and app formatting.</p>
+          </div>
+        </div>
+      
+        <div class="dashboard-grid">
+          <div class="main-column">
+            <div class="card">
+              <div class="card-header">
+                <h3>Profile Details</h3>
+              </div>
+              <form id="settingsForm" style="margin-top: 10px;">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="settingName" required="">
+                  </div>
+                  <div class="form-group">
+                    <label>Primary Currency</label>
+                    <select id="settingCurrency" required="">
+                      <option value="$">USD ($)</option>
+                      <option value="€">EUR (€)</option>
+                      <option value="£">GBP (£)</option>
+                      <option value="₹">INR (₹)</option>
+                      <option value="¥">JPY (¥)</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="save-tx-btn">Save Changes</button>
+              </form>
             </div>
           </div>
         </div>

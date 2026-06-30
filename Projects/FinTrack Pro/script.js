@@ -1,5 +1,6 @@
 // Global State & Utilities
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+let currency = localStorage.getItem("currency") || "$"; // New global currency state
 let cashFlowChartInstance = null;
 let editIndex = null;
 const toast = document.querySelector("#toast");
@@ -7,7 +8,7 @@ const toast = document.querySelector("#toast");
 function showToast(message, type = "success") {
   if (!toast) return;
   toast.textContent = message;
-  toast.className = `toast ${type} show`; // Assumes base .toast class exists
+  toast.className = `toast ${type} show`;
   setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
@@ -49,14 +50,12 @@ function initAuth() {
     renderDashboard();
   };
 
-  // State check on load
   if (localStorage.getItem("isLoggedIn") === "true") {
     showApp();
   } else {
     switchForm(localStorage.getItem("currentForm") || "login");
   }
 
-  // Events
   elements.registerLink?.addEventListener("click", (e) => {
     e.preventDefault();
     switchForm("register");
@@ -99,6 +98,68 @@ function initAuth() {
   });
 }
 
+// Navigation Logic (Saves view state on refresh)
+
+function initNavigation() {
+  const navItems = document.querySelectorAll(".nav-item");
+  const views = document.querySelectorAll(".view-section");
+
+  const savedView = localStorage.getItem("currentAppView") || "dashboard-view";
+
+  navItems.forEach((item) => {
+    const targetId = item.getAttribute("data-target");
+
+    if (targetId === savedView) {
+      navItems.forEach((nav) => nav.classList.remove("active"));
+      views.forEach((view) => view.classList.remove("active"));
+      item.classList.add("active");
+      document.getElementById(targetId)?.classList.add("active");
+    }
+
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      navItems.forEach((nav) => nav.classList.remove("active"));
+      views.forEach((view) => view.classList.remove("active"));
+
+      item.classList.add("active");
+      document.getElementById(targetId)?.classList.add("active");
+      localStorage.setItem("currentAppView", targetId);
+    });
+  });
+}
+
+// Settings Logic (Syncs username and global currency)
+function initSettings() {
+  const settingsForm = document.querySelector("#settingsForm");
+  const nameInput = document.querySelector("#settingName");
+  const currencyInput = document.querySelector("#settingCurrency");
+
+  if (!settingsForm) return;
+
+  // Pre-fill form fields
+  const savedUser = JSON.parse(localStorage.getItem("registeredUser")) || {};
+  if (nameInput && savedUser.username) nameInput.value = savedUser.username;
+  if (currencyInput) currencyInput.value = currency;
+
+  settingsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (nameInput.value) {
+      savedUser.username = nameInput.value;
+      localStorage.setItem("registeredUser", JSON.stringify(savedUser));
+      document.querySelector("#topbarName").textContent = savedUser.username;
+    }
+
+    if (currencyInput.value) {
+      currency = currencyInput.value;
+      localStorage.setItem("currency", currency);
+      renderDashboard(); // Redraws entire UI with new currency
+    }
+
+    showToast("Settings saved.", "success");
+  });
+}
+
 // Chart Logic
 function updateChartData(income, expense) {
   const ctx = document.getElementById("cashFlowChart");
@@ -131,7 +192,7 @@ function updateChartData(income, expense) {
         x: { grid: { display: false } },
         y: {
           beginAtZero: true,
-          ticks: { callback: (val) => "$" + val.toLocaleString() },
+          ticks: { callback: (val) => currency + val.toLocaleString() },
         },
       },
     },
@@ -152,9 +213,9 @@ function renderDashboard() {
     const el = document.querySelector(id);
     if (el) el.textContent = val;
   };
-  safeSet("#displayBalance", `$${(income - expense).toFixed(2)}`);
-  safeSet("#displayIncome", `$${income.toFixed(2)}`);
-  safeSet("#displayExpense", `$${expense.toFixed(2)}`);
+  safeSet("#displayBalance", `${currency}${(income - expense).toFixed(2)}`);
+  safeSet("#displayIncome", `${currency}${income.toFixed(2)}`);
+  safeSet("#displayExpense", `${currency}${expense.toFixed(2)}`);
   safeSet("#displayCount", transactions.length);
 
   updateChartData(income, expense);
@@ -186,7 +247,7 @@ function renderTable() {
           <td>${t.date}</td>
           <td>${t.description}</td>
           <td><span class="badge">${t.category}</span></td>
-          <td style="font-weight: 600; color: ${color};">${isInc ? "+" : "-"}$${amt}</td>
+          <td style="font-weight: 600; color: ${color};">${isInc ? "+" : "-"}${currency}${amt}</td>
           <td>
             <button onclick="editTransaction(${index})" style="background:none; border:none; color:var(--primary-blue-text); cursor:pointer;"><i class="fa-solid fa-pen-to-square"></i></button>
             <button onclick="deleteTransaction(${index})" style="background:none; border:none; color:var(--red-text); cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
@@ -304,5 +365,7 @@ function initFiltersAndTheme() {
 
 // Bootstrap
 initAuth();
+initNavigation();
+initSettings();
 initModal();
 initFiltersAndTheme();
