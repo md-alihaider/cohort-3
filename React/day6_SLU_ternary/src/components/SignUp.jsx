@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 const SignUp = ({ setIsLogin }) => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [users, setUsers] = useState([]);
+  console.log(users);
   const handleChange = (e) => {
     let { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -9,6 +15,12 @@ const SignUp = ({ setIsLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setUsers([...users, formData]);
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
   }
 
   return (
@@ -27,6 +39,7 @@ const SignUp = ({ setIsLogin }) => {
               Username
             </label>
             <input
+              name="username"
               onChange={handleChange}
               type="text"
               id="username"
@@ -44,6 +57,7 @@ const SignUp = ({ setIsLogin }) => {
               Email
             </label>
             <input
+              name="email"
               onChange={handleChange}
               type="email"
               id="email"
@@ -61,6 +75,7 @@ const SignUp = ({ setIsLogin }) => {
               Password
             </label>
             <input
+              name="password"
               onChange={handleChange}
               type="password"
               id="password"
