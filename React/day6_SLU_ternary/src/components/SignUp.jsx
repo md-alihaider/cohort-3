@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SignUp = ({ setIsLogin }) => {
+  const [formData, setFormData] = useState({});
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
@@ -8,7 +18,7 @@ const SignUp = ({ setIsLogin }) => {
           Create an Account
         </h2>
 
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
               className="block text-sm font-medium text-gray-700"
@@ -17,6 +27,7 @@ const SignUp = ({ setIsLogin }) => {
               Username
             </label>
             <input
+              onChange={handleChange}
               type="text"
               id="username"
               required
@@ -33,6 +44,7 @@ const SignUp = ({ setIsLogin }) => {
               Email
             </label>
             <input
+              onChange={handleChange}
               type="email"
               id="email"
               required
@@ -49,6 +61,7 @@ const SignUp = ({ setIsLogin }) => {
               Password
             </label>
             <input
+              onChange={handleChange}
               type="password"
               id="password"
               required
@@ -67,7 +80,7 @@ const SignUp = ({ setIsLogin }) => {
             Already have an account?{" "}
             <span
               className="text-blue-600 cursor-pointer hover:underline"
-              onClick={() => setIsLogin(prev => !prev)}
+              onClick={() => setIsLogin((prev) => !prev)}
             >
               Log In
             </span>
