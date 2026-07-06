@@ -7,9 +7,18 @@ function toggleTheme() {
   themeToggleButton.innerHTML = body.classList.contains("light-theme")
     ? '<i data-lucide="moon"></i> Dark Mode'
     : '<i data-lucide="sun"></i> Light Mode';
+  localStorage.setItem("theme", body.classList.contains("light-theme") ? "light" : "dark");
   lucide.createIcons();
 }
 
+// Check for saved theme preference on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  const body = document.body;
+  if (savedTheme === "light") {
+    body.classList.add("light-theme");
+  }
+});
 
 function getCurrentTime() {
   const time = document.querySelector(".time");
@@ -29,5 +38,10 @@ function getCurrentTime() {
   updateTime();
   setInterval(updateTime, 60000);
 }
+
+function getWeather() {
+  const weatherInfo = document.querySelector(".weather-info"); 
+}
+
 
 getCurrentTime();
