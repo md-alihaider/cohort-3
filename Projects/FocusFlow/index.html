@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FocusFlow</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main>
     <div class="sidebar">
@@ -18,23 +20,49 @@
           <p>Stay focused, stay productive.</p>
         </div>
         <div class="sidebar-link">
-          
+          <a href="#" id="dashboard" class="links"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+          <a href="#" id="todo-list" class="links"><i data-lucide="check-square"></i>Todo List</a>
+          <a href="#" id="daily-planner" class="links"><i data-lucide="calendar-days"></i>Daily Planner</a>
+          <a href="#" id="motivation" class="links"><i data-lucide="quote"></i>Motivation</a>
+          <a href="#" id="pomodoro-timer" class="links"><i data-lucide="timer"></i>Pomodoro Timer</a>
+          <a href="#" id="daily-goals" class="links"><i data-lucide="target"></i>Daily Goals</a>
         </div>
       </div>
-      <div class="sidebar-p2"></div>
+      <div class="sidebar-p2">
+        <div class="sidebar-link">
+          <a href="#" id="weather" class="links"><i data-lucide="cloud"></i>Weather</a>
+          <a href="#" id="theme" class="links"><i data-lucide="moon"></i>Theme</a>
+        </div>
+        <div class="quotes-container">
+          <p class="quote">"The secret of getting ahead is getting started." <span>- Mark Twain</span></p>
+        </div>
+        <button id="theme-toggle"><i data-lucide="sun"></i>Light Mode</button>
+      </div>
     </div>
-    <div class="topbar"></div>
+    <div class="topbar">
+      <div class="left">
+        <div class="greeting">
+          <h1>Good Morning, John! 👋</h1>
+          <p>Let's make today productive!</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="timer-card"></div>
+        <div class="weather-card"></div>
+      </div>
+    </div>
     <div class="content"></div>
   </main>
-    <!-- Your JavaScript -->
-    <script src="script.js"></script>
-    
-    <!-- Lucide Library -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Initialize Icons -->
-    <script>
-      lucide.createIcons();
-    </script>
+  <!-- Your JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Lucide Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Initialize Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
+
 </html>
