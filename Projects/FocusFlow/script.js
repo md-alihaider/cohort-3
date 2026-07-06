@@ -166,4 +166,5 @@ function loadContent() {
 loadContent();
 initWeather();
 getDailyQuote();
+setInterval(getDailyQuote, 1000 * 60 * 60);
 getCurrentTime();
