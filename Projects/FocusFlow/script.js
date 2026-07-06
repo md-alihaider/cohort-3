@@ -39,9 +39,91 @@ function getCurrentTime() {
   setInterval(updateTime, 60000);
 }
 
-function getWeather() {
-  const weatherInfo = document.querySelector(".weather-info"); 
+const quoteContainer = document.querySelector(".quote");
+
+async function getDailyQuote() {
+  try {
+    quoteContainer.innerHTML = "Loading quote...";
+    const response = await fetch("https://dummyjson.com/quotes/random");
+    const data = await response.json();
+    quoteContainer.innerHTML = `"${data.quote}"  <span>-${data.author}</span>`;
+  } catch (error) {
+    // quoteContainer.innerHTML = `"The secret of getting ahead is getting started." <span>- Mark Twain</span>`;
+    quoteContainer.innerHTML = "Loading quote failed. Please try again later.";
+  }
 }
 
+const tempElement = document.querySelector(".temperature");
+const conditionElement = document.querySelector(".condition");
+const locationElement = document.querySelector(".location");
+const iconContainer = document.querySelector(".weather-logo");
 
+function getWeatherDetails(code) {
+  if (code === 0) return { text: "Clear Sky", icon: "sun" };
+  if (code === 1 || code === 2)
+    return { text: "Partly Cloudy", icon: "cloud-sun" };
+  if (code === 3) return { text: "Overcast", icon: "cloud" };
+  if (code >= 45 && code <= 48) return { text: "Fog", icon: "cloud-fog" };
+  if (code >= 51 && code <= 67) return { text: "Rain", icon: "cloud-rain" };
+  if (code >= 71 && code <= 77) return { text: "Snow", icon: "snowflake" };
+  if (code >= 95) return { text: "Thunderstorm", icon: "cloud-lightning" };
+  return { text: "Unknown", icon: "cloud" }; // Fallback
+}
+
+async function getWeather(lat, lon) {
+  try {
+    tempElement.innerText = "...";
+    conditionElement.innerText = "Loading weather";
+    locationElement.innerText = "Locating...";
+
+    const [weatherResponse, geoResponse] = await Promise.all([
+      fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`,
+      ),
+      fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
+      ),
+    ]);
+
+    const weatherData = await weatherResponse.json();
+    const geoData = await geoResponse.json();
+
+    const temp = Math.round(weatherData.current_weather.temperature);
+    const details = getWeatherDetails(weatherData.current_weather.weathercode);
+
+    const city = geoData.city || geoData.locality || "Unknown City";
+    const country = geoData.countryCode || "";
+
+    tempElement.innerText = `${temp}°C`;
+    conditionElement.innerText = details.text;
+    locationElement.innerText = `${city}, ${country}`;
+
+    iconContainer.innerHTML = `<i data-lucide="${details.icon}"></i>`;
+    lucide.createIcons();
+  } catch (error) {
+    conditionElement.innerText = "Weather unavailable";
+    locationElement.innerText = "Try again later";
+  }
+}
+
+function initWeather() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // Uses your actual location
+        getWeather(position.coords.latitude, position.coords.longitude);
+      },
+      (error) => {
+        // Fallback to New York if user blocks location
+        getWeather(40.71, -74.0);
+      },
+    );
+  } else {
+    getWeather(40.71, -74.0);
+  }
+}
+
+initWeather();
+
+getDailyQuote();
 getCurrentTime();
