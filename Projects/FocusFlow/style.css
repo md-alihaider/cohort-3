@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+}
+
+/* ===========================
+   🌙 DARK THEME
+=========================== */
+
+:root {
+  /* ===== Backgrounds ===== */
+  --bg-main: #0b1020;
+  --bg-secondary: #111827;
+  --bg-card: #182235;
+  --bg-card-hover: #1f2c45;
+  --bg-sidebar: #0f172a;
+  --bg-input: #1b2740;
+
+  /* ===== Text ===== */
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-disabled: #64748b;
+
+  /* ===== Border ===== */
+  --border-color: #2b3a55;
+  --border-light: #3c4d6b;
+
+  /* ===== Primary (Purple) ===== */
+  --primary: #7c5cff;
+  --primary-hover: #6b4dff;
+  --primary-light: #a78bfa;
+
+  /* ===== Success (Green) ===== */
+  --success: #22c55e;
+  --success-light: #4ade80;
+
+  /* ===== Warning (Orange) ===== */
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+
+  /* ===== Danger (Red) ===== */
+  --danger: #ef4444;
+  --danger-light: #f87171;
+
+  /* ===== Info (Blue) ===== */
+  --info: #3b82f6;
+  --info-light: #60a5fa;
+
+  /* ===== Weather ===== */
+  --weather-sun: #facc15;
+  --weather-cloud: #cbd5e1;
+  --weather-rain: #38bdf8;
+
+  /* ===== Shadows ===== */
+  --shadow-sm: rgba(0, 0, 0, 0.15);
+  --shadow-md: rgba(0, 0, 0, 0.25);
+  --shadow-lg: rgba(0, 0, 0, 0.4);
+
+  /* ===== Gradients ===== */
+  --gradient-primary: linear-gradient(135deg, #7c5cff, #5b3df5);
+  --gradient-success: linear-gradient(135deg, #22c55e, #16a34a);
+  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-danger: linear-gradient(135deg, #ef4444, #dc2626);
+
+  /* ===== Misc ===== */
+  --overlay: rgba(0, 0, 0, 0.55);
+  --glass: rgba(255, 255, 255, 0.06);
+}
+
+/* ===========================
+   ☀️ LIGHT THEME
+=========================== */
+
+.light-theme {
+  /* ===== Backgrounds ===== */
+  --bg-main: #f5f7fb;
+  --bg-secondary: #eef2ff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-input: #f1f5f9;
+
+  /* ===== Text ===== */
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-disabled: #94a3b8;
+
+  /* ===== Border ===== */
+  --border-color: #dbe3ee;
+  --border-light: #cbd5e1;
+
+  /* ===== Primary ===== */
+  --primary: #6d4cff;
+  --primary-hover: #5a3df5;
+  --primary-light: #8b7dff;
+
+  /* ===== Success ===== */
+  --success: #16a34a;
+  --success-light: #22c55e;
+
+  /* ===== Warning ===== */
+  --warning: #d97706;
+  --warning-light: #f59e0b;
+
+  /* ===== Danger ===== */
+  --danger: #dc2626;
+  --danger-light: #ef4444;
+
+  /* ===== Info ===== */
+  --info: #2563eb;
+  --info-light: #3b82f6;
+
+  /* ===== Weather ===== */
+  --weather-sun: #facc15;
+  --weather-cloud: #94a3b8;
+  --weather-rain: #0ea5e9;
+
+  /* ===== Shadows ===== */
+  --shadow-sm: rgba(0, 0, 0, 0.05);
+  --shadow-md: rgba(0, 0, 0, 0.08);
+  --shadow-lg: rgba(0, 0, 0, 0.12);
+
+  /* ===== Gradients ===== */
+  --gradient-primary: linear-gradient(135deg, #7c5cff, #5b3df5);
+  --gradient-success: linear-gradient(135deg, #22c55e, #16a34a);
+  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-danger: linear-gradient(135deg, #ef4444, #dc2626);
+
+  /* ===== Misc ===== */
+  --overlay: rgba(255, 255, 255, 0.4);
+  --glass: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
