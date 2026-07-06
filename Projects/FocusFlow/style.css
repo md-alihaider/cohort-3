@@ -327,6 +327,9 @@ main {
   height: 100%;
   width: 50%;
   padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .left .greeting {
@@ -334,7 +337,7 @@ main {
   flex-direction: column;
 }
 .greeting h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -348,17 +351,111 @@ main {
   height: 100%;
   width: 50%;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
 }
 
 .right .time-card {
   height: 100%;
   width: 50%;
-  background-color: red;
+  padding: 1rem;
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  border: 0.5px solid var(--border-color);
+}
+.time-card .time-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.time-info .time {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  span {
+    font-size: 1.5rem;
+  }
+}
+
+.time-info .date {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.time-card .time-logo{
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--primary-hover);
+}
+
+.time-logo svg {
+  height: 2rem;
+  width: 2rem;
+  color: var(--text-primary);
 }
 
 .right .weather-card {
   height: 100%;
   width: 50%;
-  background-color: blue;
+  padding: 1rem;
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  border: 0.5px solid var(--border-color);
 }
+
+.weather-card .weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.weather-info .temperature {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.weather-info .location {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.weather-info .condition {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.weather-card .weather-logo{
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--weather-sun);
+}
+
+.weather-logo svg {
+  height: 2.5rem;
+  width: 2.5rem;
+  color: var(--text-primary);
+}
+
