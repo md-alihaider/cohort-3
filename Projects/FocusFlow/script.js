@@ -1,6 +1,7 @@
 const themeToggleButton = document.getElementById("theme-toggle");
 themeToggleButton.addEventListener("click", toggleTheme);
 
+
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle("light-theme");
@@ -124,66 +125,36 @@ function initWeather() {
 }
 
 function loadContent() {
-  // 1. Target the content area and ALL sidebar links
-  const contentArea = document.querySelector(".content");
+  // 1. Target ALL sidebar links
   const allLinks = document.querySelectorAll(".sidebar-link .links");
-
-  // 2. Your dictionary of pages
-  const pageContent = {
-    dashboard: `
-    <h2>Dashboard Overview</h2>
-    <p style="color: var(--text-secondary);">Welcome to your FocusFlow summary.</p>
-  `,
-    "todo-list": `
-    <h2>Todo List</h2>
-    <p style="color: var(--text-secondary);">Manage your tasks here.</p>
-  `,
-    "daily-planner": `
-    <h2>Daily Planner</h2>
-    <p style="color: var(--text-secondary);">Schedule your day.</p>
-  `,
-    motivation: `
-    <h2>Motivation</h2>
-    <p style="color: var(--text-secondary);">Your vision board and quotes.</p>
-  `,
-    "pomodoro-timer": `
-    <h2>Pomodoro Timer</h2>
-    <p style="color: var(--text-secondary);">Focus for 25 minutes.</p>
-  `,
-    "daily-goals": `
-    <h2>Daily Goals</h2>
-    <p style="color: var(--text-secondary);">Track your main targets.</p>
-  `,
-    weather: `
-    <h2>Weather</h2>
-    <p style="color: var(--text-secondary);">Check the current weather.</p>
-  `,
-    theme: `
-    <h2>Theme Settings</h2>
-    <p style="color: var(--text-secondary);">Customize your app's appearance.</p>
-  `,
-  };
-
-  // 3. Function to load the HTML
   function loadPage(pageId) {
-    contentArea.innerHTML = pageContent[pageId] || `<h2>Page Not Found</h2>`;
+    const allPages = document.querySelectorAll(".page-section");
+    allPages.forEach((page) => page.classList.remove("active-page"));
+    const targetPage = document.getElementById(`page-${pageId}`);
+    if (targetPage) {
+      targetPage.classList.add("active-page");
+    }
   }
 
-  // 4. Attach click listeners to all links
   allLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault();
+      event.preventDefault(); // Stop page from jumping
+
+      // Change sidebar backgrounds
       allLinks.forEach((item) => item.classList.remove("active"));
       link.classList.add("active");
+
+      // Save the choice so it remembers when we refresh
       localStorage.setItem("activeTab", link.id);
 
-      // Load the content
+      // Run the function to show the correct HTML
       loadPage(link.id);
     });
   });
 
   const savedTab = localStorage.getItem("activeTab") || "dashboard";
   const savedLink = document.getElementById(savedTab);
+
   if (savedLink) {
     allLinks.forEach((item) => item.classList.remove("active"));
     savedLink.classList.add("active");

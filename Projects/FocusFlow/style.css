@@ -470,3 +470,12 @@ main {
 .content.active {
   display: block;
 }
+
+
+.page-section {
+  display: none; 
+}
+
+.page-section.active-page {
+  display: block; 
+}
