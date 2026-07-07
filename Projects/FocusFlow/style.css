@@ -458,6 +458,7 @@ main {
   display: none;
   grid-area: content;
   background: var(--bg-sidebar);
+  overflow: hidden;
   border-radius: 0.5rem;
   box-shadow: 0px 4px 6px var(--shadow-md);
   border: 0.5px solid var(--border-color);
@@ -479,7 +480,7 @@ main {
   width: 100%;
   display: flex;
 }
-#page-dashboard .dashboard-p1{
+#page-dashboard .dashboard-p1 {
   height: 50%;
   width: 100%;
   background: var(--bg-card);
@@ -493,7 +494,7 @@ main {
   margin-bottom: 0.5rem;
 }
 
-.tool-card{
+.tool-card {
   height: auto;
   width: 20%;
   background: var(--bg-card-hover);
@@ -507,7 +508,7 @@ main {
   gap: 0.8rem;
 }
 
-.card-logo{
+.card-logo {
   height: 3rem;
   width: 3rem;
   display: flex;
@@ -517,29 +518,29 @@ main {
   border-radius: 0.5rem;
 }
 
-.card-logo svg{
+.card-logo svg {
   height: 1.8rem;
   width: 1.8rem;
   color: var(--text-primary);
 }
-.card-content{
+.card-content {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
-.card-content h2{
+.card-content h2 {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.card-content p{
+.card-content p {
   width: 80%;
   font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
-#todo-list-btn{
+#todo-list-btn {
   width: 100%;
   display: flex;
   justify-content: space-around;
