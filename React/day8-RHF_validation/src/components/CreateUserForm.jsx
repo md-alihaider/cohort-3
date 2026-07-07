@@ -17,10 +17,8 @@ const CreateUserForm = () => {
   });
 
   // 2. The submit handler receives the data directly if validation passes
-  const onSubmit = (data) => {
+  const formSubmit = (data) => {
     console.log("New User Submitted:", data);
-
-    // Optional: Clears the form back to defaultValues after a successful submit
     reset();
   };
 
@@ -29,7 +27,7 @@ const CreateUserForm = () => {
       <h2 className="text-2xl font-bold text-gray-100 mb-6">Create New User</h2>
 
       {/* 3. Pass your onSubmit function into hook-form's handleSubmit */}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
         {/* Name Input */}
         <div>
           <label
