@@ -562,6 +562,314 @@ function motivationManager() {
   loadMotivationQuote();
 }
 
+function pomodoroManager() {
+  const timer = document.getElementById("timer");
+  const progressFill = document.querySelector(".progress-fill");
+  const progressText = document.querySelector(".progress-text");
+
+  const startBtn = document.querySelector(".start-btn");
+  const resetBtn = document.querySelector(".reset-btn");
+  const skipBtn = document.querySelector(".skip-btn");
+
+  const timerTabs = document.querySelectorAll(".timer-tab");
+
+  const modes = {
+    pomodoro: {
+      label: "Focus Time",
+      duration: 25 * 60,
+    },
+    short: {
+      label: "Short Break",
+      duration: 5 * 60,
+    },
+    long: {
+      label: "Long Break",
+      duration: 15 * 60,
+    },
+  };
+
+  let currentMode = "pomodoro";
+  let totalSeconds = modes[currentMode].duration;
+  let secondsLeft = totalSeconds;
+
+  let timerInterval = null;
+  let isRunning = false;
+
+  function updateDisplay() {
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+
+    timer.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+    const progress = ((totalSeconds - secondsLeft) / totalSeconds) * 100;
+
+    progressFill.style.width = `${progress}%`;
+    progressText.textContent = `${Math.floor(progress)}%`;
+
+    saveTimer();
+  }
+
+  function startTimer() {
+    if (isRunning) return;
+
+    isRunning = true;
+
+    startBtn.innerHTML = '<i data-lucide="pause"></i> Pause';
+
+    lucide.createIcons();
+
+    timerInterval = setInterval(() => {
+      secondsLeft--;
+
+      updateDisplay();
+
+      if (secondsLeft <= 0) {
+        clearInterval(timerInterval);
+
+        isRunning = false;
+        startBtn.innerHTML = '<i data-lucide="play"></i> Start';
+        lucide.createIcons();
+        alert("Session Completed!");
+        localStorage.removeItem("focusFlowPomodoro");
+      }
+    }, 1000);
+  }
+
+  function pauseTimer() {
+    clearInterval(timerInterval);
+
+    isRunning = false;
+    startBtn.innerHTML = '<i data-lucide="play"></i> Start';
+    lucide.createIcons();
+  }
+
+  function resetTimer() {
+    pauseTimer();
+    secondsLeft = totalSeconds;
+    updateDisplay();
+  }
+
+  function skipTimer() {
+    pauseTimer();
+
+    if (currentMode === "pomodoro") {
+      setMode("short");
+    } else {
+      setMode("pomodoro");
+    }
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+    totalSeconds = modes[mode].duration;
+    secondsLeft = totalSeconds;
+    document.querySelector(".timer-display p").textContent = modes[mode].label;
+
+    timerTabs.forEach((tab) => tab.classList.remove("active"));
+    if (mode === "pomodoro") timerTabs[0].classList.add("active");
+    if (mode === "short") timerTabs[1].classList.add("active");
+    if (mode === "long") timerTabs[2].classList.add("active");
+
+    updateDisplay();
+  }
+
+  function saveTimer() {
+    localStorage.setItem(
+      "focusFlowPomodoro",
+      JSON.stringify({
+        mode: currentMode,
+        secondsLeft,
+      }),
+    );
+  }
+
+  function loadTimer() {
+    const saved = JSON.parse(localStorage.getItem("focusFlowPomodoro"));
+
+    if (!saved) {
+      updateDisplay();
+      return;
+    }
+
+    currentMode = saved.mode;
+    totalSeconds = modes[currentMode].duration;
+    secondsLeft = saved.secondsLeft;
+    setMode(currentMode);
+    secondsLeft = saved.secondsLeft;
+    updateDisplay();
+  }
+
+  startBtn.addEventListener("click", () => {
+    if (isRunning) {
+      pauseTimer();
+    } else {
+      startTimer();
+    }
+  });
+
+  resetBtn.addEventListener("click", resetTimer);
+  skipBtn.addEventListener("click", skipTimer);
+
+  timerTabs[0].addEventListener("click", () => setMode("pomodoro"));
+  timerTabs[1].addEventListener("click", () => setMode("short"));
+  timerTabs[2].addEventListener("click", () => setMode("long"));
+
+  loadTimer();
+}
+
+function dailyGoalsManager() {
+  const addBtn = document.querySelector(".add-goal-btn");
+  const goalList = document.querySelector(".goal-list");
+  const filters = document.querySelectorAll(".goal-filter");
+
+  let goals = JSON.parse(localStorage.getItem("focusFlowGoals")) || [];
+
+  let currentFilter = "all";
+
+  function renderGoals() {
+    goalList.innerHTML = "";
+
+    goals.forEach((goal, index) => {
+      if (currentFilter === "active" && goal.completed) return;
+      if (currentFilter === "completed" && !goal.completed) return;
+
+      const card = document.createElement("div");
+      card.className = "goal-card";
+
+      card.innerHTML = `
+        <div class="goal-top">
+          <div>
+            <h3>${goal.title}</h3>
+            <p>${goal.description}</p>
+          </div>
+
+          <span class="goal-status ${goal.completed ? "completed" : "active"}">
+            ${goal.completed ? "Completed" : "Active"}
+          </span>
+        </div>
+
+        <div class="goal-progress">
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              style="width:${goal.progress}%">
+            </div>
+          </div>
+        </div>
+
+        <div class="goal-bottom">
+
+          <span>${goal.progress}%</span>
+
+          <div class="goal-actions">
+
+            <button
+              class="goal-action-btn edit-goal"
+              data-index="${index}">
+              <i data-lucide="pencil"></i>
+            </button>
+
+            <button
+                class="goal-action-btn complete-goal ${goal.completed ? "completed" : ""}"
+                data-index="${index}">
+               <i data-lucide="${goal.completed ? "check-check" : "check"}"></i>
+            </button>
+
+            <button
+              class="goal-action-btn delete-goal"
+              data-index="${index}">
+              <i data-lucide="trash-2"></i>
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+      goalList.appendChild(card);
+    });
+
+    lucide.createIcons();
+  }
+
+  addBtn.addEventListener("click", () => {
+    const title = prompt("Goal Title");
+
+    if (!title) return;
+
+    const description = prompt("Goal Description");
+
+    if (!description) return;
+
+    const progress = Number(prompt("Progress (0-100)", "0"));
+
+    goals.unshift({
+      title,
+      description,
+      progress,
+      completed: false,
+    });
+
+    localStorage.setItem("focusFlowGoals", JSON.stringify(goals));
+
+    renderGoals();
+  });
+
+  goalList.addEventListener("click", (e) => {
+    if (e.target.closest(".delete-goal")) {
+      const index = e.target.closest(".delete-goal").dataset.index;
+
+      goals.splice(index, 1);
+
+      localStorage.setItem("focusFlowGoals", JSON.stringify(goals));
+
+      renderGoals();
+    } else if (e.target.closest(".edit-goal")) {
+      const index = e.target.closest(".edit-goal").dataset.index;
+
+      const newProgress = Number(prompt("Progress", goals[index].progress));
+
+      if (!isNaN(newProgress)) {
+        goals[index].progress = newProgress;
+
+        if (newProgress >= 100) {
+          goals[index].completed = true;
+        }
+
+        localStorage.setItem("focusFlowGoals", JSON.stringify(goals));
+
+        renderGoals();
+      }
+    } else if (e.target.closest(".complete-goal")) {
+      const index = e.target.closest(".complete-goal").dataset.index;
+
+      goals[index].completed = !goals[index].completed;
+
+      goals[index].progress = goals[index].completed ? 100 : 0;
+
+      localStorage.setItem("focusFlowGoals", JSON.stringify(goals));
+
+      renderGoals();
+    }
+  });
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      filters.forEach((btn) => btn.classList.remove("active"));
+
+      filter.classList.add("active");
+
+      currentFilter = filter.textContent.toLowerCase();
+
+      renderGoals();
+    });
+  });
+
+  renderGoals();
+}
+
+dailyGoalsManager();
+pomodoroManager();
 motivationManager();
 backToDashboard();
 dailyPlannerManager();

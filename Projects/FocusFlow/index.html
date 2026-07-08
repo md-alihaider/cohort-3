@@ -454,7 +454,7 @@
       </div>
     
       <!-- Motivation Page -->
-      <div id="page-motivation" class="page-section">
+      <div id="page-motivation" class="page-section flex-page">
       
         <a href="#" class="planner-back-link motivation-back-btn">
           <i data-lucide="arrow-left"></i>
@@ -532,14 +532,141 @@
     
       <!-- Pomodoro Timer Page -->
       <div id="page-pomodoro-timer" class="page-section flex-page">
-        <h2>Pomodoro Timer</h2>
-        <p>Focus for 25 minutes.</p>
+        <a href="#" class="planner-back-link pomodoro-back-btn">
+          <i data-lucide="arrow-left"></i>
+          Back to Dashboard
+        </a>
+      
+        <div class="pomodoro-container">
+          <div class="pomodoro-header">
+            <div class="pomodoro-title">
+              <div class="title-icon">
+                <i data-lucide="timer"></i>
+              </div>
+      
+              <div>
+                <h2>Pomodoro Timer</h2>
+                <p>Focus better with the Pomodoro Technique.</p>
+              </div>
+            </div>
+      
+            <button class="how-btn">
+              <i data-lucide="info"></i>
+              How it Works?
+            </button>
+          </div>
+      
+          <div class="pomodoro-card">
+            <div class="timer-tabs">
+              <button class="timer-tab active">Pomodoro</button>
+              <button class="timer-tab">Short Break</button>
+              <button class="timer-tab">Long Break</button>
+            </div>
+      
+            <div class="timer-display">
+              <h1 id="timer">25:00</h1>
+              <p>Focus Time</p>
+            </div>
+      
+            <div class="progress-wrapper">
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+      
+              <span class="progress-text">0%</span>
+            </div>
+      
+            <div class="timer-buttons">
+              <button class="timer-btn reset-btn">
+                <i data-lucide="rotate-ccw"></i>
+                Reset
+              </button>
+      
+              <button class="timer-btn start-btn">
+                <i data-lucide="play"></i>
+                Start
+              </button>
+      
+              <button class="timer-btn skip-btn">
+                <i data-lucide="skip-forward"></i>
+                Skip
+              </button>
+            </div>
+          </div>
+      
+          <div class="pomodoro-footer">
+            <div class="footer-left">
+              <div class="title-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+      
+              <div>
+                <h3>Stay consistent, stay focused.</h3>
+                <p>One session at a time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     
       <!-- Daily Goals Page -->
       <div id="page-daily-goals" class="page-section flex-page">
-        <h2>Daily Goals</h2>
-        <p>Track your main targets.</p>
+        <a href="#" class="planner-back-link goals-back-btn">
+          <i data-lucide="arrow-left"></i>
+          Back to Dashboard
+        </a>
+      
+        <div class="goals-container">
+          <!-- Header -->
+          <div class="goals-header">
+            <div class="goals-title">
+              <div class="title-icon">
+                <i data-lucide="target"></i>
+              </div>
+      
+              <div>
+                <h2>Daily Goals</h2>
+                <p>Set your goals and achieve them one by one.</p>
+              </div>
+            </div>
+      
+            <button class="add-goal-btn">
+              <i data-lucide="plus"></i>
+              Add Goal
+            </button>
+          </div>
+      
+          <!-- Filters -->
+      
+          <div class="goal-filters">
+            <button class="goal-filter active">All</button>
+            <button class="goal-filter">Active</button>
+            <button class="goal-filter">Completed</button>
+          </div>
+      
+          <!-- Goals -->
+      
+          <div class="goal-list">
+            <!-- JS -->
+          </div>
+      
+          <!-- Footer -->
+      
+          <div class="goal-footer">
+            <div class="footer-left">
+              <div class="title-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+      
+              <div>
+                <h3>Keep Going!</h3>
+                <p>Small progress every day becomes big success.</p>
+              </div>
+            </div>
+      
+            <i data-lucide="target"></i>
+          </div>
+        </div>
       </div>
     
       <!-- Weather Page -->
