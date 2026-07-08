@@ -147,7 +147,7 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 8fr;
@@ -268,7 +268,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-image 1s ease-in-out
+  transition: background-image 1s ease-in-out;
 }
 
 .quote {
@@ -463,6 +463,8 @@ main {
   border-radius: 0.5rem;
   box-shadow: 0px 4px 6px var(--shadow-md);
   border: 0.5px solid var(--border-color);
+  height: 100%;
+  min-height: 0;
 }
 
 .content.active {
@@ -539,7 +541,7 @@ main {
 .daily-goals .card-logo {
   background: #22c55e;
 }
-.todo-list button{
+.todo-list button {
   background: none;
   border: 0.5px solid var(--primary);
   color: var(--primary);
@@ -602,4 +604,255 @@ main {
   padding: 0.2rem;
   font-weight: 600;
   cursor: pointer;
+}
+#page-todo-list {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container for the highlighted section */
+.todo-main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(
+    --bg-card
+  ); /* Assuming #182235 from your previous CSS */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.todo-title-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title-icon {
+  background-color: var(--primary); /* Assuming #7c5cff */
+  color: #fff;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.title-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.todo-illustration img {
+  height: 80px;
+  width: auto;
+}
+
+/* Input Section */
+.todo-input-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.task-input {
+  flex: 1;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.task-input::placeholder {
+  color: var(--text-muted);
+}
+
+.task-input:focus {
+  border-color: var(--primary);
+}
+
+.add-task-btn {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Filters */
+.todo-filters {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.filter-tab {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-tab:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.filter-tab.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card);
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--border-color);
+  transition: 0.2s ease;
+}
+
+.task-item:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.check-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-circle.checked {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+
+.check-circle.checked svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.task-info h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.task-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Completed Task Styling */
+.task-item.completed .task-info h4 {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* Actions & Badges */
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.3rem;
+  font-weight: 500;
+}
+
+.status-badge.success {
+  color: var(--success-light);
+  background-color: rgba(34, 197, 94, 0.1); /* transparent green */
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.action-btn.delete-btn:hover {
+  color: var(--danger);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.action-btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
 }

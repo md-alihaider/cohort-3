@@ -127,8 +127,113 @@
     
       <!-- Todo List Page -->
       <div id="page-todo-list" class="page-section">
-        <h2>Todo List</h2>
-        <p>Manage your tasks here.</p>
+        <div class="todo-main-container">
+          <div class="todo-header">
+            <div class="todo-title-area">
+              <div class="title-icon">
+                <i data-lucide="check-square"></i>
+              </div>
+              <div class="title-text">
+                <h2>Todo List</h2>
+                <p>Organize your tasks and get things done.</p>
+              </div>
+            </div>
+            <div class="todo-illustration">
+              <img src="your-illustration-path.svg" alt="Todo Illustration">
+            </div>
+          </div>
+        
+          <div class="todo-input-section">
+            <input type="text" class="task-input" placeholder="What needs to be done?">
+            <button class="add-task-btn">
+              <i data-lucide="plus"></i> Add Task
+            </button>
+          </div>
+        
+          <div class="todo-filters">
+            <button class="filter-tab active">All (6)</button>
+            <button class="filter-tab">Active (3)</button>
+            <button class="filter-tab">Completed (3)</button>
+          </div>
+        
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-left">
+                <button class="check-circle"></button>
+                <div class="task-info">
+                  <h4>Complete JavaScript project</h4>
+                  <p>Work on the productivity dashboard</p>
+                </div>
+              </div>
+              <div class="task-actions">
+                <button class="action-btn"><i data-lucide="pencil"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+        
+            <div class="task-item">
+              <div class="task-left">
+                <button class="check-circle"></button>
+                <div class="task-info">
+                  <h4>Read 20 pages of a book</h4>
+                  <p>Atomic Habits - Chapter 4</p>
+                </div>
+              </div>
+              <div class="task-actions">
+                <button class="action-btn"><i data-lucide="pencil"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+        
+            <div class="task-item completed">
+              <div class="task-left">
+                <button class="check-circle checked">
+                  <i data-lucide="check"></i>
+                </button>
+                <div class="task-info">
+                  <h4>Morning workout</h4>
+                  <p>30 minutes of exercise</p>
+                </div>
+              </div>
+              <div class="task-actions">
+                <span class="status-badge success">Completed</span>
+                <button class="action-btn"><i data-lucide="pencil"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+        
+            <div class="task-item">
+              <div class="task-left">
+                <button class="check-circle"></button>
+                <div class="task-info">
+                  <h4>Buy groceries</h4>
+                  <p>Milk, Eggs, Bread, Fruits</p>
+                </div>
+              </div>
+              <div class="task-actions">
+                <button class="action-btn"><i data-lucide="pencil"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+        
+            <div class="task-item completed">
+              <div class="task-left">
+                <button class="check-circle checked">
+                  <i data-lucide="check"></i>
+                </button>
+                <div class="task-info">
+                  <h4>Learn React basics</h4>
+                  <p>Components, Props, State</p>
+                </div>
+              </div>
+              <div class="task-actions">
+                <span class="status-badge success">Completed</span>
+                <button class="action-btn"><i data-lucide="pencil"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     
       <!-- Daily Planner Page -->
