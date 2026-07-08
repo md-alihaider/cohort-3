@@ -27,6 +27,7 @@ function getCurrentTime() {
   const time = document.querySelector(".time");
   const date = document.querySelector(".date");
   const quoteBgContainer = document.querySelector(".quotes-container");
+  const motivationCard = document.querySelector(".motivation-card");
 
   function updateTime() {
     const now = new Date();
@@ -59,6 +60,9 @@ function getCurrentTime() {
       imageUrl = "./assets/backgrounds/night.png";
     }
     quoteBgContainer.style.backgroundImage = `url('${imageUrl}')`;
+    if (motivationCard) {
+      motivationCard.style.backgroundImage = `url('${imageUrl}')`;
+    }
 
     // Safety checks to ensure it fills the box and doesn't repeat
     quoteBgContainer.style.backgroundSize = "cover";
@@ -438,6 +442,52 @@ function dailyPlannerManager() {
   });
 }
 
+function backToDashboard() {
+  const backBtn = document.getElementById("back-to-dashboard");
+
+  if (!backBtn) return;
+
+  backBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelectorAll(".page-section").forEach((page) => {
+      page.classList.remove("active-page");
+    });
+    document.getElementById("page-dashboard").classList.add("active-page");
+    document.querySelectorAll(".sidebar-link .links").forEach((link) => {
+      link.classList.remove("active");
+    });
+
+    document.getElementById("dashboard").classList.add("active");
+    localStorage.setItem("activeTab", "dashboard");
+  });
+}
+
+function motivationManager() {
+  const quoteText = document.querySelector(".motivation-quote");
+  const quoteAuthor = document.querySelector(".motivation-author");
+  const newQuoteBtn = document.querySelector(".new-quote-btn");
+
+  async function loadMotivationQuote() {
+    try {
+      quoteText.textContent = "Loading...";
+      quoteAuthor.textContent = "";
+
+      const response = await fetch("https://dummyjson.com/quotes/random");
+      const data = await response.json();
+
+      quoteText.textContent = `"${data.quote}"`;
+      quoteAuthor.textContent = `— ${data.author}`;
+    } catch (error) {
+      quoteText.textContent = "Failed to load quote.";
+      quoteAuthor.textContent = "";
+    }
+  }
+  newQuoteBtn.addEventListener("click", loadMotivationQuote);
+  loadMotivationQuote();
+}
+
+motivationManager();
+backToDashboard();
 dailyPlannerManager();
 todoListManager();
 dashboardBtns();
