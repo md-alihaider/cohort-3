@@ -268,11 +268,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-image 1s ease-in-out
 }
 
 .quote {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: black;
   font-weight: 500;
   padding: 1rem;
 }
@@ -593,15 +594,12 @@ main {
   color: var(--text-secondary);
 }
 
-#todo-list-btn,
-#daily-planner-btn,
-#motivation-quote-btn,
-#pomodoro-timer-btn,
-#pomodoro-timer-btn {
+.open-tool-btn {
   width: 100%;
   display: flex;
   justify-content: space-around;
   border-radius: 0.5rem;
   padding: 0.2rem;
   font-weight: 600;
+  cursor: pointer;
 }

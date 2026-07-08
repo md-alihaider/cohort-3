@@ -21,24 +21,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function getCurrentTime() {
-  const time = document.querySelector(".time");
-  const date = document.querySelector(".date");
-  function updateTime() {
-    const now = new Date();
-    let rawHours = now.getHours();
-    rawHours = rawHours % 12;
-    if (rawHours === 0) rawHours = 12; // Convert 0 hours to 12 for 12-hour format
-    const hours = rawHours.toString().padStart(2, "0");
-    const minutes = now.getMinutes().toString().padStart(2, "0");
-    const ampm = rawHours >= 12 ? "PM" : "AM";
-    time.innerHTML = `<span>${hours}</span>:<span>${minutes}</span> ${ampm}`;
-    const dateOptions = { weekday: "long", day: "numeric", month: "long" };
-    date.innerHTML = now.toLocaleDateString("en-US", dateOptions);
+  function getCurrentTime() {
+    const time = document.querySelector(".time");
+    const date = document.querySelector(".date");
+    const quoteBgContainer = document.querySelector(".quotes-container"); // 1. Target the background container
+
+    function updateTime() {
+      const now = new Date();
+
+      // --- TIME TEXT LOGIC ---
+      let rawHours = now.getHours();
+      let displayHours = rawHours % 12;
+      if (displayHours === 0) displayHours = 12;
+      const hours = displayHours.toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const ampm = rawHours >= 12 ? "PM" : "AM";
+      time.innerHTML = `<span>${hours}</span>:<span>${minutes}</span> ${ampm}`;
+
+      const dateOptions = { weekday: "long", day: "numeric", month: "long" };
+      date.innerHTML = now.toLocaleDateString("en-US", dateOptions);
+
+      // --- DYNAMIC BACKGROUND LOGIC ---
+      // 2. Check the 24-hour time (rawHours) to determine the time of day
+      let timeOfDay = "night";
+
+      if (rawHours >= 5 && rawHours < 12) {
+        timeOfDay = "morning"; // 5:00 AM to 11:59 AM
+      } else if (rawHours >= 12 && rawHours < 17) {
+        timeOfDay = "noon"; // 12:00 PM to 4:59 PM
+      } else if (rawHours >= 17 && rawHours < 21) {
+        timeOfDay = "evening"; // 5:00 PM to 8:59 PM
+      } else {
+        timeOfDay = "night"; // 9:00 PM to 4:59 AM
+      }
+
+      // 3. Apply the correct image URL
+      // Make sure your image names match these exactly (morning.png, noon.png, etc.)
+      quoteBgContainer.style.backgroundImage = `url('./assets/backgrounds/${timeOfDay}.png')`;
+
+      // Safety check to ensure the image always fits nicely
+      quoteBgContainer.style.backgroundSize = "cover";
+      quoteBgContainer.style.backgroundPosition = "center";
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000);
   }
-  updateTime();
-  setInterval(updateTime, 60000);
-}
+
 
 const quoteContainer = document.querySelector(".quote");
 
@@ -169,6 +198,31 @@ function loadContent() {
   loadPage(savedTab);
 }
 
+// Target all the dashboard shortcut buttons
+function dashboardBtns() {
+  const dashboardButtons = document.querySelectorAll(".open-tool-btn");
+
+  dashboardButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const allPages = document.querySelectorAll(".page-section");
+      allPages.forEach((page) => page.classList.remove("active-page"));
+      const targetPage = document.getElementById(`page-${targetId}`);
+      if (targetPage) {
+        targetPage.classList.add("active-page");
+      }
+      const allLinks = document.querySelectorAll(".sidebar-link .links");
+      allLinks.forEach((item) => item.classList.remove("active"));
+
+      const matchingSidebarLink = document.getElementById(targetId);
+      if (matchingSidebarLink) {
+        matchingSidebarLink.classList.add("active");
+      }
+      localStorage.setItem("activeTab", targetId);
+    });
+  });
+}
+dashboardBtns();
 loadContent();
 initWeather();
 getDailyQuote();
