@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function getCurrentTime() {
   const time = document.querySelector(".time");
   const date = document.querySelector(".date");
-  const quoteBgContainer = document.querySelector(".quotes-container"); // 1. Target the background container
+  const quoteBgContainer = document.querySelector(".quotes-container");
 
   function updateTime() {
     const now = new Date();
@@ -43,31 +43,31 @@ function getCurrentTime() {
     const dateOptions = { weekday: "long", day: "numeric", month: "long" };
     date.innerHTML = now.toLocaleDateString("en-US", dateOptions);
 
-    // --- DYNAMIC BACKGROUND LOGIC ---
-    // 2. Check the 24-hour time (rawHours) to determine the time of day
-    let timeOfDay = "night";
+    let imageUrl = "";
 
     if (rawHours >= 5 && rawHours < 12) {
-      timeOfDay = "morning"; // 5:00 AM to 11:59 AM
+      // Morning (Sunrise)
+      imageUrl = "./assets/backgrounds/morning.png";
     } else if (rawHours >= 12 && rawHours < 17) {
-      timeOfDay = "noon"; // 12:00 PM to 4:59 PM
+      // Noon (Bright Sky)
+      imageUrl = "./assets/backgrounds/noon.png";
     } else if (rawHours >= 17 && rawHours < 21) {
-      timeOfDay = "evening"; // 5:00 PM to 8:59 PM
+      // Evening (Sunset)
+      imageUrl = "./assets/backgrounds/evening.png";
     } else {
-      timeOfDay = "night"; // 9:00 PM to 4:59 AM
+      // Night (Stars)
+      imageUrl = "./assets/backgrounds/night.png";
     }
+    quoteBgContainer.style.backgroundImage = `url('${imageUrl}')`;
 
-    // 3. Apply the correct image URL
-    // Make sure your image names match these exactly (morning.png, noon.png, etc.)
-    quoteBgContainer.style.backgroundImage = `url('./assets/backgrounds/${timeOfDay}.png')`;
-
-    // Safety check to ensure the image always fits nicely
+    // Safety checks to ensure it fills the box and doesn't repeat
     quoteBgContainer.style.backgroundSize = "cover";
     quoteBgContainer.style.backgroundPosition = "center";
+    quoteBgContainer.style.backgroundRepeat = "no-repeat";
   }
 
   updateTime();
-  setInterval(updateTime, 60000);
+  setInterval(updateTime, 1000);
 }
 
 const quoteContainer = document.querySelector(".quote");
@@ -228,33 +228,60 @@ function todoListManager() {
   const taskInput = document.querySelector(".task-input");
   const addTaskBtn = document.querySelector(".add-task-btn");
   const taskList = document.querySelector(".task-list");
+  const filterTabs = document.querySelectorAll(".filter-tab");
 
   let todos = JSON.parse(localStorage.getItem("focusFlowTasks")) || [];
-
-
+  let currentFilter = "all";
   function renderTasks() {
     taskList.innerHTML = "";
 
-    todos.forEach((task) => {
+    let allCount = 0;
+    let activeCount = 0;
+    let completedCount = 0;
+
+    todos.forEach((task, index) => {
+      allCount++;
+      if (task.completed) {
+        completedCount++;
+      } else {
+        activeCount++;
+      }
+
+      if (currentFilter === "active" && task.completed) return;
+      if (currentFilter === "completed" && !task.completed) return;
+
       const newTaskItem = document.createElement("div");
       newTaskItem.classList.add("task-item");
 
+      if (task.completed) {
+        newTaskItem.classList.add("completed");
+      }
+
       newTaskItem.innerHTML = `
       <div class="task-left">
-        <button class="check-circle"></button>
+        <button class="check-circle ${task.completed ? "checked" : ""}" data-index="${index}">
+          ${task.completed ? '<i data-lucide="check"></i>' : ""}
+        </button>
         <div class="task-info">
           <h4>${task.title}</h4>
           <p>Added at ${task.time}</p> 
         </div>
       </div>
       <div class="task-actions">
-        <button class="action-btn"><i data-lucide="pencil"></i></button>
-        <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+        ${task.completed ? '<span class="status-badge success">Completed</span>' : ""}
+        <button class="action-btn edit-btn" data-index="${index}"><i data-lucide="pencil"></i></button>
+        <button class="action-btn delete-btn" data-index="${index}"><i data-lucide="trash-2"></i></button>
       </div>
     `;
       taskList.appendChild(newTaskItem);
     });
 
+    const tabs = document.querySelectorAll(".filter-tab");
+    if (tabs.length === 3) {
+      tabs[0].innerText = `All (${allCount})`;
+      tabs[1].innerText = `Active (${activeCount})`;
+      tabs[2].innerText = `Completed (${completedCount})`;
+    }
     lucide.createIcons();
   }
 
@@ -282,14 +309,69 @@ function todoListManager() {
       taskInput.value = "";
     }
   });
+
+  taskList.addEventListener("click", (event) => {
+    // --- DELETE TASK ---
+    if (event.target.closest(".delete-btn")) {
+      const button = event.target.closest(".delete-btn");
+      const index = button.getAttribute("data-index");
+
+      todos.splice(index, 1);
+      localStorage.setItem("focusFlowTasks", JSON.stringify(todos));
+      renderTasks(); // Redraw
+    }
+
+    // --- CHECK / UNCHECK TASK ---
+    else if (event.target.closest(".check-circle")) {
+      const button = event.target.closest(".check-circle");
+      const index = button.getAttribute("data-index");
+
+      // Flip the true/false switch
+      todos[index].completed = !todos[index].completed;
+      localStorage.setItem("focusFlowTasks", JSON.stringify(todos));
+      renderTasks();
+    }
+
+    // --- EDIT TASK ---
+    else if (event.target.closest(".edit-btn")) {
+      const button = event.target.closest(".edit-btn");
+      const index = button.getAttribute("data-index");
+
+      const newTitle = prompt("Edit your task:", todos[index].title);
+      if (newTitle !== null && newTitle.trim() !== "") {
+        todos[index].title = newTitle.trim();
+        localStorage.setItem("focusFlowTasks", JSON.stringify(todos));
+        renderTasks();
+      }
+    }
+  });
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", (event) => {
+      filterTabs.forEach((t) => t.classList.remove("active"));
+
+      const clickedTab = event.target;
+      clickedTab.classList.add("active");
+
+      const tabText = clickedTab.innerText.toLowerCase();
+
+      if (tabText.includes("active")) {
+        currentFilter = "active";
+      } else if (tabText.includes("completed")) {
+        currentFilter = "completed";
+      } else {
+        currentFilter = "all";
+      }
+      renderTasks();
+    });
+  });
   renderTasks();
 }
-
 
 todoListManager();
 dashboardBtns();
 loadContent();
 initWeather();
+setInterval(initWeather, 1000 * 60 * 30);
 getDailyQuote();
 setInterval(getDailyQuote, 1000 * 60 * 60);
 getCurrentTime();
