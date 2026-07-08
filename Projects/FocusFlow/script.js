@@ -1,14 +1,16 @@
 const themeToggleButton = document.getElementById("theme-toggle");
 themeToggleButton.addEventListener("click", toggleTheme);
 
-
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle("light-theme");
   themeToggleButton.innerHTML = body.classList.contains("light-theme")
     ? '<i data-lucide="moon"></i> Dark Mode'
     : '<i data-lucide="sun"></i> Light Mode';
-  localStorage.setItem("theme", body.classList.contains("light-theme") ? "light" : "dark");
+  localStorage.setItem(
+    "theme",
+    body.classList.contains("light-theme") ? "light" : "dark",
+  );
   lucide.createIcons();
 }
 
@@ -21,53 +23,52 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-  function getCurrentTime() {
-    const time = document.querySelector(".time");
-    const date = document.querySelector(".date");
-    const quoteBgContainer = document.querySelector(".quotes-container"); // 1. Target the background container
+function getCurrentTime() {
+  const time = document.querySelector(".time");
+  const date = document.querySelector(".date");
+  const quoteBgContainer = document.querySelector(".quotes-container"); // 1. Target the background container
 
-    function updateTime() {
-      const now = new Date();
+  function updateTime() {
+    const now = new Date();
 
-      // --- TIME TEXT LOGIC ---
-      let rawHours = now.getHours();
-      let displayHours = rawHours % 12;
-      if (displayHours === 0) displayHours = 12;
-      const hours = displayHours.toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const ampm = rawHours >= 12 ? "PM" : "AM";
-      time.innerHTML = `<span>${hours}</span>:<span>${minutes}</span> ${ampm}`;
+    // --- TIME TEXT LOGIC ---
+    let rawHours = now.getHours();
+    let displayHours = rawHours % 12;
+    if (displayHours === 0) displayHours = 12;
+    const hours = displayHours.toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const ampm = rawHours >= 12 ? "PM" : "AM";
+    time.innerHTML = `<span>${hours}</span>:<span>${minutes}</span> ${ampm}`;
 
-      const dateOptions = { weekday: "long", day: "numeric", month: "long" };
-      date.innerHTML = now.toLocaleDateString("en-US", dateOptions);
+    const dateOptions = { weekday: "long", day: "numeric", month: "long" };
+    date.innerHTML = now.toLocaleDateString("en-US", dateOptions);
 
-      // --- DYNAMIC BACKGROUND LOGIC ---
-      // 2. Check the 24-hour time (rawHours) to determine the time of day
-      let timeOfDay = "night";
+    // --- DYNAMIC BACKGROUND LOGIC ---
+    // 2. Check the 24-hour time (rawHours) to determine the time of day
+    let timeOfDay = "night";
 
-      if (rawHours >= 5 && rawHours < 12) {
-        timeOfDay = "morning"; // 5:00 AM to 11:59 AM
-      } else if (rawHours >= 12 && rawHours < 17) {
-        timeOfDay = "noon"; // 12:00 PM to 4:59 PM
-      } else if (rawHours >= 17 && rawHours < 21) {
-        timeOfDay = "evening"; // 5:00 PM to 8:59 PM
-      } else {
-        timeOfDay = "night"; // 9:00 PM to 4:59 AM
-      }
-
-      // 3. Apply the correct image URL
-      // Make sure your image names match these exactly (morning.png, noon.png, etc.)
-      quoteBgContainer.style.backgroundImage = `url('./assets/backgrounds/${timeOfDay}.png')`;
-
-      // Safety check to ensure the image always fits nicely
-      quoteBgContainer.style.backgroundSize = "cover";
-      quoteBgContainer.style.backgroundPosition = "center";
+    if (rawHours >= 5 && rawHours < 12) {
+      timeOfDay = "morning"; // 5:00 AM to 11:59 AM
+    } else if (rawHours >= 12 && rawHours < 17) {
+      timeOfDay = "noon"; // 12:00 PM to 4:59 PM
+    } else if (rawHours >= 17 && rawHours < 21) {
+      timeOfDay = "evening"; // 5:00 PM to 8:59 PM
+    } else {
+      timeOfDay = "night"; // 9:00 PM to 4:59 AM
     }
 
-    updateTime();
-    setInterval(updateTime, 60000);
+    // 3. Apply the correct image URL
+    // Make sure your image names match these exactly (morning.png, noon.png, etc.)
+    quoteBgContainer.style.backgroundImage = `url('./assets/backgrounds/${timeOfDay}.png')`;
+
+    // Safety check to ensure the image always fits nicely
+    quoteBgContainer.style.backgroundSize = "cover";
+    quoteBgContainer.style.backgroundPosition = "center";
   }
 
+  updateTime();
+  setInterval(updateTime, 60000);
+}
 
 const quoteContainer = document.querySelector(".quote");
 
@@ -222,6 +223,70 @@ function dashboardBtns() {
     });
   });
 }
+
+function todoListManager() {
+  const taskInput = document.querySelector(".task-input");
+  const addTaskBtn = document.querySelector(".add-task-btn");
+  const taskList = document.querySelector(".task-list");
+
+  let todos = JSON.parse(localStorage.getItem("focusFlowTasks")) || [];
+
+
+  function renderTasks() {
+    taskList.innerHTML = "";
+
+    todos.forEach((task) => {
+      const newTaskItem = document.createElement("div");
+      newTaskItem.classList.add("task-item");
+
+      newTaskItem.innerHTML = `
+      <div class="task-left">
+        <button class="check-circle"></button>
+        <div class="task-info">
+          <h4>${task.title}</h4>
+          <p>Added at ${task.time}</p> 
+        </div>
+      </div>
+      <div class="task-actions">
+        <button class="action-btn"><i data-lucide="pencil"></i></button>
+        <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+      </div>
+    `;
+      taskList.appendChild(newTaskItem);
+    });
+
+    lucide.createIcons();
+  }
+
+  addTaskBtn.addEventListener("click", () => {
+    const taskText = taskInput.value.trim();
+
+    if (taskText !== "") {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const newTask = {
+        title: taskText,
+        time: timeString,
+        completed: false,
+      };
+
+      todos.unshift(newTask);
+      localStorage.setItem("focusFlowTasks", JSON.stringify(todos));
+
+      renderTasks();
+
+      taskInput.value = "";
+    }
+  });
+  renderTasks();
+}
+
+
+todoListManager();
 dashboardBtns();
 loadContent();
 initWeather();
