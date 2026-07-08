@@ -670,9 +670,131 @@
       </div>
     
       <!-- Weather Page -->
-      <div id="page-weather" class="page-section flex-page">
-        <h2>Weather</h2>
-        <p>Check the current weather.</p>
+      <div id="page-weather" class="page-section">
+        <a href="#" class="planner-back-link weather-back-btn">
+          <i data-lucide="arrow-left"></i>
+          Back to Dashboard
+        </a>
+      
+        <div class="weather-container">
+          <!-- Header -->
+      
+          <div class="weather-header">
+            <div class="weather-title">
+              <div class="title-icon">
+                <i data-lucide="cloud-sun"></i>
+              </div>
+      
+              <div>
+                <h2>Weather</h2>
+                <p>Real-time weather information for your location.</p>
+              </div>
+            </div>
+      
+            <button class="refresh-weather-btn">
+              <i data-lucide="refresh-cw"></i>
+              Refresh
+            </button>
+          </div>
+      
+          <!-- Weather Card -->
+      
+          <div class="weather-card">
+            <div class="weather-main">
+              <img class="weather-icon" src="" alt="Weather">
+      
+              <h1 class="weather-temp">28°C</h1>
+      
+              <h3 class="weather-condition">
+                Partly Cloudy
+              </h3>
+      
+              <p class="weather-location">
+                Bhagalpur, Bihar
+              </p>
+            </div>
+      
+            <div class="weather-grid">
+              <div class="weather-item">
+                <i data-lucide="droplets"></i>
+      
+                <span>Humidity</span>
+      
+                <strong class="humidity">
+                  65%
+                </strong>
+              </div>
+      
+              <div class="weather-item">
+                <i data-lucide="wind"></i>
+      
+                <span>Wind</span>
+      
+                <strong class="wind-speed">
+                  12 km/h
+                </strong>
+              </div>
+      
+              <div class="weather-item">
+                <i data-lucide="eye"></i>
+      
+                <span>Visibility</span>
+      
+                <strong class="visibility">
+                  10 km
+                </strong>
+              </div>
+      
+              <div class="weather-item">
+                <i data-lucide="thermometer"></i>
+      
+                <span>Feels Like</span>
+      
+                <strong class="feels-like">
+                  32°C
+                </strong>
+              </div>
+      
+              <div class="weather-item">
+                <i data-lucide="sunrise"></i>
+      
+                <span>Sunrise</span>
+      
+                <strong class="sunrise">
+                  05:24 AM
+                </strong>
+              </div>
+      
+              <div class="weather-item">
+                <i data-lucide="sunset"></i>
+      
+                <span>Sunset</span>
+      
+                <strong class="sunset">
+                  06:33 PM
+                </strong>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Tip -->
+      
+          <div class="weather-footer">
+            <div class="footer-left">
+              <div class="title-icon">
+                <i data-lucide="lightbulb"></i>
+              </div>
+      
+              <div>
+                <h3>Weather Tip</h3>
+      
+                <p class="weather-tip">
+                  Carry an umbrella today. There may be light rain later.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     
     </div>
