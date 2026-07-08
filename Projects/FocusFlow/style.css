@@ -439,7 +439,7 @@ main {
 }
 
 .weather-card .weather-logo {
-  height: 3.5rem;#page
+  height: 3.5rem;
   width: 3.5rem;
   display: flex;
   justify-content: center;
@@ -1112,4 +1112,15 @@ main {
   width: 1.2rem;
   height: 1.2rem;
   color: var(--primary-light);
+}
+
+.time-row.completed input {
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+.time-row.completed .check-btn {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
 }

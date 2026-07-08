@@ -165,7 +165,7 @@ function loadContent() {
 
   allLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault(); 
+      event.preventDefault();
       allLinks.forEach((item) => item.classList.remove("active"));
       link.classList.add("active");
       localStorage.setItem("activeTab", link.id);
@@ -358,6 +358,87 @@ function todoListManager() {
   renderTasks();
 }
 
+function dailyPlannerManager() {
+  const plannerInputs = document.querySelectorAll(".planner-input");
+  const rows = document.querySelectorAll(".time-row");
+
+  const todayBtn = document.querySelector(".btn-outline");
+  const clearBtn = document.querySelector(".btn-primary");
+
+  const STORAGE_KEY = "focusFlowPlanner";
+
+  let planner = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+  // Load saved data
+  plannerInputs.forEach((input) => {
+    const time = input.dataset.time;
+
+    if (planner[time]) {
+      input.value = planner[time].text;
+
+      if (planner[time].completed) {
+        input.closest(".time-row").classList.add("completed");
+      }
+    }
+
+    input.addEventListener("input", () => {
+      planner[time] = {
+        text: input.value,
+        completed: planner[time]?.completed || false,
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(planner));
+    });
+  });
+
+  rows.forEach((row) => {
+    const input = row.querySelector(".planner-input");
+    const time = input.dataset.time;
+
+    const checkBtn = row.querySelector(".check-btn");
+    const deleteBtn = row.querySelector(".delete-btn");
+
+    checkBtn.addEventListener("click", () => {
+      row.classList.toggle("completed");
+
+      planner[time] = {
+        text: input.value,
+        completed: row.classList.contains("completed"),
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(planner));
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      input.value = "";
+
+      row.classList.remove("completed");
+
+      delete planner[time];
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(planner));
+    });
+  });
+
+  clearBtn.addEventListener("click", () => {
+    if (!confirm("Clear today's planner?")) return;
+
+    planner = {};
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    plannerInputs.forEach((input) => {
+      input.value = "";
+      input.closest(".time-row").classList.remove("completed");
+    });
+  });
+
+  todayBtn.addEventListener("click", () => {
+    plannerInputs[0].focus();
+  });
+}
+
+dailyPlannerManager();
 todoListManager();
 dashboardBtns();
 loadContent();
