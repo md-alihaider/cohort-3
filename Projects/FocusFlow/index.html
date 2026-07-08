@@ -235,33 +235,244 @@
           </div>
         </div>
       </div>
-    
+      
       <!-- Daily Planner Page -->
-      <div id="page-daily-planner" class="page-section">
-        <h2>Daily Planner</h2>
-        <p>Schedule your day.</p>
+      <div id="page-daily-planner" class="page-section flex-page">
+        <a href="#" class="planner-back-link" id="back-to-dashboard">
+          <i data-lucide="arrow-left"></i> Back to Dashboard
+        </a>
+      
+        <div class="planner-container">
+          <!-- Header -->
+          <div class="planner-header">
+            <div class="planner-title-area">
+              <div class="title-icon">
+                <i data-lucide="calendar-check-2"></i>
+              </div>
+              <div class="title-text">
+                <h2>Daily Planner</h2>
+                <p>Plan your day hour by hour and stay organized.</p>
+              </div>
+            </div>
+            <div class="planner-actions">
+              <button class="btn-outline"><i data-lucide="calendar"></i> Today</button>
+              <button class="btn-primary"><i data-lucide="trash-2"></i> Clear All</button>
+            </div>
+          </div>
+      
+          <!-- Time Slots List -->
+          <div class="planner-time-list">
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>06:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="06:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>07:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="07:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>08:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="08:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <!-- Active Row Example -->
+            <div class="time-row active">
+              <div class="time-label"><span class="dot"></span>09:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="09:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>10:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="10:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>11:00 AM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="11:00 AM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>12:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="12:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>01:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="01:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>02:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="02:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>03:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="03:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>04:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="04:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>05:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="05:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>07:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="07:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>08:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="08:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>09:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="09:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+            <div class="time-row">
+              <div class="time-label"><span class="dot"></span>10:00 PM</div>
+              <div class="time-input-wrapper">
+                <input type="text" class="planner-input" data-time="10:00 PM" placeholder="Add task...">
+              </div>
+              <div class="time-row-actions">
+                <button class="action-btn check-btn"><i data-lucide="check-square"></i></button>
+                <button class="action-btn delete-btn"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+      
+          </div>
+      
+          <!-- Footer -->
+          <div class="planner-footer">
+            <div class="footer-left">
+              <i data-lucide="calendar-check"></i>
+              <p>Consistency in planning leads to success.</p>
+            </div>
+            <i data-lucide="sparkles" class="sparkles-icon"></i>
+          </div>
+        </div>
       </div>
     
       <!-- Motivation Page -->
-      <div id="page-motivation" class="page-section">
+      <div id="page-motivation" class="page-section flex-page">
         <h2>Motivation</h2>
         <p>Your vision board and quotes.</p>
       </div>
     
       <!-- Pomodoro Timer Page -->
-      <div id="page-pomodoro-timer" class="page-section">
+      <div id="page-pomodoro-timer" class="page-section flex-page">
         <h2>Pomodoro Timer</h2>
         <p>Focus for 25 minutes.</p>
       </div>
     
       <!-- Daily Goals Page -->
-      <div id="page-daily-goals" class="page-section">
+      <div id="page-daily-goals" class="page-section flex-page">
         <h2>Daily Goals</h2>
         <p>Track your main targets.</p>
       </div>
     
       <!-- Weather Page -->
-      <div id="page-weather" class="page-section">
+      <div id="page-weather" class="page-section flex-page">
         <h2>Weather</h2>
         <p>Check the current weather.</p>
       </div>

@@ -141,11 +141,9 @@ function initWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // Uses your actual location
         getWeather(position.coords.latitude, position.coords.longitude);
       },
       (error) => {
-        // Fallback to New York if user blocks location
         getWeather(40.71, -74.0);
       },
     );
@@ -155,7 +153,6 @@ function initWeather() {
 }
 
 function loadContent() {
-  // 1. Target ALL sidebar links
   const allLinks = document.querySelectorAll(".sidebar-link .links");
   function loadPage(pageId) {
     const allPages = document.querySelectorAll(".page-section");
@@ -168,16 +165,10 @@ function loadContent() {
 
   allLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault(); // Stop page from jumping
-
-      // Change sidebar backgrounds
+      event.preventDefault(); 
       allLinks.forEach((item) => item.classList.remove("active"));
       link.classList.add("active");
-
-      // Save the choice so it remembers when we refresh
       localStorage.setItem("activeTab", link.id);
-
-      // Run the function to show the correct HTML
       loadPage(link.id);
     });
   });
