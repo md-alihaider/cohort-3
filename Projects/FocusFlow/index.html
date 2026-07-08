@@ -31,7 +31,6 @@
       <div class="sidebar-p2">
         <div class="sidebar-link">
           <a href="#" id="weather" class="links"><i data-lucide="cloud"></i>Weather</a>
-          <a href="#" id="theme" class="links"><i data-lucide="moon"></i>Theme</a>
         </div>
         <div class="quotes-container">
           <p class="quote">"The secret of getting ahead is getting started." <span>- Mark Twain</span></p>
@@ -75,13 +74,52 @@
       <div id="page-dashboard" class="page-section">
         <div class="dashboard-p1">
           <h1>Explore Your Tools</h1>
-          <div class="tool-card">
-            <div class="card-logo"><i data-lucide="list-todo"></i></div>
-            <div class="card-content">
-              <h2>Todo List</h2>
-              <p>Add tasks, mark important and track your progress.</p>
+          <div class="tool-wrapper">
+            <!-- todo-list  -->
+            <div class="tool-card todo-list">
+              <div class="card-logo"><i data-lucide="list-todo"></i></div>
+              <div class="card-content">
+                <h2>Todo List</h2>
+                <p>Add tasks, mark important and track your progress.</p>
+              </div>
+              <button id="todo-list-btn">Open <i data-lucide="arrow-right"></i></button>
             </div>
-            <button id="todo-list-btn">Open <i data-lucide="arrow-right"></i></button>
+            <!-- daily planner -->
+            <div class="tool-card daily-planner">
+              <div class="card-logo"><i data-lucide="calendar-days"></i></div>
+              <div class="card-content">
+                <h2>Daily Planner</h2>
+                <p>Plan your day hour by hour and stay organized.</p>
+              </div>
+              <button id="daily-planner-btn">Open <i data-lucide="arrow-right"></i></button>
+            </div>
+            <!-- motivation quote -->
+            <div class="tool-card moti-quote">
+              <div class="card-logo"><i data-lucide="sparkles"></i></div>
+              <div class="card-content">
+                <h2>Motivation Quote</h2>
+                <p>Get inspired with powerful quotes to keep you going.</p>
+              </div>
+              <button id="motivation-quote-btn">Open <i data-lucide="arrow-right"></i></button>
+            </div>
+            <!-- pomodoro timer -->
+            <div class="tool-card pomo-timer">
+              <div class="card-logo"><i data-lucide="timer"></i></div>
+              <div class="card-content">
+                <h2>Pomodoro Timer</h2>
+                <p>Focus better with the Pomodoro technique.</p>
+              </div>
+              <button id="pomodoro-timer-btn">Open <i data-lucide="arrow-right"></i></button>
+            </div>
+            <!-- daily goals -->
+            <div class="tool-card daily-goals">
+              <div class="card-logo"><i data-lucide="target"></i></div>
+              <div class="card-content">
+                <h2>Daily Goals</h2>
+                <p>Set your goals and achieve them one by one.</p>
+              </div>
+              <button id="pomodoro-timer-btn">Open <i data-lucide="arrow-right"></i></button>
+            </div>
           </div>
         </div>
         <div class="dashboard-p2"></div>
@@ -121,12 +159,6 @@
       <div id="page-weather" class="page-section">
         <h2>Weather</h2>
         <p>Check the current weather.</p>
-      </div>
-    
-      <!-- Theme Page -->
-      <div id="page-theme" class="page-section">
-        <h2>Theme Settings</h2>
-        <p>Customize your app's appearance.</p>
       </div>
     
     </div>

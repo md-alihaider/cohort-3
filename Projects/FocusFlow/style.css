@@ -471,13 +471,15 @@ main {
 .page-section {
   display: none;
 }
-
 .page-section.active-page {
   display: block;
 }
 #page-dashboard {
   height: 100%;
   width: 100%;
+}
+
+#page-dashboard.active-page {
   display: flex;
 }
 #page-dashboard .dashboard-p1 {
@@ -485,6 +487,7 @@ main {
   width: 100%;
   background: var(--bg-card);
   padding: 1rem;
+  overflow: hidden;
   border: 0.5px solid var(--border-color);
 }
 #page-dashboard .dashboard-p1 h1 {
@@ -493,7 +496,10 @@ main {
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
-
+.tool-wrapper {
+  display: flex;
+  gap: 1rem;
+}
 .tool-card {
   height: auto;
   width: 20%;
@@ -504,7 +510,7 @@ main {
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  padding: 1rem;
+  padding: 1.4rem;
   gap: 0.8rem;
 }
 
@@ -518,6 +524,53 @@ main {
   border-radius: 0.5rem;
 }
 
+.daily-planner .card-logo {
+  background: #36908d;
+}
+.moti-quote .card-logo {
+  background: #eab308;
+}
+
+.pomo-timer .card-logo {
+  background: #ef4444;
+}
+
+.daily-goals .card-logo {
+  background: #22c55e;
+}
+.todo-list button{
+  background: none;
+  border: 0.5px solid var(--primary);
+  color: var(--primary);
+}
+
+/* 1. Daily Planner Button */
+.daily-planner button {
+  background: none;
+  border: 0.5px solid #36908d;
+  color: #36908d;
+}
+
+/* 2. Motivation Quote Button */
+.moti-quote button {
+  background: none;
+  border: 0.5px solid #eab308;
+  color: #eab308;
+}
+
+/* 3. Pomodoro Timer Button */
+.pomo-timer button {
+  background: none;
+  border: 0.5px solid #ef4444;
+  color: #ef4444;
+}
+
+/* 4. Daily Goals Button */
+.daily-goals button {
+  background: none;
+  border: 0.5px solid #22c55e;
+  color: #22c55e;
+}
 .card-logo svg {
   height: 1.8rem;
   width: 1.8rem;
@@ -529,7 +582,7 @@ main {
   gap: 0.3rem;
 }
 .card-content h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -540,13 +593,15 @@ main {
   color: var(--text-secondary);
 }
 
-#todo-list-btn {
+#todo-list-btn,
+#daily-planner-btn,
+#motivation-quote-btn,
+#pomodoro-timer-btn,
+#pomodoro-timer-btn {
   width: 100%;
   display: flex;
   justify-content: space-around;
   border-radius: 0.5rem;
   padding: 0.2rem;
-  background: none;
-  border: 0.5px solid var(--primary);
-  color: var(--primary);
+  font-weight: 600;
 }

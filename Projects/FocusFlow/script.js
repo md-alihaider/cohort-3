@@ -155,6 +155,12 @@ function loadContent() {
   const savedTab = localStorage.getItem("activeTab") || "dashboard";
   const savedLink = document.getElementById(savedTab);
 
+  if (!savedLink) {
+    allLinks.forEach((item) => item.classList.remove("active"));
+    savedLink.classList.add("active");
+    localStorage.setItem("activeTab", "dashboard");
+  }
+
   if (savedLink) {
     allLinks.forEach((item) => item.classList.remove("active"));
     savedLink.classList.add("active");
