@@ -466,6 +466,82 @@ function motivationManager() {
   const quoteText = document.querySelector(".motivation-quote");
   const quoteAuthor = document.querySelector(".motivation-author");
   const newQuoteBtn = document.querySelector(".new-quote-btn");
+  const backBtn = document.querySelector(".motivation-back-btn");
+  const copyBtn = document.querySelector(".copy-btn");
+  const shareBtn = document.querySelector(".share-btn");
+  const likeBtn = document.querySelector(".like-btn");
+
+  backBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Hide all pages
+    document.querySelectorAll(".page-section").forEach((page) => {
+      page.classList.remove("active-page");
+    });
+
+    // Show dashboard
+    document.getElementById("page-dashboard").classList.add("active-page");
+
+    // Update sidebar
+    document.querySelectorAll(".sidebar-link .links").forEach((link) => {
+      link.classList.remove("active");
+    });
+
+    document.getElementById("dashboard").classList.add("active");
+
+    localStorage.setItem("activeTab", "dashboard");
+  });
+
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(
+      `${quoteText.textContent}\n${quoteAuthor.textContent}`,
+    );
+
+    copyBtn.innerHTML = `
+    <i data-lucide="check"></i>
+    Copied
+  `;
+
+    lucide.createIcons();
+
+    setTimeout(() => {
+      copyBtn.innerHTML = `
+      <i data-lucide="copy"></i>
+      Copy
+    `;
+
+      lucide.createIcons();
+    }, 2000);
+  });
+
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      await navigator.share({
+        title: "Daily Motivation",
+        text: `${quoteText.textContent}\n${quoteAuthor.textContent}`,
+      });
+    } else {
+      alert("Sharing is not supported on this browser.");
+    }
+  });
+
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("liked");
+
+    if (likeBtn.classList.contains("liked")) {
+      likeBtn.innerHTML = `
+      <i data-lucide="heart"></i>
+      Liked
+    `;
+    } else {
+      likeBtn.innerHTML = `
+      <i data-lucide="heart"></i>
+      Like
+    `;
+    }
+
+    lucide.createIcons();
+  });
 
   async function loadMotivationQuote() {
     try {

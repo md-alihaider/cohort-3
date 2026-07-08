@@ -1283,3 +1283,9 @@ main {
   height: 55px;
   color: var(--primary);
 }
+
+.like-btn.liked {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
