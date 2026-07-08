@@ -113,7 +113,7 @@ async function getWeather(lat, lon) {
 
     const [weatherResponse, geoResponse] = await Promise.all([
       fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`,
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,visibility&daily=sunrise,sunset&timezone=auto`,
       ),
       fetch(
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
@@ -123,21 +123,103 @@ async function getWeather(lat, lon) {
     const weatherData = await weatherResponse.json();
     const geoData = await geoResponse.json();
 
-    const temp = Math.round(weatherData.current_weather.temperature);
-    const details = getWeatherDetails(weatherData.current_weather.weathercode);
+    const current = weatherData.current;
+
+    const details = getWeatherDetails(current.weather_code);
 
     const city = geoData.city || geoData.locality || "Unknown City";
     const country = geoData.countryCode || "";
 
-    tempElement.innerText = `${temp}°C`;
+    /* ---------- Dashboard ---------- */
+
+    tempElement.innerText = `${Math.round(current.temperature_2m)}°C`;
     conditionElement.innerText = details.text;
     locationElement.innerText = `${city}, ${country}`;
 
     iconContainer.innerHTML = `<i data-lucide="${details.icon}"></i>`;
+
+    /* ---------- Weather Page ---------- */
+
+    const weatherTemp = document.querySelector(".weather-temp");
+    const weatherCondition = document.querySelector(".weather-condition");
+    const weatherLocation = document.querySelector(".weather-location");
+    const weatherIcon = document.querySelector(".weather-icon");
+
+    const humidity = document.querySelector(".humidity");
+    const windSpeed = document.querySelector(".wind-speed");
+    const visibility = document.querySelector(".visibility");
+    const feelsLike = document.querySelector(".feels-like");
+    const sunrise = document.querySelector(".sunrise");
+    const sunset = document.querySelector(".sunset");
+    const weatherTip = document.querySelector(".weather-tip");
+
+    if (weatherTemp) {
+      weatherTemp.textContent = `${Math.round(current.temperature_2m)}°C`;
+    }
+
+    if (weatherCondition) {
+      weatherCondition.textContent = details.text;
+    }
+
+    if (weatherLocation) {
+      weatherLocation.textContent = `${city}, ${country}`;
+    }
+
+    if (weatherIcon) {
+      weatherIcon.src = `https://openweathermap.org/img/wn/10d@2x.png`;
+    }
+
+    if (humidity) {
+      humidity.textContent = `${current.relative_humidity_2m}%`;
+    }
+
+    if (windSpeed) {
+      windSpeed.textContent = `${Math.round(current.wind_speed_10m)} km/h`;
+    }
+
+    if (visibility) {
+      visibility.textContent = `${Math.round(current.visibility / 1000)} km`;
+    }
+
+    if (feelsLike) {
+      feelsLike.textContent = `${Math.round(current.apparent_temperature)}°C`;
+    }
+
+    if (sunrise) {
+      sunrise.textContent = new Date(
+        weatherData.daily.sunrise[0],
+      ).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    }
+
+    if (sunset) {
+      sunset.textContent = new Date(
+        weatherData.daily.sunset[0],
+      ).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    }
+
+    if (weatherTip) {
+      if (current.temperature_2m >= 35) {
+        weatherTip.textContent = "Stay hydrated and avoid direct sunlight.";
+      } else if (details.text.toLowerCase().includes("rain")) {
+        weatherTip.textContent = "Carry an umbrella today.";
+      } else if (details.text.toLowerCase().includes("cloud")) {
+        weatherTip.textContent = "Pleasant weather for outdoor activities.";
+      } else {
+        weatherTip.textContent = "Enjoy the beautiful weather today.";
+      }
+    }
+
     lucide.createIcons();
   } catch (error) {
     conditionElement.innerText = "Weather unavailable";
     locationElement.innerText = "Try again later";
+    console.error(error);
   }
 }
 
@@ -572,6 +654,14 @@ function pomodoroManager() {
   const skipBtn = document.querySelector(".skip-btn");
 
   const timerTabs = document.querySelectorAll(".timer-tab");
+  const pomodoroBackBtn = document.querySelector(".pomodoro-back-btn");
+
+  if (pomodoroBackBtn) {
+    pomodoroBackBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showPage("dashboard");
+    });
+  }
 
   const modes = {
     pomodoro: {
@@ -721,6 +811,14 @@ function dailyGoalsManager() {
   const addBtn = document.querySelector(".add-goal-btn");
   const goalList = document.querySelector(".goal-list");
   const filters = document.querySelectorAll(".goal-filter");
+  const goalsBackBtn = document.querySelector(".goals-back-btn");
+
+  if (goalsBackBtn) {
+    goalsBackBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showPage("dashboard");
+    });
+  }
 
   let goals = JSON.parse(localStorage.getItem("focusFlowGoals")) || [];
 
@@ -868,6 +966,65 @@ function dailyGoalsManager() {
   renderGoals();
 }
 
+function showPage(pageId) {
+  document.querySelectorAll(".page-section").forEach((page) => {
+    page.classList.remove("active-page");
+  });
+
+  document.getElementById(`page-${pageId}`).classList.add("active-page");
+
+  document.querySelectorAll(".links").forEach((link) => {
+    link.classList.remove("active");
+  });
+
+  const activeLink = document.getElementById(pageId);
+
+  if (activeLink) {
+    activeLink.classList.add("active");
+  }
+
+  localStorage.setItem("activeTab", pageId);
+}
+
+function weatherManager() {
+  const refreshBtn = document.querySelector(".refresh-weather-btn");
+
+  const weatherIcon = document.querySelector(".weather-icon");
+  const weatherTemp = document.querySelector(".weather-temp");
+  const weatherCondition = document.querySelector(".weather-condition");
+  const weatherLocation = document.querySelector(".weather-location");
+
+  const humidity = document.querySelector(".humidity");
+  const windSpeed = document.querySelector(".wind-speed");
+  const visibility = document.querySelector(".visibility");
+  const feelsLike = document.querySelector(".feels-like");
+  const sunrise = document.querySelector(".sunrise");
+  const sunset = document.querySelector(".sunset");
+  const weatherTip = document.querySelector(".weather-tip");
+  const weatherBackBtn = document.querySelector(".weather-back-btn");
+
+  if (weatherBackBtn) {
+    weatherBackBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showPage("dashboard");
+    });
+  }
+
+  refreshBtn.addEventListener("click", () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          getWeather(position.coords.latitude, position.coords.longitude);
+        },
+        () => {
+          getWeather(40.71, -74.0);
+        }
+      );
+    } else { getWeather(40.71, -74.0); }
+  })
+}
+
+weatherManager();
 dailyGoalsManager();
 pomodoroManager();
 motivationManager();
