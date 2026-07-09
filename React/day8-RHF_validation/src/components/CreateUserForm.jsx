@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
-const CreateUserForm = () => {
+const CreateUserForm = ({ setUsers, setToggle }) => {
   // 1. Initialize react-hook-form
+
   const {
     register,
     handleSubmit,
@@ -14,12 +14,15 @@ const CreateUserForm = () => {
       email: "",
       role: "Developer",
     },
+    mode: "onChange",
   });
 
   // 2. The submit handler receives the data directly if validation passes
   const formSubmit = (data) => {
     console.log("New User Submitted:", data);
+    setUsers((prev) => [...prev, data]);
     reset();
+    setToggle(false);
   };
 
   return (
