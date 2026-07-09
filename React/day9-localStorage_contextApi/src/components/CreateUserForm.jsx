@@ -20,8 +20,9 @@ const CreateUserForm = ({ setUsers, setToggle, users }) => {
   // 2. The submit handler receives the data directly if validation passes
   const formSubmit = (data) => {
     console.log("New User Submitted:", data);
-    setUsers([...users, data]);
-    localStorage.setItem("users", JSON.stringify(users));
+    let updatedUser = [...users, data];
+    setUsers(updatedUser);
+    localStorage.setItem("users", JSON.stringify(updatedUser));
     reset();
     setToggle((prev) => !prev);
   };
