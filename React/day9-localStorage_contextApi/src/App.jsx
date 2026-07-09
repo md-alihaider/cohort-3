@@ -4,7 +4,7 @@ import CreateUserForm from "./components/CreateUserForm";
 import Navbar from "./components/Navbar";
 
 const App = () => {
-  
+
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -15,7 +15,7 @@ const App = () => {
       {/* Main Content Area */}
       <main className="flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 h-[calc(100vh-64px)] gap-2">
         {toggle ? (
-          <CreateUserForm setUsers={setUsers} setToggle={setToggle} />
+          <CreateUserForm users={users} setUsers={setUsers} setToggle={setToggle} />
         ) : (
           users.map((elem, index) => (
             <UserCard
