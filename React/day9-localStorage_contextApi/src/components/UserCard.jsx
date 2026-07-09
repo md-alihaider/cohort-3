@@ -4,6 +4,8 @@ const UserCard = ({
   name = "Alex Developer",
   role = "Frontend Engineer",
   email = "alex@example.com",
+  deleteUser,
+  ind,
 }) => {
   return (
     <div className="bg-gray-800 rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-700">
@@ -28,7 +30,10 @@ const UserCard = ({
           </button>
 
           {/* Delete Button (Changed to red to indicate a delete action) */}
-          <button className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition">
+          <button
+            onClick={() => deleteUser(ind)}
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition"
+          >
             Delete
           </button>
         </div>

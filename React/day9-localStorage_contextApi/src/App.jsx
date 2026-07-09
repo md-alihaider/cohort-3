@@ -9,12 +9,21 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
 
+  const deleteUser = (id) => {
+    let filterUser = users.filter((val, index) => {
+      return index !== id;
+    });
+
+    setUsers(filterUser);
+    localStorage.setItem("users", JSON.stringify(filterUser));
+  };
+
   return (
     <div className="min-h-screen w-screen bg-gray-900 text-white font-sans selection:bg-indigo-500 selection:text-white">
       <Navbar setToggle={setToggle} />
 
       {/* Main Content Area */}
-      <main className="flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 h-[calc(100vh-64px)] gap-2">
+      <main className="flex flex-wrap justify-center items-center py-12 px-4 sm:px-6 lg:px-8 h-[calc(100vh-64px)] gap-2">
         {toggle ? (
           <CreateUserForm
             users={users}
@@ -24,6 +33,8 @@ const App = () => {
         ) : (
           users.map((elem, index) => (
             <UserCard
+              deleteUser={deleteUser}
+              ind={index}
               key={index} // Ideally use elem.id or elem.email if they are unique
               name={elem.name}
               role={elem.role}
