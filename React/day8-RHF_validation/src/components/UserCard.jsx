@@ -22,11 +22,14 @@ const UserCard = ({
 
         {/* Action Buttons */}
         <div className="flex space-x-3 w-full">
+          {/* Update Button */}
           <button className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-medium transition">
-            Message
+            Update
           </button>
-          <button className="flex-1 bg-gray-700 hover:bg-gray-600 text-gray-200 py-2 rounded-lg font-medium transition">
-            Profile
+
+          {/* Delete Button (Changed to red to indicate a delete action) */}
+          <button className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition">
+            Delete
           </button>
         </div>
       </div>
