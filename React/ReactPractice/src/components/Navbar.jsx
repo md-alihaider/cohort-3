@@ -36,7 +36,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
           aria-label="Toggle Theme"
         >
           {/* Replace with an actual Sun/Moon SVG icon */}
-          {isDarkMode ? "☀️" : "🌙"}
+          {isDarkMode ? "☀️" : "🌑"}
         </button>
 
         {/* Cart Button */}

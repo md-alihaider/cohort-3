@@ -1,16 +1,3 @@
 @import "tailwindcss";
 
-@layer components {
-  .btn-wave-dark {
-    /* Removed 'group' from the beginning of this list */
-    @apply border-2 border-black text-black font-bold py-4 px-8 rounded-4xl text-2xl relative overflow-hidden;
-  }
-  
-  .btn-wave-dark::after {
-    @apply content-[''] absolute h-full w-full bg-black left-0 -bottom-full rounded-[50%] transition-all duration-300 ease-in-out;
-  }
-
-  .btn-wave-dark:hover::after {
-    @apply bottom-0 rounded-none;
-  }
-}
+@variant dark (&:where(.dark, .dark *));
