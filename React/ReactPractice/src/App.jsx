@@ -9,12 +9,26 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const [users, setUsers] = useState(() => {
+    return JSON.parse(localStorage.getItem("users")) || [];
+  });
+  const [updatedData, setUpdatedData] = useState(null);
+
+  const deleteUser = (id) => {
+    let filterUser = users.filter((val) => {
+      return val.id !== id;
+    });
+
+    setUsers(filterUser);
+    localStorage.setItem("users", JSON.stringify(filterUser));
+  };
+
   useEffect(() => {
-   if (isDarkMode) {
-     document.documentElement.classList.add("dark");
-   } else {
-     document.documentElement.classList.remove("dark");
-   }
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, [isDarkMode]);
 
   const toggleTheme = () => {
@@ -61,10 +75,9 @@ const App = () => {
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {users.map((elem) => (
+            <ProductCard setUpdatedData={setUpdatedData} />
+          ))}
         </div>
       </main>
 
@@ -101,7 +114,12 @@ const App = () => {
             Since AddProductForm already has its own padding and background, 
             it seamlessly becomes the content of the modal.
           */}
-            <AddProductForm />
+            <AddProductForm
+              setUsers={setUsers}
+              setIsModalOpen={setIsModalOpen}
+              users={users}
+              updatedData={updatedData}
+            />
           </div>
         </div>
       )}

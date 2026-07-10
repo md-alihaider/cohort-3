@@ -1,4 +1,4 @@
-export default function ProductCard() {
+export default function ProductCard({ id, deleteUser, setUpdatedData, setIsModalOpen }) {
   return (
     <div className="max-w-sm rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm overflow-hidden transition-colors duration-200">
       {/* Product Image Placeholder */}
