@@ -1,11 +1,13 @@
 import React from "react";
 
 const UserCard = ({
+  id,
   name = "Alex Developer",
   role = "Frontend Engineer",
   email = "alex@example.com",
   deleteUser,
-  ind,
+  setUpdatedData,
+  setToggle
 }) => {
   return (
     <div className="bg-gray-800 rounded-xl shadow-lg p-6 max-w-sm w-full border border-gray-700">
@@ -25,13 +27,19 @@ const UserCard = ({
         {/* Action Buttons */}
         <div className="flex space-x-3 w-full">
           {/* Update Button */}
-          <button className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-medium transition">
+          <button
+            onClick={() => {
+              setUpdatedData({ id, name, role, email });
+              setToggle((prev)=> !prev)
+            }}
+            className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-medium transition"
+          >
             Update
           </button>
 
           {/* Delete Button (Changed to red to indicate a delete action) */}
           <button
-            onClick={() => deleteUser(ind)}
+            onClick={() => deleteUser(id)}
             className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition"
           >
             Delete

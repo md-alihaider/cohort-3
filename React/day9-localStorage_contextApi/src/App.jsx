@@ -8,10 +8,11 @@ const App = () => {
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
+  const [updatedData, setUpdatedData] = useState(null)
 
   const deleteUser = (id) => {
-    let filterUser = users.filter((val, index) => {
-      return index !== id;
+    let filterUser = users.filter((val) => {
+      return val.id !== id;
     });
 
     setUsers(filterUser);
@@ -26,16 +27,19 @@ const App = () => {
       <main className="flex flex-wrap justify-center items-center py-12 px-4 sm:px-6 lg:px-8 h-[calc(100vh-64px)] gap-2">
         {toggle ? (
           <CreateUserForm
+            updatedData={updatedData}
             users={users}
             setUsers={setUsers}
             setToggle={setToggle}
           />
         ) : (
-          users.map((elem, index) => (
+          users.map((elem) => (
             <UserCard
+              setUpdatedData={setUpdatedData}
+              users={users}
+              setToggle={setToggle}
               deleteUser={deleteUser}
-              ind={index}
-              key={index} // Ideally use elem.id or elem.email if they are unique
+              id={elem.id} // Ideally use elem.id or elem.email if they are unique
               name={elem.name}
               role={elem.role}
               email={elem.email}
@@ -46,7 +50,12 @@ const App = () => {
 
       {/* Temporary Floating Button */}
       <button
-        onClick={() => setToggle(!toggle)}
+        onClick={() => {
+          if (!toggle) {
+            setUpdatedData(null)
+          }
+          setToggle(!toggle)
+        }}
         className="fixed bottom-8 right-8 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full px-6 py-3 shadow-lg font-bold transition-all"
       >
         {toggle ? "View Profile" : "Add New User"}

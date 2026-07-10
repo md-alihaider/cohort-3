@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
 
-const CreateUserForm = ({ setUsers, setToggle, users }) => {
+const CreateUserForm = ({ setUsers, setToggle, users, updatedData }) => {
   // 1. Initialize react-hook-form
 
   const {
@@ -9,20 +10,25 @@ const CreateUserForm = ({ setUsers, setToggle, users }) => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-      role: "Developer",
-    },
+    defaultValues: updatedData || {},
     mode: "onChange",
   });
 
   // 2. The submit handler receives the data directly if validation passes
   const formSubmit = (data) => {
-    console.log("New User Submitted:", data);
-    let userArr = [...users, data];
-    setUsers(userArr);
-    localStorage.setItem("users", JSON.stringify(userArr));
+    if (updatedData) {
+      setUsers((prev) => {
+        const newUser = prev.map((val) => {
+          return val.id === updatedData.id ? {...data, id: updatedData.id} : val
+        })
+        localStorage.setItem("users", JSON.stringify(newUser));
+        return newUser;
+      });
+    } else {
+      let userArr = [...users, { ...data, id: nanoid() }];
+      setUsers(userArr);
+      localStorage.setItem("users", JSON.stringify(userArr));
+    }
     reset();
     setToggle((prev) => !prev);
   };
@@ -110,7 +116,7 @@ const CreateUserForm = ({ setUsers, setToggle, users }) => {
           type="submit"
           className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-lg transition duration-200 mt-4"
         >
-          Create User
+          {updatedData? "Update User":"Create New User"}
         </button>
       </form>
     </div>
