@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, setCartItems }) {
   return (
     <div className="group max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Product Image */}
@@ -56,7 +56,10 @@ export default function ProductCard({ product }) {
             </p>
           </div>
 
-          <button className="rounded-xl bg-indigo-600 px-5 py-2 font-semibold text-white transition hover:bg-indigo-700 active:scale-95">
+          <button
+            onClick={() => setCartItems((prev) => [...prev, product])}
+            className="rounded-xl bg-indigo-600 px-5 py-2 font-semibold text-white transition hover:bg-indigo-700 active:scale-95"
+          >
             Add to Cart
           </button>
         </div>
