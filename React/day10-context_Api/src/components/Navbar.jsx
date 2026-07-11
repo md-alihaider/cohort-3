@@ -2,9 +2,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className='p-4 bg-black jus'>
+    <div className='rounded p-5 bg-black flex item-center justify-between '>
       <div>logo</div>
-      <div>
+      <div className=' flex gap-10 text-xl'>
         <p>Home</p>
         <p>Cart</p>
       </div>
