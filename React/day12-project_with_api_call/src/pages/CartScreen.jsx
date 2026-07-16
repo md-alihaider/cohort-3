@@ -1,10 +1,10 @@
 import React from 'react'
 import Cart from '../components/Cart'
 
-const CartScreen = ({ cartItems }) => {
+const CartScreen = () => {
   return (
     <div>
-      <Cart cartItems={cartItems} />
+      <Cart  />
     </div>
   );
 };

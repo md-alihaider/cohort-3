@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft } from "lucide-react";
+import { MyStore } from "../context/MyContext";
 
-const Cart = ({ cartItems }) => {
-  console.log(cartItems);
+const Cart = () => {
+  let { cartItems } = useContext(MyStore);
   const totalItems = cartItems.reduce(
     (sum, item) => sum + (item.quantity || 1),
     0,
@@ -90,7 +91,7 @@ const Cart = ({ cartItems }) => {
                         </button>
 
                         <span className="w-12 text-center text-lg font-semibold">
-                          {item.quantity|| 1}
+                          {item.quantity || 1}
                         </span>
 
                         <button className="p-3 hover:bg-slate-100">
