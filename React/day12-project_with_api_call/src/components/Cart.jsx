@@ -1,16 +1,19 @@
 import React from "react";
 import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft } from "lucide-react";
 
-const Cart = ({ product }) => {
-  console.log(product)
-  const totalItems = product.reduce((sum, item) => sum + item.quantity, 0);
-
-  const totalPrice = product.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+const Cart = ({ cartItems }) => {
+  console.log(cartItems);
+  const totalItems = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
     0,
   );
 
-  if (product.length === 0) {
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0,
+  );
+
+  if (cartItems.length === 0) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-slate-100">
         <ShoppingCart size={80} className="text-slate-300" />
@@ -45,7 +48,7 @@ const Cart = ({ product }) => {
           {/* Left */}
 
           <div className="space-y-6">
-            {product.map((item) => (
+            {cartItems.map((item) => (
               <div
                 key={item.id}
                 className="flex gap-6 rounded-2xl bg-white p-6 shadow-sm"
@@ -75,7 +78,7 @@ const Cart = ({ product }) => {
 
                   <div className="mt-5 flex items-center justify-between">
                     <h3 className="text-3xl font-bold text-indigo-600">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      ${(item.price * (item.quantity || 1)).toFixed(2)}
                     </h3>
 
                     <div className="flex items-center gap-6">
@@ -87,7 +90,7 @@ const Cart = ({ product }) => {
                         </button>
 
                         <span className="w-12 text-center text-lg font-semibold">
-                          {item.quantity}
+                          {item.quantity|| 1}
                         </span>
 
                         <button className="p-3 hover:bg-slate-100">

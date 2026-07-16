@@ -8,6 +8,7 @@ const App = () => {
   const [productsData, setProductsData] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  console.log(cartItems)
 
   const getProductsData = async () => {
     try {

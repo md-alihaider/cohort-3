@@ -3,10 +3,8 @@ import Cart from '../components/Cart'
 
 const CartScreen = ({ cartItems }) => {
   return (
-    <div >
-      {cartItems.map((elem) => {
-        return <Cart key={elem.id} product={elem} />
-      })}
+    <div>
+      <Cart cartItems={cartItems} />
     </div>
   );
 };
