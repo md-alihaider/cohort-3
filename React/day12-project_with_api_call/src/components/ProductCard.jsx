@@ -1,9 +1,23 @@
 import React, { useContext } from "react";
-import { Star, ShoppingCart, Heart } from "lucide-react";
+import { Star, ShoppingCart, Heart, Minus, Plus } from "lucide-react";
 import { MyStore } from "../context/MyContext";
 
-const ProductCard = ({ product }) => {
-  let { setCartItems } = useContext(MyStore);
+const ProductCard = ({ product, isInCart }) => {
+  let { setCartItems, incrementQuantity, decrementQuantity } =
+    useContext(MyStore);
+
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+    alert("Product added to cart");
+  };
+
+  const cartFlush = () => {
+    if (isInCart.quantity > 1) {
+      decrementQuantity(product.id);
+    } else {
+      setCartItems((prev) => prev.filter((item) => item.id !== product.id));
+    }
+  };
   return (
     <div className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Image */}
@@ -65,13 +79,35 @@ const ProductCard = ({ product }) => {
             </p>
           </div>
 
-          <button
-            onClick={() => setCartItems((prev) => [...prev, product])}
-            className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 font-medium text-white transition hover:bg-indigo-700 active:scale-95"
-          >
-            <ShoppingCart size={18} />
-            Add
-          </button>
+          {isInCart ? (
+            <div className="flex items-center rounded-xl border">
+              <button
+                onClick={cartFlush}
+                className="p-3 hover:bg-slate-100"
+              >
+                <Minus size={18} />
+              </button>
+
+              <span className="w-12 text-center text-lg font-semibold">
+                {isInCart.quantity || 1}
+              </span>
+
+              <button
+                onClick={() => incrementQuantity(product.id)}
+                className="p-3 hover:bg-slate-100"
+              >
+                <Plus size={18} />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={addToCart}
+              className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 font-medium text-white transition hover:bg-indigo-700 active:scale-95"
+            >
+              <ShoppingCart size={18} />
+              Add
+            </button>
+          )}
         </div>
       </div>
     </div>

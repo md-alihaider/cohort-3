@@ -8,7 +8,7 @@ import { MyStore } from "./context/MyContext";
 const App = () => {
   const [productsData, setProductsData] = useState([]);
 
-  let { isCartOpen } = useContext(MyStore);
+  let { isCartOpen, cartItems } = useContext(MyStore);
   const getProductsData = async () => {
     try {
       let res = await axios.get("https://fakestoreapi.com/products");
@@ -33,11 +33,9 @@ const App = () => {
       ) : (
         <div className="grid grid-cols-4 gap-4">
           {productsData.map((elem) => {
+            let isInCart = cartItems.find((val) => val.id === elem.id);
             return (
-              <ProductsCard
-                key={elem.id}
-                product={elem}
-              />
+              <ProductsCard key={elem.id} product={elem} isInCart={isInCart} />
             );
           })}
         </div>
