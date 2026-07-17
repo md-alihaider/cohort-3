@@ -6,7 +6,7 @@ import Contact from "./pages/Contact";
 const App = () => {
   const [toggle, setToggle] = useState("Home");
   return (
-    <div className="h-screen p-2 text-xl">
+    <div className="h-screen p-2 text-xl bg-blue-950 text-white">
       <nav className=" flex items-center justify-between mb-2 ">
         <h1>logo</h1>
         <div className=" flex items-center justify-between gap-10 cursor-pointer">
