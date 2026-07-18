@@ -1,10 +1,15 @@
 import { Star } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export default function ProductsCard({ product }) {
+  let navigate = useNavigate();
   return (
     <div className="group max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Product Image */}
-      <div className="relative flex h-72 items-center justify-center overflow-hidden bg-gray-100 p-6">
+      <div
+        onClick={() => navigate(`/detail/${product.id}`)}
+        className="relative cursor-pointer flex h-72 items-center justify-center overflow-hidden bg-gray-100 p-6"
+      >
         <img
           src={product.image}
           alt={product.title}
@@ -56,9 +61,7 @@ export default function ProductsCard({ product }) {
             </p>
           </div>
 
-          <button
-            className="rounded-xl bg-indigo-600 px-5 py-2 font-semibold text-white transition hover:bg-indigo-700 active:scale-95"
-          >
+          <button className="rounded-xl bg-indigo-600 px-5 py-2 font-semibold text-white transition hover:bg-indigo-700 active:scale-95">
             Add to Cart
           </button>
         </div>

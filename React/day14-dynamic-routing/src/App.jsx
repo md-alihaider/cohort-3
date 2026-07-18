@@ -5,9 +5,9 @@ import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
   return (
-    <div className=" bg-blue-200 p-2 flex flex-col gap-4">
+    <div className="bg-blue-200 min-h-screen p-2 flex flex-col gap-4">
       <Navbar />
-      <AppRoutes/>
+      <AppRoutes />
     </div>
   );
 };
