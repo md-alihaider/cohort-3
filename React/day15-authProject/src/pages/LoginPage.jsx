@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
+  const { registeredUsers, loggedInUser, setLoggedInUser } = useContext(Auth);
   let navigate = useNavigate();
   let {
     register,
@@ -12,7 +16,20 @@ const LoginPage = () => {
   } = useForm();
 
   let formSubmit = (data) => {
-    console.log(data);
+    let user = registeredUsers.find((val) => {
+      return val.email === data.email && val.password === data.password;
+    });
+
+    if (!user) {
+      toast.error("user not found or invalid credentials");
+      reset();
+      return;
+    }
+
+    setLoggedInUser(user);
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    toast.success("User loggedIn");
+    navigate("/main");
     reset();
   };
   return (
