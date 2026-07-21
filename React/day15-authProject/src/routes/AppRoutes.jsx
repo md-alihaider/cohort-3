@@ -4,8 +4,9 @@ import AuthLayout from "../layouts/AuthLayout";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import MainLayout from "../layouts/MainLayout";
+import ProtectedRoutes from "./ProtectedRoutes";
 
-const AppRouter = () => {
+const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -22,11 +23,17 @@ const AppRouter = () => {
       ],
     },
     {
-      path:"/main",
-      element:<MainLayout/>
-    }
+      path: "/main",
+      element: <ProtectedRoutes />,
+      children: [
+        {
+          path: "",
+          element: <MainLayout />,
+        },
+      ],
+    },
   ]);
   return <RouterProvider router={router} />;
 };
 
-export default AppRouter;
+export default AppRoutes;
