@@ -3,9 +3,11 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-  const {registeredUsers, setRegisteredUsers } = useContext(Auth);
+  const { registeredUsers, setRegisteredUsers, setLoggedInUser } =
+    useContext(Auth);
   let navigate = useNavigate();
   let {
     register,
@@ -17,8 +19,11 @@ const RegisterPage = () => {
   let formSubmit = (data) => {
     let arr = [...registeredUsers, data];
     setRegisteredUsers(arr);
-    alert("user registered successfully")
+    toast.success("user registered successfully");
+    setLoggedInUser(data);
+    localStorage.setItem("loggedInUser", JSON.stringify(data));
     localStorage.setItem("registeredUsers", JSON.stringify(arr))
+    navigate("/main");
     reset();
   };
   return (
