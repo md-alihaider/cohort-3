@@ -1,8 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
   let navigate = useNavigate();
+  let {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  let formSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
@@ -15,17 +27,23 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
           {/* Username */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Email
             </label>
             <input
+              {...register("email", {
+                required: "email is required",
+              })}
               type="email"
-              placeholder="Enter your email"
+              placeholder="Choose a email"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.email && (
+              <p className="text-red-600">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -34,10 +52,20 @@ const LoginPage = () => {
               Password
             </label>
             <input
+              {...register("password", {
+                required: "password is required",
+                minLength: {
+                  value: 6,
+                  message: "Minimum 6 characters is required",
+                },
+              })}
               type="password"
-              placeholder="Enter your password"
+              placeholder="Create a password"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.password && (
+              <p className="text-red-600">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Login Button */}

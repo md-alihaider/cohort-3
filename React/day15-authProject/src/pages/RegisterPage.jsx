@@ -1,8 +1,20 @@
 import React from "react";
-import {useNavigate} from "react-router"
+import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
   let navigate = useNavigate();
+  let {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  let formSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
@@ -13,17 +25,23 @@ const RegisterPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Full Name
             </label>
             <input
+              {...register("name", {
+                required: "name is required",
+              })}
               type="text"
               placeholder="Enter your full name"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.name && (
+              <p className="text-red-600">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Username */}
@@ -32,10 +50,16 @@ const RegisterPage = () => {
               Email
             </label>
             <input
+              {...register("email", {
+                required: "email is required",
+              })}
               type="email"
               placeholder="Choose a email"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.email && (
+              <p className="text-red-600">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -44,10 +68,20 @@ const RegisterPage = () => {
               Password
             </label>
             <input
+              {...register("password", {
+                required: "password is required",
+                minLength: {
+                  value: 6,
+                  message: "Minimum 6 characters is required",
+                },
+              })}
               type="password"
               placeholder="Create a password"
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.password && (
+              <p className="text-red-600">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Register Button */}
@@ -62,8 +96,8 @@ const RegisterPage = () => {
         {/* Login Link */}
         <div className="mt-6 text-center text-sm text-slate-600">
           Already have an account?{" "}
-          <span 
-            onClick={()=> navigate("/")}
+          <span
+            onClick={() => navigate("/")}
             className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
           >
             Login
