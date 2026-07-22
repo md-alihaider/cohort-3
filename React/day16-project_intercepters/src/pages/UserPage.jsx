@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import UserCard from "../components/UserCard";
+import { axiosInstance } from "../config/axiosinstance";
 const UserPage = () => {
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const getUserData = async () => {
     try {
-      let res = await axios.get("https://fakestoreapi.com/users");
+      let res = await axiosInstance.get("/users");
       console.log(res);
       setUserData(res.data);
       setIsLoading(false)
