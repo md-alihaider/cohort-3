@@ -1,7 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { useContext } from "react";
+import { Navigate, NavLink } from "react-router";
+import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { setLoggedInUser } = useContext(Auth);
   return (
     <div className="p-3 border-r border-gray-500 flex flex-col justify-between ">
       <div className="flex flex-col gap-10">
@@ -42,7 +45,14 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
-      <button className=" bg-red-500 py-3 hover:bg-amber-700 text-white rounded cursor-pointer">
+      <button
+        onClick={() => {
+          localStorage.removeItem("loggedInUser");
+          toast.warn("User Logged Out");
+          setLoggedInUser(null);
+        }}
+        className=" bg-red-500 py-3 hover:bg-amber-700 text-white rounded cursor-pointer"
+      >
         Logout
       </button>
     </div>

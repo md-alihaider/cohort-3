@@ -1,38 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { Auth } from "../context/AuthContext";
-import { toast } from "react-toastify";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginPage = () => {
-  console.log("Login rendering...")
-  const { registeredUsers, setLoggedInUser } = useContext(Auth);
-  let navigate = useNavigate();
-  let {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  let {register, loginFormSubmit, handleSubmit, navigate, errors} = useAuth();
 
-  let formSubmit = (data) => {
-    let user = registeredUsers.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-
-    if (!user) {
-      toast.error("user not found or invalid credentials");
-      reset();
-      return;
-    }
-
-    setLoggedInUser(user);
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-    toast.success("User loggedIn");
-    navigate("/main");
-    reset();
-  };
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
@@ -45,7 +16,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(loginFormSubmit)} className="space-y-5">
           {/* Username */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">

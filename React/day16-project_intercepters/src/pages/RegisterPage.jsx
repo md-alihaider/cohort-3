@@ -1,31 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
-import { toast } from "react-toastify";
+import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  const { registeredUsers, setRegisteredUsers, setLoggedInUser } =
-    useContext(Auth);
-  let navigate = useNavigate();
-  let {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  let formSubmit = (data) => {
-    let arr = [...registeredUsers, data];
-    setRegisteredUsers(arr);
-    toast.success("user registered successfully");
-    setLoggedInUser(data);
-    localStorage.setItem("loggedInUser", JSON.stringify(data));
-    localStorage.setItem("registeredUsers", JSON.stringify(arr))
-    navigate("/main");
-    reset();
-  };
+  let { register, registerFormSubmit, handleSubmit, navigate, errors } =
+    useAuth();
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
@@ -36,7 +15,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(registerFormSubmit)} className="space-y-5">
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
