@@ -20,7 +20,7 @@ const ProductPage = () => {
   }, [])
   if (isLoading) return <h1 className=" text-3xl">Loading product..</h1>;
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div className="grid grid-cols-4 gap-6">
       {productsData.map((val) => (
         <ProductCard key={val.id} product={val} />
       ))}

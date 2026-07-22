@@ -5,7 +5,7 @@ const UserCard = ({ user }) => {
     <div className="w-full max-w-sm rounded-3xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
       {/* Top */}
       <div className="flex items-center gap-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-500 text-2xl font-bold text-white">
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-violet-600 to-indigo-500 text-2xl font-bold text-white">
           {user.name.firstname[0].toUpperCase()}
           {user.name.lastname[0].toUpperCase()}
         </div>
