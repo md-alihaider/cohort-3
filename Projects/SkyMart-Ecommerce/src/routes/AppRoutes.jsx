@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router'
 import PublicRoutes from './PublicRoutes';
 import AuthLayout from '../layouts/AuthLayout';
 import LoginPage from '../pages/LoginPage';
@@ -16,6 +16,10 @@ const AppRoutes = () => {
           path: "",
           element: <AuthLayout />,
           children: [
+            {
+              index: true,
+              element: <Navigate to="/login" replace />,
+            },
             {
               path: "login",
               element: <LoginPage />,
