@@ -5,6 +5,7 @@ import { Auth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 export const useAuth = () => {
+  
   const { registeredUsers, setLoggedInUser, setRegisteredUsers } =
     useContext(Auth);
   let navigate = useNavigate();
@@ -12,6 +13,7 @@ export const useAuth = () => {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -30,19 +32,29 @@ export const useAuth = () => {
     setLoggedInUser(user);
     localStorage.setItem("loggedInUser", JSON.stringify(user));
     toast.success("User loggedIn");
-    navigate("/main");
+    navigate("/home");
     reset();
   };
 
   // register logic
   let registerFormSubmit = (data) => {
-    let arr = [...registeredUsers, data];
+    const existingUser = registeredUsers.find(
+      (user) => user.email === data.email,
+    );
+
+    if (existingUser) {
+      toast.error("Email already registered");
+      return;
+    }
+
+    const { confirmPassword, ...user } = data;
+    const arr = [...registeredUsers, user];
     setRegisteredUsers(arr);
     toast.success("user registered successfully");
-    setLoggedInUser(data);
-    localStorage.setItem("loggedInUser", JSON.stringify(data));
+    setLoggedInUser(user);
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
     localStorage.setItem("registeredUsers", JSON.stringify(arr));
-    navigate("/main");
+    navigate("/home");
     reset();
   };
 
@@ -52,6 +64,7 @@ export const useAuth = () => {
     handleSubmit,
     reset,
     errors,
+    getValues,
     loginFormSubmit,
     registerFormSubmit,
   };

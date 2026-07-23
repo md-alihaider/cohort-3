@@ -1,9 +1,19 @@
-import React from "react";
-import { ArrowRight, Eye, Lock, Mail, ShoppingBag, Zap } from "lucide-react";
-import { useNavigate } from "react-router";
+import React, { useContext } from "react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  Lock,
+  Mail,
+  ShoppingBag,
+  Zap,
+} from "lucide-react";
+import { useAuth } from "../hooks/useAuth";
+import { Auth } from "../context/AuthContext";
 
 const LoginPage = () => {
-  let navigate = useNavigate()
+  const {showPassword, setShowPassword} = useContext(Auth);
+  let { register, loginFormSubmit, handleSubmit, navigate, errors } = useAuth();
   return (
     <div className="min-h-screen bg-[#0B0B0B] text-white flex">
       {/* Left Section */}
@@ -65,7 +75,10 @@ const LoginPage = () => {
             Enter your credentials to continue
           </p>
 
-          <form className="mt-10 space-y-6">
+          <form
+            onSubmit={handleSubmit(loginFormSubmit)}
+            className="mt-10 space-y-6"
+          >
             {/* Email */}
             <div className="relative">
               <Mail
@@ -74,10 +87,18 @@ const LoginPage = () => {
               />
 
               <input
+                {...register("email", {
+                  required: "email is required",
+                })}
                 type="email"
                 placeholder="Email address"
                 className="w-full rounded-2xl border border-zinc-700 bg-[#1B1B1B] py-4 pl-12 pr-4 outline-none transition focus:border-lime-400"
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Password */}
@@ -88,15 +109,36 @@ const LoginPage = () => {
               />
 
               <input
-                type="password"
+                {...register("password", {
+                  required: "password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Minimum 6 characters is required",
+                  },
+                })}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="w-full rounded-2xl border border-zinc-700 bg-[#1B1B1B] py-4 pl-12 pr-12 outline-none transition focus:border-lime-400"
               />
 
-              <Eye
-                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
-                size={20}
-              />
+              {showPassword ? (
+                <EyeOff
+                  size={20}
+                  onClick={() => setShowPassword(false)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+                />
+              ) : (
+                <Eye
+                  size={20}
+                  onClick={() => setShowPassword(true)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+                />
+              )}
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             <button className="flex w-full items-center justify-center gap-2 rounded-2xl bg-lime-400 py-4 text-lg font-semibold text-black transition hover:bg-lime-300">

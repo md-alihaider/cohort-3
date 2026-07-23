@@ -1,10 +1,12 @@
-import React from "react";
-import { ArrowRight, Eye, Lock, Mail, User, Zap } from "lucide-react";
+import React, { useContext } from "react";
+import { ArrowRight, Eye, EyeOff, Lock, Mail, User, Zap } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
+import { Auth } from "../context/AuthContext";
 
 const RegisterPage = () => {
-  let { register, registerFormSubmit, handleSubmit, navigate, errors } =
+  let { register, registerFormSubmit, handleSubmit, navigate, errors,getValues } =
     useAuth();
+  const { showPassword, setShowPassword } = useContext(Auth);
   return (
     <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 py-8">
       {/* Logo */}
@@ -30,7 +32,10 @@ const RegisterPage = () => {
         </p>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(registerFormSubmit)} className="mt-7 space-y-3">
+        <form
+          onSubmit={handleSubmit(registerFormSubmit)}
+          className="mt-7 space-y-3"
+        >
           {/* Name */}
           <div className="relative">
             <User
@@ -88,15 +93,24 @@ const RegisterPage = () => {
                   message: "Minimum 6 characters is required",
                 },
               })}
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password (min 6 chars)"
               className="h-14.5 w-full rounded-[18px] border border-border bg-[#1A1A1A] pl-16 pr-16 text-[19px] text-white outline-none transition-all placeholder:text-muted focus:border-primary"
             />
 
-            <Eye
-              size={18}
-              className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer text-muted"
-            />
+            {showPassword ? (
+              <EyeOff
+                size={20}
+                onClick={() => setShowPassword(false)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+              />
+            ) : (
+              <Eye
+                size={20}
+                onClick={() => setShowPassword(true)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+              />
+            )}
             {errors.password && (
               <p className="text-red-500 text-xs mt-1">
                 {errors.password.message}
@@ -112,10 +126,33 @@ const RegisterPage = () => {
             />
 
             <input
-              type="password"
+              {...register("confirmPassword", {
+                required: "Confirm password is required",
+                validate: (value) =>
+                  value === getValues("password") || "Passwords do not match",
+              })}
+              type={showPassword ? "text" : "password"}
               placeholder="Confirm password"
               className="h-14.5 w-full rounded-[18px] border border-border bg-[#1A1A1A] pl-16 pr-6 text-[19px] text-white outline-none transition-all placeholder:text-muted focus:border-primary"
             />
+            {showPassword ? (
+              <EyeOff
+                size={20}
+                onClick={() => setShowPassword(false)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+              />
+            ) : (
+              <Eye
+                size={20}
+                onClick={() => setShowPassword(true)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-zinc-500"
+              />
+            )}
+            {errors.confirmPassword && (
+              <p className="mt-1 text-xs text-red-500">
+                {errors.confirmPassword.message}
+              </p>
+            )}
           </div>
 
           {/* Button */}

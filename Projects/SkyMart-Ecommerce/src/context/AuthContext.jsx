@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const Auth = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const [registeredUsers, setRegisteredUsers] = useState(
     JSON.parse(localStorage.getItem("registeredUsers")) || [],
   );
@@ -18,6 +19,8 @@ export const AuthProvider = ({ children }) => {
         setLoggedInUser,
         setRegisteredUsers,
         loggedInUser,
+        showPassword,
+        setShowPassword
       }}
     >
       {children}
