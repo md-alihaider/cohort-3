@@ -1,9 +1,10 @@
 import React from "react";
 import { ArrowRight, Eye, Lock, Mail, User, Zap } from "lucide-react";
-import { useNavigate } from "react-router";
+import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  let navigate = useNavigate();
+  let { register, registerFormSubmit, handleSubmit, navigate, errors } =
+    useAuth();
   return (
     <main className="min-h-screen bg-background flex flex-col items-center justify-center px-6 py-8">
       {/* Logo */}
@@ -21,8 +22,7 @@ const RegisterPage = () => {
       <section className="w-full max-w-117.5 rounded-[30px] border border-border bg-card px-8 py-8 shadow-[0_30px_80px_rgba(0,0,0,.45)]">
         {/* Heading */}
         <h2 className="text-[38px] leading-[0.92] tracking-[-2px] font-extrabold text-white">
-          Create
-          account
+          Create account
         </h2>
 
         <p className="mt-3 text-[18px] text-muted">
@@ -30,7 +30,7 @@ const RegisterPage = () => {
         </p>
 
         {/* Form */}
-        <form className="mt-7 space-y-3">
+        <form onSubmit={handleSubmit(registerFormSubmit)} className="mt-7 space-y-3">
           {/* Name */}
           <div className="relative">
             <User
@@ -39,10 +39,16 @@ const RegisterPage = () => {
             />
 
             <input
+              {...register("name", {
+                required: "name is required",
+              })}
               type="text"
               placeholder="Full name"
               className="h-14.5 w-full rounded-[18px] border border-border bg-[#1A1A1A] pl-16 pr-6 text-[19px] text-white outline-none transition-all placeholder:text-muted focus:border-primary"
             />
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Email */}
@@ -53,10 +59,18 @@ const RegisterPage = () => {
             />
 
             <input
+              {...register("email", {
+                required: "email is required",
+              })}
               type="email"
               placeholder="Email address"
               className="h-14.5 w-full rounded-[18px] border border-border bg-[#1A1A1A] pl-16 pr-6 text-[19px] text-white outline-none transition-all placeholder:text-muted focus:border-primary"
             />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Password */}
@@ -67,6 +81,13 @@ const RegisterPage = () => {
             />
 
             <input
+              {...register("password", {
+                required: "password is required",
+                minLength: {
+                  value: 6,
+                  message: "Minimum 6 characters is required",
+                },
+              })}
               type="password"
               placeholder="Password (min 6 chars)"
               className="h-14.5 w-full rounded-[18px] border border-border bg-[#1A1A1A] pl-16 pr-16 text-[19px] text-white outline-none transition-all placeholder:text-muted focus:border-primary"
@@ -76,6 +97,11 @@ const RegisterPage = () => {
               size={18}
               className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer text-muted"
             />
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           {/* Confirm */}
