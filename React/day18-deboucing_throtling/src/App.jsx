@@ -37,6 +37,10 @@ const App = () => {
       throttle = true;
       console.log("scroll trigered...");
       setScrollY(window.scrollY);
+
+      setTimeout(() => {
+        throttle = false
+      }, 4000);
     };
     window.addEventListener("scroll", handleScroll);
 
