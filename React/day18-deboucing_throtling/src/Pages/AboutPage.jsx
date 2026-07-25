@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import { getUsers } from "../apis/usersApi";
 
 const AboutPage = () => {
-  return (
-    <div>AboutPage</div>
-  )
-}
+  console.log("About is running...");
+  return <div>AboutPage</div>;
+};
 
-export default AboutPage
+export default AboutPage;
