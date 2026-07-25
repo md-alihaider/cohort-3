@@ -51,7 +51,7 @@ const App = () => {
     getProducts();
   }, []);
   return (
-    <div className="p-2">
+    <div className="p-2 text-2xl">
       <h1>Debouncing..</h1>
       <input
         className="px-3 py-4"
