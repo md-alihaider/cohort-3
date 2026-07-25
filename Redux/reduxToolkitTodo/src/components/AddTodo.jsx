@@ -1,23 +1,44 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../features/todo/todoSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, updateTodo } from "../features/todo/todoSlice";
 
 const AddTodo = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
+  const editingTodo = useSelector((state) => state.todo.editTodo);
   const submitHandler = (e) => {
     e.preventDefault();
 
     if (!input.trim()) return;
-    dispatch(addTodo(input));
-    setInput("")
+    if (editingTodo) {
+      dispatch(
+        updateTodo({
+          id: editingTodo.id,
+          text: input,
+        }),
+      );
+    } else {
+      dispatch(addTodo(input));
+    }
+    setInput("");
   };
+  useEffect(() => {
+    if (editingTodo) {
+      setInput(editingTodo.text);
+    } else {
+      setInput("");
+    }
+  }, [editingTodo]);
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">Add Todo</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        {editingTodo ? "Update Todo" : "Add Todo"}
+      </h2>
 
       <p className="text-gray-500 text-sm mb-6">
-        Create a new task to stay organized.
+        {editingTodo
+          ? "Edit your selected task."
+          : "Create a new task to stay organized."}
       </p>
 
       <form onSubmit={submitHandler} className="space-y-5">
@@ -39,7 +60,7 @@ const AddTodo = () => {
           type="submit"
           className="w-full rounded-xl bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700 active:scale-95"
         >
-          Add Todo
+          {editingTodo ? "Update Todo" : "Add Todo"}
         </button>
       </form>
     </div>
