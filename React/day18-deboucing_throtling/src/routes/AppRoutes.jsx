@@ -1,30 +1,38 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayouts from "../layouts/MainLayouts";
-import AboutPage from "../Pages/AboutPage";
-import ContactPage from "../Pages/ContactPage";
 import App from "../App";
+const AboutPage = lazy(()=> import("../Pages/AboutPage"))
+const ContactPage = lazy(() => import("../Pages/ContactPage"));
 const AppRoutes = () => {
   const router = createBrowserRouter([
     {
-      path:"/",
+      path: "/",
       element: <MainLayouts />,
       children: [
         {
-          path:"",
-          element:<App/>
+          path: "",
+          element: <App />,
         },
         {
-          path:"about",
-          element:<AboutPage/>
+          path: "about",
+          element: (
+            <Suspense fallback={<h1>Loading about</h1>}>
+              <AboutPage />
+            </Suspense>
+          ),
         },
         {
           path: "contact",
-          element:<ContactPage/>
-        }
-      ]
-    }
-  ])
+          element: (
+            <Suspense fallback={<h1>Loading contact</h1>}>
+              <ContactPage />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+  ]);
   return <RouterProvider router={router} />;
 };
 
