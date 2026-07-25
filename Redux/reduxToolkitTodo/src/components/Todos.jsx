@@ -1,32 +1,35 @@
 import React from "react";
-import { Pencil, Trash2 } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/todo/todoSlice";
+import { useSelector } from "react-redux";
+import SearchBar from "./SearchBar";
+import Stats from "./Stats";
+import TodoCard from "./TodoCard";
+import EmptyState from "./EmptyState";
 
 const Todos = () => {
-  const todos = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todo.todos);
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-6">My Todos</h1>
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">My Todos</h2>
 
-        <div className="space-y-4">
-          {/* Todo Card */}
-          <div className="flex items-center justify-between bg-white p-4 rounded-lg shadow">
-            <p className="text-gray-800 text-lg">Learn Redux Toolkit</p>
+        <p className="text-gray-500">Manage all your tasks in one place.</p>
+      </div>
 
-            <div className="flex gap-2">
-              <button className="p-2 rounded-md bg-yellow-100 text-yellow-600 hover:bg-yellow-200">
-                <Pencil size={18} />
-              </button>
+      {/* Search */}
+      <SearchBar />
 
-              <button className="p-2 rounded-md bg-red-100 text-red-600 hover:bg-red-200">
-                <Trash2 size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Stats */}
+      <Stats />
+
+      {/* Todo List */}
+      <div className="space-y-4">
+        {todos.length > 0 ? (
+          todos.map((todo) => <TodoCard key={todo.id} todo={todo} />)
+        ) : (
+          <EmptyState />
+        )}
       </div>
     </div>
   );
