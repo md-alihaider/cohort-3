@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increment,decrement,incrementByamount } from "../app/feature/counterSlice";
+import { increment,decrement,incrementByamount,resetCount } from "../app/feature/counterSlice";
 
 
 const Counter = () => {
@@ -39,6 +39,12 @@ const Counter = () => {
             +
           </button>
         </div>
+        <button
+          onClick={() => dispatch(resetCount())}
+          className="w-full mb-6 bg-gray-800 hover:bg-black text-white py-3 rounded-lg font-semibold transition"
+        >
+          Reset
+        </button>
 
         <div className="flex gap-3">
           <input
