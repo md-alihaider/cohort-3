@@ -101,7 +101,7 @@ const AboutPage = () => {
 
       {/* Story */}
       <section className="mx-auto mt-16 max-w-5xl px-6">
-        <div className="rounded-3xl border border-zinc-700 bg-[#111111] p-8 md:p-10">
+        <div className="rounded-3xl border border-zinc-700 bg-card p-8 md:p-10">
           <h2 className="mb-6 text-3xl font-bold text-white">Our Story</h2>
 
           <div className="space-y-5 text-[15px] leading-8 text-zinc-400">
@@ -140,7 +140,7 @@ const AboutPage = () => {
             return (
               <div
                 key={item.title}
-                className="flex gap-5 rounded-2xl border border-zinc-700 bg-[#111111] p-6 transition hover:border-primary"
+                className="flex gap-5 rounded-2xl border border-zinc-700 bg-card p-6 transition hover:border-primary"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
                   <Icon className="text-primary" size={24} />
@@ -164,7 +164,7 @@ const AboutPage = () => {
           Meet the Developer
         </h2>
 
-        <div className="rounded-3xl border border-zinc-700 bg-[#111111] p-8 md:p-10">
+        <div className="rounded-3xl border border-zinc-700 bg-card p-8 md:p-10">
           <div className="flex flex-col items-center text-center">
             {/* Avatar */}
             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-3xl font-bold text-black">
@@ -230,7 +230,7 @@ const AboutPage = () => {
       </section>
       {/* CTA */}
       <section className="mx-auto mt-20 mb-20 max-w-5xl px-6">
-        <div className="rounded-3xl border border-primary/20 bg-[#111111] px-8 py-12 text-center">
+        <div className="rounded-3xl border border-primary/20 bg-card px-8 py-12 text-center">
           <h2 className="text-4xl font-bold">
             Explore <span className="text-primary">SkyMart</span>
           </h2>
