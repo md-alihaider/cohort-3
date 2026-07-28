@@ -88,7 +88,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="border-t border-zinc-800 bg-[#111111] lg:hidden">
+        <div className="border-t border-zinc-800 bg-card lg:hidden">
           <nav className="flex flex-col py-3">
             {navLinks.map((link) => (
               <NavLink
