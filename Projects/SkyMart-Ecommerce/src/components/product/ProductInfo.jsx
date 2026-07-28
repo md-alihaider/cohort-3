@@ -1,10 +1,12 @@
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
 
 const ProductInfo = ({ product }) => {
   const { addToCart, increaseQuantity, decreaseQuantity, getCartItem } =
     useContext(CartContext);
+  const { toggleWishlist, isWishlisted } = useContext(WishlistContext);
 
   const cartItem = getCartItem(product.id);
   return (
@@ -63,8 +65,15 @@ const ProductInfo = ({ product }) => {
           </button>
         )}
 
-        <button className="rounded-2xl border border-zinc-700 px-5 text-white">
-          <Heart />
+        <button
+          onClick={() => toggleWishlist(product)}
+          className="rounded-lg border p-3"
+        >
+          <Heart
+            className={
+              isWishlisted(product.id) ? "fill-red-500 text-red-500" : ""
+            }
+          />
         </button>
       </div>
     </div>

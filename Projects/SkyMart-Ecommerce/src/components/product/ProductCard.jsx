@@ -2,10 +2,13 @@ import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Link } from "react-router";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
+
 
 const ProductCard = ({ product }) => {
   const { addToCart, increaseQuantity, decreaseQuantity, getCartItem } =
     useContext(CartContext);
+  const { toggleWishlist, isWishlisted } = useContext(WishlistContext);
 
   const cartItem = getCartItem(product.id);
   return (
@@ -20,10 +23,20 @@ const ProductCard = ({ product }) => {
           />
 
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleWishlist(product);
+            }}
             className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-md transition hover:bg-primary"
           >
-            <Heart size={17} className="text-black" />
+            <Heart
+              size={17}
+              className={
+                isWishlisted(product.id)
+                  ? "fill-red-500 text-red-500"
+                  : "text-gray-500"
+              }
+            />
           </button>
         </div>
 
