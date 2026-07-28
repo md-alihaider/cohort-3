@@ -4,9 +4,13 @@ export const Auth = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  //All registered users 
   const [registeredUsers, setRegisteredUsers] = useState(
     JSON.parse(localStorage.getItem("registeredUsers")) || [],
   );
+
+  //currently logged in user
   const [loggedInUser, setLoggedInUser] = useState(
     JSON.parse(localStorage.getItem("loggedInUser")),
   );

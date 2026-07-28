@@ -1,11 +1,11 @@
-import React from 'react'
+import Hero from "../components/home/Hero";
 
-const HomePage = () => {
+const Home = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <main className="mx-auto max-w-300 px-6 lg:px-8">
+      <Hero />
+    </main>
+  );
+};
 
-export default HomePage
+export default Home;
