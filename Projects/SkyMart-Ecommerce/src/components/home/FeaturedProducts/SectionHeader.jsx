@@ -22,13 +22,15 @@ const SectionHeader = ({
         <p className="mt-2 max-w-xl text-zinc-400">{description}</p>
       </div>
 
-      <Link
-        to={buttonLink}
-        className="hidden items-center gap-2 rounded-xl border border-zinc-700 px-5 py-3 text-sm font-medium transition hover:border-primary md:flex"
-      >
-        {buttonText}
-        <ArrowRight size={18} />
-      </Link>
+      {buttonText && (
+        <Link
+          to={buttonLink}
+          className="hidden md:flex items-center gap-2 rounded-xl border border-zinc-700 px-5 py-3"
+        >
+          {buttonText}
+          <ArrowRight size={18} />
+        </Link>
+      )}
     </div>
   );
 };

@@ -45,11 +45,20 @@ const ProductProvider = ({ children }) => {
       .slice(0, 4);
   }, [products]);
 
+  // Category Counts
+  const categoryData = useMemo(() => {
+    return categories.map((category) => ({
+      name: category,
+      count: products.filter((product) => product.category === category).length,
+    }));
+  }, [categories, products]);
+
   const value = {
     products,
     loading,
     error,
     categories,
+    categoryData,
     featuredProducts,
     topRatedProducts,
     fetchProducts,
@@ -58,6 +67,6 @@ const ProductProvider = ({ children }) => {
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );
-};
+};;
 
 export default ProductProvider;
