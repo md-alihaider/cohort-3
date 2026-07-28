@@ -1,3 +1,4 @@
+import Footer from "../components/components-layouts/Footer/Footer";
 import Categories from "../components/home/Categories/Categories";
 import FeaturedProducts from "../components/home/FeaturedProducts/FeaturedProducts";
 import Hero from "../components/home/Hero";
@@ -13,7 +14,8 @@ const Home = () => {
       <Categories />
       <FeaturedProducts />
       <TopRatedProducts />
-      <WhyChooseUs/>
+      <WhyChooseUs />
+      <Footer/>
     </main>
   );
 };
