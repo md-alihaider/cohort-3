@@ -5,26 +5,56 @@ export const Auth = createContext();
 export const AuthProvider = ({ children }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  //All registered users 
+  // All registered users
   const [registeredUsers, setRegisteredUsers] = useState(
     JSON.parse(localStorage.getItem("registeredUsers")) || [],
   );
 
-  //currently logged in user
+  // Currently logged-in user
   const [loggedInUser, setLoggedInUser] = useState(
-    JSON.parse(localStorage.getItem("loggedInUser")),
+    JSON.parse(localStorage.getItem("loggedInUser")) || null,
   );
-  console.log("registered user: ", registeredUsers);
-  console.log("logged in user: ", loggedInUser);
+
+  // Register a new user
+  const registerUser = (user) => {
+    const updatedUsers = [...registeredUsers, user];
+
+    setRegisteredUsers(updatedUsers);
+
+    localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+  };
+
+  // Login user
+  const login = (user) => {
+    setLoggedInUser(user);
+
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+  };
+
+  // Logout user
+  const logout = () => {
+    setLoggedInUser(null);
+
+    localStorage.removeItem("loggedInUser");
+  };
+
   return (
     <Auth.Provider
       value={{
+        // State
         registeredUsers,
-        setLoggedInUser,
-        setRegisteredUsers,
         loggedInUser,
         showPassword,
-        setShowPassword
+
+        // Actions
+        registerUser,
+        login,
+        logout,
+
+        // Utilities
+        setShowPassword,
+        setRegisteredUsers,
+        setLoggedInUser,
       }}
     >
       {children}

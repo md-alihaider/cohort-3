@@ -1,9 +1,13 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { ShoppingCart, LogOut, Menu, X, Zap } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Auth } from "/src/context/AuthContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const { loggedInUser, logout } = useContext(Auth);
 
   const navLinks = [
     { name: "Home", path: "/home" },
@@ -11,24 +15,31 @@ const Navbar = () => {
     { name: "About", path: "/about" },
   ];
 
+  const initials =
+    loggedInUser?.name
+      ?.split(" ")
+      .map((name) => name[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase() || "?";
+
+  const logoutHandler = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-[#0B0B0B]">
       <div className="mx-auto flex h-16 max-w-300 items-center justify-between px-6 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-              <Zap
-                size={16}
-                strokeWidth={3}
-                className="fill-black text-black"
-              />
-            </div>
-
-            <h1 className="text-2xl font-bold">
-              Sky<span className="text-primary">Mart</span>
-            </h1>
+        <Link to="/home" className="flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
+            <Zap size={16} strokeWidth={3} className="fill-black text-black" />
           </div>
+
+          <h1 className="text-2xl font-bold">
+            Sky<span className="text-primary">Mart</span>
+          </h1>
         </Link>
 
         {/* Desktop Navigation */}
@@ -50,20 +61,34 @@ const Navbar = () => {
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-3">
-          <div className="flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-1.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-sm font-bold text-black">
-              A
+          {/* User Card */}
+          <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-bold text-black">
+              {initials}
             </div>
 
-            <span className="text-white text-sm">Ali Haider</span>
+            <div className="leading-tight">
+              <h3 className="text-sm font-semibold text-white">
+                {loggedInUser?.name || "Guest"}
+              </h3>
+
+              <p className="text-xs text-zinc-500">
+                {loggedInUser?.email || ""}
+              </p>
+            </div>
           </div>
 
-          <button className="w-9 h-9 rounded-xl border border-zinc-800 flex items-center justify-center text-white hover:border-lime-400 transition">
-            <ShoppingCart size={20} />
+          {/* Cart */}
+          <button className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-800 text-white transition hover:border-primary">
+            <ShoppingCart size={18} />
           </button>
 
-          <button className="w-9 h-9 rounded-xl border border-zinc-800 flex items-center justify-center text-white hover:border-red-500 transition">
-            <LogOut size={20} />
+          {/* Logout */}
+          <button
+            onClick={logoutHandler}
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-800 text-white transition hover:border-red-500 hover:text-red-400"
+          >
+            <LogOut size={18} />
           </button>
         </div>
 
@@ -73,7 +98,10 @@ const Navbar = () => {
             <ShoppingCart size={18} />
           </button>
 
-          <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 hover:border-red-500 transition">
+          <button
+            onClick={logoutHandler}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 hover:border-red-500 transition"
+          >
             <LogOut size={18} />
           </button>
 
@@ -88,7 +116,24 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="border-t border-zinc-800 bg-card lg:hidden">
+        <div className="border-t border-zinc-800 bg-[#151515] lg:hidden">
+          {/* Mobile User Card */}
+          <div className="mx-3 mt-3 flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900 p-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary font-bold text-black">
+              {initials}
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-white">
+                {loggedInUser?.fullName || "Guest"}
+              </h3>
+
+              <p className="text-xs text-zinc-500">
+                {loggedInUser?.email || ""}
+              </p>
+            </div>
+          </div>
+
           <nav className="flex flex-col py-3">
             {navLinks.map((link) => (
               <NavLink
