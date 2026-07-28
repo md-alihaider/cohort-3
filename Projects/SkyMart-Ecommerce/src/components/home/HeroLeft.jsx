@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { ArrowRight } from "lucide-react";
 import { Auth } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
 
 const HeroLeft = () => {
   const { loggedInUser } = useContext(Auth);
+  const navigate = useNavigate();
 
   const userName =
     loggedInUser?.fullName?.split(" ")[0] ||
@@ -39,12 +41,18 @@ const HeroLeft = () => {
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4">
-        <button className="flex h-12 items-center gap-2 rounded-xl bg-primary px-7 font-semibold text-black transition hover:scale-105">
+        <button
+          onClick={() => navigate("/products")}
+          className="flex h-12 items-center gap-2 rounded-xl bg-primary px-7 font-semibold text-black transition hover:scale-105"
+        >
           Shop Now
           <ArrowRight size={16} />
         </button>
 
-        <button className="flex h-12 items-center rounded-xl border border-zinc-700 px-7 font-medium text-white transition hover:border-primary">
+        <button
+          onClick={() => navigate("/products")}
+          className="flex h-12 items-center rounded-xl border border-zinc-700 px-7 font-medium text-white transition hover:border-primary"
+        >
           View All Products
         </button>
       </div>

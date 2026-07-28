@@ -6,7 +6,7 @@ const SectionHeader = ({
   title,
   description,
   buttonText = "View All",
-  buttonLink = "/shop",
+  buttonLink = "/products",
 }) => {
   return (
     <div className="mb-8 flex items-end justify-between">

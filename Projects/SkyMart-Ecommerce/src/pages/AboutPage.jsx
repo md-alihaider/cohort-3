@@ -8,7 +8,12 @@ import {
   ShieldCheck,
   Smartphone,
   Code2,
+  Globe,
+  GraduationCap,
 } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router";
+import Footer from "../components/components-layouts/Footer/Footer";
 const AboutPage = () => {
   const values = [
     {
@@ -154,8 +159,97 @@ const AboutPage = () => {
         </div>
       </section>
       {/* Developer */}
+      <section className="mx-auto mt-20 max-w-5xl px-6">
+        <h2 className="mb-10 text-center text-3xl font-bold">
+          Meet the Developer
+        </h2>
 
+        <div className="rounded-3xl border border-zinc-700 bg-[#111111] p-8 md:p-10">
+          <div className="flex flex-col items-center text-center">
+            {/* Avatar */}
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-3xl font-bold text-black">
+              AH
+            </div>
+
+            <h3 className="mt-6 text-3xl font-bold">Md Ali Haider</h3>
+
+            <p className="mt-2 text-primary">React & MERN Stack Developer</p>
+
+            <div className="mt-6 flex flex-wrap justify-center gap-6 text-zinc-400">
+              <div className="flex items-center gap-2">
+                <GraduationCap size={18} />
+                <span>BCA Graduate</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Code2 size={18} />
+                <span>Frontend Developer</span>
+              </div>
+            </div>
+
+            <p className="mt-8 max-w-2xl leading-8 text-zinc-400">
+              I enjoy building responsive, user-friendly web applications using
+              modern React technologies. SkyMart is one of my learning projects
+              where I applied Context API, React Router, Tailwind CSS, API
+              integration, authentication, and reusable component architecture.
+            </p>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <a
+                href="https://github.com/md-alihaider"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl border border-zinc-700 px-5 py-3 transition hover:border-primary hover:text-primary"
+              >
+                <FaGithub size={18} />
+                GitHub
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/md-ali-haider/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl border border-zinc-700 px-5 py-3 transition hover:border-primary hover:text-primary"
+              >
+                <FaLinkedin size={18} />
+                LinkedIn
+              </a>
+
+              <a
+                href="https://alihaider-dev.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-black transition hover:opacity-90"
+              >
+                <Globe size={18} />
+                Portfolio
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* CTA */}
+      <section className="mx-auto mt-20 mb-20 max-w-5xl px-6">
+        <div className="rounded-3xl border border-primary/20 bg-[#111111] px-8 py-12 text-center">
+          <h2 className="text-4xl font-bold">
+            Explore <span className="text-primary">SkyMart</span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-xl leading-8 text-zinc-400">
+            Browse products, test the shopping experience, and explore a modern
+            React e-commerce application built with today's frontend
+            technologies.
+          </p>
+
+          <Link
+            to="/products"
+            className="mt-8 inline-flex items-center rounded-xl bg-primary px-8 py-4 font-semibold text-black transition hover:scale-105"
+          >
+            Browse Products →
+          </Link>
+        </div>
+      </section>
+      <Footer/>
     </main>
   );
 };

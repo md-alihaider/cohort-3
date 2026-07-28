@@ -1,14 +1,18 @@
 import { Package, TrendingUp, Star, Tag } from "lucide-react";
-
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import StatCard from "./StatCard";
+import { ProductContext } from "../../context/ProductContext";
 
 const Stats = () => {
+  const { totalItems, totalPrice } = useContext(CartContext);
+  const { products, categories } = useContext(ProductContext);
   const stats = [
     {
       icon: Package,
       iconBg: "bg-lime-500/10",
       iconColor: "text-primary",
-      value: "0",
+      value: totalItems,
       title: "Cart Items",
       subtitle: "In your bag",
     },
@@ -16,7 +20,7 @@ const Stats = () => {
       icon: TrendingUp,
       iconBg: "bg-blue-500/10",
       iconColor: "text-blue-400",
-      value: "$0.00",
+      value: `$${totalPrice.toFixed(2)}`,
       title: "Cart Value",
       subtitle: "Ready to checkout",
     },
@@ -24,7 +28,7 @@ const Stats = () => {
       icon: Star,
       iconBg: "bg-yellow-500/10",
       iconColor: "text-yellow-400",
-      value: "5",
+      value: products.length,
       title: "Top Products",
       subtitle: "Highly rated",
     },
@@ -32,7 +36,7 @@ const Stats = () => {
       icon: Tag,
       iconBg: "bg-violet-500/10",
       iconColor: "text-violet-400",
-      value: "6",
+      value: categories.length,
       title: "Categories",
       subtitle: "To explore",
     },
