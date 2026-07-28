@@ -6,7 +6,7 @@ const Stats = () => {
   const stats = [
     {
       icon: Package,
-      iconBg: "bg-lime-400/10",
+      iconBg: "bg-lime-500/10",
       iconColor: "text-primary",
       value: "0",
       title: "Cart Items",
@@ -22,8 +22,8 @@ const Stats = () => {
     },
     {
       icon: Star,
-      iconBg: "bg-amber-500/10",
-      iconColor: "text-amber-400",
+      iconBg: "bg-yellow-500/10",
+      iconColor: "text-yellow-400",
       value: "5",
       title: "Top Products",
       subtitle: "Highly rated",
@@ -40,9 +40,9 @@ const Stats = () => {
 
   return (
     <section className="mt-8">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {stats.map((item) => (
-          <StatCard key={item.title} {...item} />
+      <div className="grid gap-4 lg:grid-cols-4 sm:grid-cols-2">
+        {stats.map((stat) => (
+          <StatCard key={stat.title} {...stat} />
         ))}
       </div>
     </section>

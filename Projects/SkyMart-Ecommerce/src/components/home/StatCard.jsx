@@ -1,3 +1,5 @@
+import React from "react";
+
 const StatCard = ({
   icon: Icon,
   iconBg,
@@ -7,25 +9,36 @@ const StatCard = ({
   subtitle,
 }) => {
   return (
-    <div className="rounded-3xl border border-zinc-700 bg-card px-6 py-5 transition-all duration-300 hover:border-primary">
-      <div className="flex items-start gap-4">
-        {/* Icon */}
-        <div
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${iconBg}`}
-        >
-          <Icon size={20} className={iconColor} />
-        </div>
+    <div
+      className="
+        h-27
+        rounded-[22px]
+        border
+        border-zinc-700
+        bg-card
+        px-6
+        flex
+        items-center
+        gap-4
+        transition-all
+        duration-300
+        hover:border-primary
+      "
+    >
+      <div
+        className={`h-14 w-14 rounded-2xl flex items-center justify-center ${iconBg}`}
+      >
+        <Icon size={22} className={iconColor} />
+      </div>
 
-        {/* Content */}
-        <div>
-          <h2 className="text-[36px] font-bold leading-none text-white">
-            {value}
-          </h2>
+      <div>
+        <h2 className="text-[34px] font-bold leading-none text-white">
+          {value}
+        </h2>
 
-          <h3 className="mt-2 text-[17px] font-semibold text-white">{title}</h3>
+        <p className="mt-2 text-[15px] font-medium text-zinc-200">{title}</p>
 
-          <p className="mt-1 text-sm text-zinc-500">{subtitle}</p>
-        </div>
+        <p className="text-xs text-zinc-500">{subtitle}</p>
       </div>
     </div>
   );
