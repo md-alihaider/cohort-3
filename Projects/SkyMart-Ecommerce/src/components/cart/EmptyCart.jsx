@@ -17,7 +17,7 @@ const EmptyCart = ({ onClose }) => {
       </p>
 
       <Link
-        to="/shop"
+        to="/products"
         onClick={onClose}
         className="mt-8 rounded-2xl bg-primary px-8 py-4 font-semibold text-black transition hover:opacity-90"
       >

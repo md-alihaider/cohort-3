@@ -3,6 +3,7 @@ import { ProductContext } from "../context/ProductContext";
 import ShopToolbar from "../components/shop/ShopToolbar";
 import ShopHeader from "../components/shop/ShopHeader";
 import ProductGrid from "../components/shop/ProductGrid";
+import Footer from '../components/components-layouts/Footer/Footer'
 
 const ShopPage = () => {
   const { products, categories, loading } = useContext(ProductContext);
@@ -82,6 +83,7 @@ const ShopPage = () => {
           </button>
         </div>
       )}
+      <Footer/>
     </>
   );
 };

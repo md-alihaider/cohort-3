@@ -31,7 +31,7 @@ export const useAuth = () => {
 
     setLoggedInUser(user);
     localStorage.setItem("loggedInUser", JSON.stringify(user));
-    toast.success("User loggedIn");
+    toast.success("👋 Welcome back!");
     navigate("/home");
     reset();
   };
@@ -50,7 +50,7 @@ export const useAuth = () => {
     const { confirmPassword, ...user } = data;
     const arr = [...registeredUsers, user];
     setRegisteredUsers(arr);
-    toast.success("user registered successfully");
+    toast.success("🎉 Account created successfully!");
     setLoggedInUser(user);
     localStorage.setItem("loggedInUser", JSON.stringify(user));
     localStorage.setItem("registeredUsers", JSON.stringify(arr));

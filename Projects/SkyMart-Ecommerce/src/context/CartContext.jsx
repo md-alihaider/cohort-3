@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -15,12 +15,17 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     console.log("Cart:", cartItems);
   }, [cartItems]);
-  const addToCart = (product) => {
-    console.log("Adding:", product);
-    setCartItems((prev) => {
-      const existingItem = prev.find((item) => item.id === product.id);
 
-      if (existingItem) {
+  const getCartItem = (id) => {
+    return cartItems.find((item) => item.id === id);
+  };
+  const addToCart = (product) => {
+    setCartItems((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+
+      if (existing) {
+        toast.info("Quantity Updated 🛒");
+
         return prev.map((item) =>
           item.id === product.id
             ? {
@@ -31,19 +36,17 @@ const CartProvider = ({ children }) => {
         );
       }
 
-      return [
-        ...prev,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ];
+      toast.success(`${product.title.slice(0, 25)}... added to cart🛒`);
+
+      return [...prev, { ...product, quantity: 1 }];
     });
   };
 
   // Remove item
   const removeFromCart = (id) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
+
+    toast.error("Removed from Cart 🗑");
   };
 
   // Increase quantity
@@ -77,9 +80,9 @@ const CartProvider = ({ children }) => {
   };
 
   // Clear cart
-  const clearCart = () => {
-    setCartItems([]);
-  };
+ const clearCart = () => {
+   setCartItems([]);
+ };
 
   // Total Items
   const totalItems = cartItems.reduce(
@@ -104,6 +107,7 @@ const CartProvider = ({ children }) => {
         clearCart,
         totalItems,
         totalPrice,
+        getCartItem,
       }}
     >
       {children}

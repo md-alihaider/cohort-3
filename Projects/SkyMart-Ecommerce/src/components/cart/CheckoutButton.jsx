@@ -1,13 +1,31 @@
-import { ArrowRight } from "lucide-react";
+import React, { useContext } from "react";
+import { toast } from "react-toastify";
+import { CartContext } from "../../context/CartContext";
 
-const CheckoutButton = ({ onClick }) => {
+const CheckoutButton = ({ onClose }) => {
+  const { cartItems, clearCart } = useContext(CartContext);
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      toast.error("🛒 Your cart is empty!");
+      return;
+    }
+
+    toast.success("🎉 Order placed successfully!");
+
+    clearCart();
+
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <button
-      onClick={onClick}
-      className="flex w-full items-center justify-center gap-2 rounded-2xl bg-primary py-4 text-lg font-semibold text-black transition hover:opacity-90 active:scale-[0.98]"
+      onClick={handleCheckout}
+      className="w-full rounded-xl bg-yellow-400 py-3 font-semibold text-black transition hover:bg-yellow-300"
     >
-      Checkout
-      <ArrowRight size={20} />
+      Checkout →
     </button>
   );
 };

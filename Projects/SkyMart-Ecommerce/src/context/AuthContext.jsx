@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 export const Auth = createContext();
 
@@ -27,14 +28,14 @@ export const AuthProvider = ({ children }) => {
   // Login user
   const login = (user) => {
     setLoggedInUser(user);
-
+    
     localStorage.setItem("loggedInUser", JSON.stringify(user));
   };
 
   // Logout user
   const logout = () => {
     setLoggedInUser(null);
-
+    toast.info("👋 Logged out");
     localStorage.removeItem("loggedInUser");
   };
 
