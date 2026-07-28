@@ -1,7 +1,10 @@
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="group overflow-hidden rounded-3xl border border-zinc-700 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary">
       <Link to={`/product/${product.id}`} className="block">
@@ -55,8 +58,8 @@ const ProductCard = ({ product }) => {
       <div className="px-5 pb-5">
         <button
           onClick={(e) => {
-            e.stopPropagation();
-            // addToCart(product)
+            e.preventDefault();
+            addToCart(product);
           }}
           className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary font-semibold text-black transition hover:opacity-90"
         >

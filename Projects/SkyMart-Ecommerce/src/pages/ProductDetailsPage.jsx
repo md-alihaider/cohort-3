@@ -7,6 +7,10 @@ import ProductBreadcrumb from "../components/product/ProductBreadcrumb";
 import ProductImage from "../components/product/ProductImage";
 import ProductInfo from "../components/product/ProductInfo";
 
+import ProductFeatures from "../components/product/ProductFeatures";
+import ProductNavigation from "../components/product/ProductNavigation";
+import RelatedProducts from "../components/product/RelatedProducts";
+
 const ProductDetailsPage = () => {
   const { id } = useParams();
 
@@ -29,8 +33,14 @@ const ProductDetailsPage = () => {
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
         <ProductImage product={product} />
 
-        <ProductInfo product={product} />
+        <div>
+          <ProductInfo product={product} />
+          <ProductFeatures />
+          <ProductNavigation id={product.id} totalProducts={products.length} />
+        </div>
       </div>
+
+      <RelatedProducts products={products} currentProduct={product} />
     </div>
   );
 };

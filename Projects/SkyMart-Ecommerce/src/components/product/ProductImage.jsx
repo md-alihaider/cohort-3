@@ -4,7 +4,7 @@ const ProductImage = ({ product }) => {
       <img
         src={product.image}
         alt={product.title}
-        className="mx-auto h-[420px] object-contain"
+        className="mx-auto h-105 object-contain"
       />
     </div>
   );
