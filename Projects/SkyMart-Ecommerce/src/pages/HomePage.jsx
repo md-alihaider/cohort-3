@@ -8,15 +8,15 @@ import WhyChooseUs from "../components/home/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
-    <main className="mx-auto max-w-300 px-6 lg:px-8">
+    <>
       <Hero />
       <Stats />
       <Categories />
       <FeaturedProducts />
       <TopRatedProducts />
       <WhyChooseUs />
-      <Footer/>
-    </main>
+      <Footer />
+    </>
   );
 };
 
