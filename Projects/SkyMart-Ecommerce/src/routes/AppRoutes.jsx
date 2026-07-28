@@ -9,6 +9,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import MainLayout from '../layouts/MainLayout';
 import ShopPage from '../pages/ShopPage';
 import AboutPage from '../pages/AboutPage';
+import ProductDetailsPage from '../pages/ProductDetailsPage';
 
 
 const AppRoutes = () => {
@@ -39,7 +40,7 @@ const AppRoutes = () => {
     },
     {
       path: "/",
-      element: <ProtectedRoutes/>,
+      element: <ProtectedRoutes />,
       children: [
         {
           element: <MainLayout />,
@@ -51,6 +52,10 @@ const AppRoutes = () => {
             {
               path: "products",
               element: <ShopPage />,
+            },
+            {
+              path: "product/:id",
+              element: <ProductDetailsPage />,
             },
             {
               path: "about",
