@@ -69,41 +69,60 @@ const RegisterPage = () => {
         </div>
 
         {/* Inputs */}
-        <div className="space-y-4">
-          <Input icon={<User size={18} />} placeholder="Full Name" />
+        <form className="space-y-4">
+          <Input
+            icon={<User size={18} />}
+            placeholder="Full Name"
+            name="fullName"
+          />
 
-          <Input icon={<AtSign size={18} />} placeholder="Username" />
+          <Input
+            icon={<AtSign size={18} />}
+            placeholder="Username"
+            name="username"
+          />
 
-          <Input icon={<Mail size={18} />} placeholder="Email Address" />
+          <Input
+            icon={<Mail size={18} />}
+            placeholder="Email Address"
+            type="email"
+            name="email"
+          />
 
           <Input
             icon={<Lock size={18} />}
             placeholder="Password"
             type="password"
+            name="password"
           />
-        </div>
 
-        {/* Checkbox */}
-        <label className="mt-5 flex items-start gap-2 text-xs text-gray-400">
-          <input type="checkbox" className="mt-0.5 accent-purple-500" />
+          <label className="flex items-start gap-2 pt-1 text-xs text-gray-400">
+            <input
+              type="checkbox"
+              name="terms"
+              className="mt-0.5 accent-purple-500"
+            />
 
-          <span>
-            I agree to the{" "}
-            <span className="text-purple-300 cursor-pointer">
-              Terms of Service
-            </span>{" "}
-            and{" "}
-            <span className="text-purple-300 cursor-pointer">
-              Privacy Policy
+            <span>
+              I agree to the{" "}
+              <span className="cursor-pointer text-purple-300">
+                Terms of Service
+              </span>{" "}
+              and{" "}
+              <span className="cursor-pointer text-purple-300">
+                Privacy Policy
+              </span>
             </span>
-          </span>
-        </label>
+          </label>
 
-        {/* Button */}
-        <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#d8b6ff] to-[#7c3aed] py-3 font-semibold text-white transition hover:scale-[1.02]">
-          Register
-          <ArrowRight size={18} />
-        </button>
+          <button
+            type="submit"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#d8b6ff] to-[#7c3aed] py-3 font-semibold text-white transition hover:scale-[1.02]"
+          >
+            Register
+            <ArrowRight size={18} />
+          </button>
+        </form>
 
         {/* Login */}
         <p className="mt-6 text-center text-sm text-gray-400">
@@ -117,13 +136,14 @@ const RegisterPage = () => {
   );
 };
 
-const Input = ({ icon, placeholder, type = "text" }) => {
+const Input = ({ icon, placeholder, type = "text", name }) => {
   return (
-    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-[#101014] px-4 py-3 focus-within:border-purple-500 transition">
+    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-[#101014] px-4 py-3 transition focus-within:border-purple-500">
       <div className="text-gray-400">{icon}</div>
 
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         className="w-full bg-transparent text-sm text-white placeholder:text-gray-500 outline-none"
       />
