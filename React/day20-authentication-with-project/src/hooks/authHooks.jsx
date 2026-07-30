@@ -2,9 +2,14 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/authSlice";
 export const useAuth = () => {
   let navigate = useNavigate();
-  const [registeredUser, setRegisteredUser] = useState([]);
+  const dispatch = useDispatch();
+  const [registeredUser, setRegisteredUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("registeredUsers")) || [];
+  });
   let {
     register,
     handleSubmit,
@@ -16,6 +21,8 @@ export const useAuth = () => {
     const arr = [...registeredUser, data];
     setRegisteredUser(arr);
     localStorage.setItem("registeredUsers", JSON.stringify(arr));
+    toast.success("User Registered 👋");
+    reset();
   };
   const loginForm = (data) => {
     const user = registeredUser.find((val) => {
@@ -24,9 +31,12 @@ export const useAuth = () => {
 
     if (!user) {
       toast.error("user not found");
+      return
     }
-
+    dispatch(addUser(user));
+    toast.success("User logged in 👋");
     reset();
+    navigate("/main")
   };
 
   return {
