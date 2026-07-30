@@ -16,7 +16,7 @@ import { useNavigate } from "react-router";
 const RegisterPage = () => {
   const navigate = useNavigate()
   const { registerUser } = useContext(AuthContextData);
-  const { handleSubmit, register, reset, formState: { errors }, setValue, watch } = useForm({
+  const { handleSubmit, register, formState: { errors }, setValue, watch } = useForm({
     defaultValues: {
       role:"listener"
     }
