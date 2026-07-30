@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Music2,
   Mic,
@@ -9,9 +9,20 @@ import {
   Lock,
   ArrowRight,
 } from "lucide-react";
+import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
-  const [role, setRole] = useState("listener");
+  
+  const { handleSubmit, register, reset, formState: { errors }, setValue, watch } = useForm({
+    defaultValues: {
+      role:"listener"
+    }
+  })
+  const role = watch("role")
+  const submitHandler = (data) => {
+    console.log(data)
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0b0914] overflow-hidden relative">
       {/* Background Glow */}
@@ -38,7 +49,7 @@ const RegisterPage = () => {
           {/* Listener */}
           <button
             type="button"
-            onClick={() => setRole("listener")}
+            onClick={() => setValue("role", "listener")}
             className={`flex h-24 flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
               role === "listener"
                 ? "border-purple-500 bg-purple-500/10 text-purple-300"
@@ -54,7 +65,7 @@ const RegisterPage = () => {
           {/* Artist */}
           <button
             type="button"
-            onClick={() => setRole("artist")}
+            onClick={() => setValue("role", "artist")}
             className={`flex h-24 flex-col items-center justify-center rounded-xl border transition-all duration-300 ${
               role === "artist"
                 ? "border-purple-500 bg-purple-500/10 text-purple-300"
@@ -69,40 +80,60 @@ const RegisterPage = () => {
         </div>
 
         {/* Inputs */}
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit(submitHandler)} className="space-y-4">
           <Input
+            {...register("fullname", { required: "Full name is required" })}
             icon={<User size={18} />}
             placeholder="Full Name"
-            name="fullName"
+            error={errors.fullname?.message}
           />
 
           <Input
+            {...register("username", { required: "Username is required" })}
             icon={<AtSign size={18} />}
             placeholder="Username"
-            name="username"
+            error={errors.username?.message}
           />
 
           <Input
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+\.\S+$/,
+                message: "Enter a valid email",
+              },
+            })}
             icon={<Mail size={18} />}
             placeholder="Email Address"
             type="email"
-            name="email"
+            error={errors.email?.message}
           />
+          <input {...register("role")} type="hidden" />
 
           <Input
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
             icon={<Lock size={18} />}
             placeholder="Password"
             type="password"
-            name="password"
+            error={errors.fullname?.message}
           />
 
           <label className="flex items-start gap-2 pt-1 text-xs text-gray-400">
             <input
+              {...register("terms", { required: "Click on terms" })}
               type="checkbox"
-              name="terms"
               className="mt-0.5 accent-purple-500"
             />
 
+            {errors.terms && (
+              <p className="text-xs text-red-400">{errors.terms.message}</p>
+            )}
             <span>
               I agree to the{" "}
               <span className="cursor-pointer text-purple-300">
@@ -136,17 +167,27 @@ const RegisterPage = () => {
   );
 };
 
-const Input = ({ icon, placeholder, type = "text", name }) => {
+const Input = ({ icon, placeholder, type = "text", error, ...props }) => {
   return (
-    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-[#101014] px-4 py-3 transition focus-within:border-purple-500">
-      <div className="text-gray-400">{icon}</div>
+    <div>
+      <div
+        className={`flex items-center gap-3 rounded-full px-4 py-3 transition ${
+          error
+            ? "border border-red-500"
+            : "border border-white/10 focus-within:border-purple-500"
+        } bg-[#101014]`}
+      >
+        <div className={error ? "text-red-400" : "text-gray-400"}>{icon}</div>
 
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className="w-full bg-transparent text-sm text-white placeholder:text-gray-500 outline-none"
-      />
+        <input
+          type={type}
+          placeholder={placeholder}
+          className="w-full bg-transparent text-sm text-white placeholder:text-gray-500 outline-none"
+          {...props}
+        />
+      </div>
+
+      {error && <p className="mt-1 ml-4 text-xs text-red-400">{error}</p>}
     </div>
   );
 };
