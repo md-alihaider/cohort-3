@@ -8,6 +8,8 @@ import HomePage from "../pages/HomePage";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/authSlice";
+import PublicProtected from "./protected/PublicProtected";
+import MainProtected from "./protected/MainProtected";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -25,28 +27,41 @@ const AppRoutes = () => {
   useEffect(() => {
     hydrateUser();
   }, []);
+
   let router = createBrowserRouter([
     {
       path: "/",
-      element: <AuthLayout />,
+      element: <PublicProtected />,
       children: [
         {
-          index: true,
-          element: <LoginPage />,
-        },
-        {
-          path: "register",
-          element: <RegisterPage />,
+          path: "",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <LoginPage />,
+            },
+            {
+              path: "register",
+              element: <RegisterPage />,
+            },
+          ],
         },
       ],
     },
     {
       path: "/main",
-      element: <MainLayout />,
+      element: <MainProtected />,
       children: [
         {
-          index: true,
-          element: <HomePage />,
+          path: "",
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <HomePage />,
+            },
+          ],
         },
       ],
     },
