@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Music2,
   Mic,
@@ -10,9 +10,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { AuthContextData } from "../context/AuthContext";
+import { useNavigate } from "react-router";
 
 const RegisterPage = () => {
-  
+  const navigate = useNavigate()
+  const { registerUser } = useContext(AuthContextData);
   const { handleSubmit, register, reset, formState: { errors }, setValue, watch } = useForm({
     defaultValues: {
       role:"listener"
@@ -20,7 +23,12 @@ const RegisterPage = () => {
   })
   const role = watch("role")
   const submitHandler = (data) => {
-    console.log(data)
+    const res = registerUser(data)
+    if (!res.success) {
+      alert(res.message)
+      return
+    }
+    navigate("/")
   }
 
   return (
@@ -121,7 +129,7 @@ const RegisterPage = () => {
             icon={<Lock size={18} />}
             placeholder="Password"
             type="password"
-            error={errors.fullname?.message}
+            error={errors.password?.message}
           />
 
           <label className="flex items-start gap-2 pt-1 text-xs text-gray-400">
