@@ -1,9 +1,7 @@
 import React from "react";
 import { Search, Filter } from "lucide-react";
-import { useProductApi } from "../hooks/productHooks";
 
-const Filters = () => {
-  const { filterProducts } = useProductApi();
+const Filters = ({ filterProducts  }) => {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 flex flex-col lg:flex-row gap-5 items-center justify-between shadow-lg">
       {/* Search */}
@@ -14,7 +12,7 @@ const Filters = () => {
         />
 
         <input
-          onChange={(e)=> filterProducts(e.target.value)}
+          onChange={(e) => filterProducts(e.target.value)}
           type="text"
           placeholder="Search products..."
           className="w-full bg-zinc-800 border border-zinc-700 rounded-xl py-3 pl-11 pr-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-lime-400 transition"
