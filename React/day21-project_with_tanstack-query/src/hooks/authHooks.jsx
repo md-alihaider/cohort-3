@@ -10,6 +10,7 @@ export const useAuth = () => {
   const [registeredUser, setRegisteredUser] = useState(() => {
     return JSON.parse(localStorage.getItem("registeredUsers")) || [];
   });
+  
   let {
     register,
     handleSubmit,
