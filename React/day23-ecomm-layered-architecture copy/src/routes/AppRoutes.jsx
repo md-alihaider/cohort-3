@@ -16,17 +16,17 @@ import { addUser } from "../features/auth/state/authSlice";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await hydrateUser();
-        console.log(response);
-        dispatch(addUser(response));
-      } catch (error) {
-        console.log("Error in hydration...", error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await hydrateUser();
+  //       console.log(response);
+  //       dispatch(addUser(response));
+  //     } catch (error) {
+  //       console.log("Error in hydration...", error);
+  //     }
+  //   })();
+  // }, []);
 
   const router = createBrowserRouter([
     {
