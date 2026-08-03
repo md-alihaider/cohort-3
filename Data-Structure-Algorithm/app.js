@@ -22,10 +22,22 @@ let promp = require("prompt-sync")();
 // console.log(typeof age)
 
 // Q3 Swap two number
-function swapNumbers(a, b) {
-  [a, b] = [b, a];
-  console.log(a);
-  console.log(b);
-}
+// function swapNumbers(a, b) {
+//   [a, b] = [b, a];
+//   console.log(a);
+//   console.log(b);
+// }
 
-swapNumbers(2,3)
+// swapNumbers(2,3)
+
+
+
+// Q4 Compound Interest Caluculation 
+// function calculateCompoundInterest(P, r, t, n) {
+//   // Write your logic here
+//   let totalAmount = P * (1 + r / n) ** (n * t);
+//   let interest = totalAmount - P;
+//   return interest.toFixed(2);
+// }
+
+// console.log(calculateCompoundInterest(1500, 0.04, 6, 2));
