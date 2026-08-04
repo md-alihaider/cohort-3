@@ -83,3 +83,18 @@ let prompt = require("prompt-sync")();
 // }
 
 // console.log(calculateCircleProperties(5.2)) //[ '32.67', '84.95' ]
+
+// let age = Number(prompt("Enter your age: "));
+
+// if (age >= 18) {
+//   console.log("Valide voter");
+// } else {
+//   console.log("Invalid voter")
+// }
+
+// let marks = Number(prompt("Enter your marks: "));
+
+// if (marks > 85 && marks <= 95) console.log("Excellent");
+// else if (marks > 80 && marks <= 85) console.log("Very good");
+// else if (marks > 70 && marks <= 80) console.log("Good");
+// else console.log("Fair");
