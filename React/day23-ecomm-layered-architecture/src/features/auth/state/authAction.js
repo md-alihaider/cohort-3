@@ -18,4 +18,17 @@ export const loginUserAction = createAsyncThunk(
 );
 
 
-export const hydrateUserAction = createAsyncThunk()
+export const hydrateUserAction = createAsyncThunk("/auth/hydrate", async(_, thunkApi) => {
+  const token = localStorage.getItem("accessToken");
+  try {
+    const res = await api.get("/auth/me", {
+      headers: {
+        Authorization: `Bearer ${token}`, // Pass JWT via Authorization header
+      },
+    }); 
+    return res.data;
+  } catch (error) {
+    toast.error("Unauthorized User");
+    return thunkApi.rejectWithValue("Unauthorized User");
+  }
+})
