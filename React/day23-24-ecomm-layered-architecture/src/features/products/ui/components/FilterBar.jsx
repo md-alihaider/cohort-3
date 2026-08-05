@@ -2,8 +2,8 @@ import React from "react";
 import { Search } from "lucide-react";
 import { useAllCategories } from "../../hooks/useProductHooks";
 
-const FilterBar = ({search,setSearch}) => {
-  let { data, isPending, error, } = useAllCategories();
+const FilterBar = ({ search, setSearch, category, setCategory }) => {
+  let { data, isPending  } = useAllCategories();
 
   if (isPending) return <h1>Loading categories...</h1>;
 
@@ -18,7 +18,7 @@ const FilterBar = ({search,setSearch}) => {
 
         <input
           value={search}
-          onChange={(e)=>setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Search products..."
           className="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-zinc-500 focus:outline-none focus:border-lime-400 transition"
@@ -26,7 +26,11 @@ const FilterBar = ({search,setSearch}) => {
       </div>
 
       {/* Category Select */}
-      <select className="w-full md:w-64 bg-zinc-900 border border-zinc-800 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-lime-400 transition cursor-pointer">
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="w-full md:w-64 bg-zinc-900 border border-zinc-800 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-lime-400 transition cursor-pointer"
+      >
         <option value="all">All Categories</option>
 
         {data.map((item) => (
