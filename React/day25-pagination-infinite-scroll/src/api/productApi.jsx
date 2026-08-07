@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getAllProducts = async (limit, page = 1) => {
+export const getAllProducts = async (limit, pageParams = 1) => {
   try {
     let res = await axios.get(
-      `https://dummyjson.com/products?limit=${limit}&skip=${page * limit}`,
+      `https://dummyjson.com/products?limit=${limit}&skip=${pageParams}`,
     );
     return res.data;
   } catch (error) {
