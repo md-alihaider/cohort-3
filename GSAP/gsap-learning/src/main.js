@@ -84,78 +84,89 @@ import { gsap } from "gsap";
 //   x:"+=50"
 // })
 
-document.querySelectorAll(".btn").forEach((btn) => {
-  btn.addEventListener("mouseenter", () => {
-    // Default hover scale
-    gsap.to(btn, { scale: 1.08, duration: 0.3, ease: "back.out(2)" });
+// document.querySelectorAll(".btn").forEach((btn) => {
+//   btn.addEventListener("mouseenter", () => {
+//     // Default hover scale
+//     gsap.to(btn, { scale: 1.08, duration: 0.3, ease: "back.out(2)" });
 
-    // Scale Button Effect
-    if (btn.classList.contains("btn--scale")) {
-      gsap.to(btn, {
-        backgroundColor: "limegreen",
-        color: "white",
-        fontSize: "1rem",
-        duration: 1.3,
-        ease: "elastic.inOut",
-      });
-    }
+//     // Scale Button Effect
+//     if (btn.classList.contains("btn--scale")) {
+//       gsap.to(btn, {
+//         backgroundColor: "limegreen",
+//         color: "white",
+//         fontSize: "1rem",
+//         duration: 1.3,
+//         ease: "elastic.inOut",
+//       });
+//     }
 
-    // Glow Button Effect
-    if (btn.classList.contains("btn--glow")) {
-      gsap.to(btn, {
-        boxShadow: "0px 10px 20px rgba(255, 0, 0, 0.94)",
-        duration: 0.3,
-        backgroundColor: "limegreen",
-      });
-    }
+//     // Glow Button Effect
+//     if (btn.classList.contains("btn--glow")) {
+//       gsap.to(btn, {
+//         boxShadow: "0px 10px 20px rgba(255, 0, 0, 0.94)",
+//         duration: 0.3,
+//         backgroundColor: "limegreen",
+//       });
+//     }
 
-    // Wiggle Button Effect
-    if (btn.classList.contains("btn--wiggle")) {
-      gsap.to(btn, {
-        yoyo: true,
-        repeat: 1,
-        rotate: 180,
-        duration: 0.3, // Added duration for smoother control
-      });
-    }
-  });
+//     // Wiggle Button Effect
+//     if (btn.classList.contains("btn--wiggle")) {
+//       gsap.to(btn, {
+//         yoyo: true,
+//         repeat: 1,
+//         rotate: 180,
+//         duration: 0.3, // Added duration for smoother control
+//       });
+//     }
+//   });
 
-  // FIX: Reset all styles back to their original CSS states
-  btn.addEventListener("mouseleave", () => {
-    // 1. Reset the default properties (scale)
-    gsap.to(btn, {
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+//   // FIX: Reset all styles back to their original CSS states
+//   btn.addEventListener("mouseleave", () => {
+//     // 1. Reset the default properties (scale)
+//     gsap.to(btn, {
+//       scale: 1,
+//       duration: 0.3,
+//       ease: "power2.out",
+//     });
 
-    // 2. Reset the specific button properties
-    if (btn.classList.contains("btn--scale")) {
-      gsap.to(btn, {
-        backgroundColor: "", // Passing empty string restores original CSS values
-        color: "",
-        fontSize: "",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
+//     // 2. Reset the specific button properties
+//     if (btn.classList.contains("btn--scale")) {
+//       gsap.to(btn, {
+//         backgroundColor: "", // Passing empty string restores original CSS values
+//         color: "",
+//         fontSize: "",
+//         duration: 0.3,
+//         ease: "power2.out",
+//       });
+//     }
 
-    if (btn.classList.contains("btn--glow")) {
-      gsap.to(btn, {
-        boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)", // Fades shadow out completely
-        backgroundColor: "",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
+//     if (btn.classList.contains("btn--glow")) {
+//       gsap.to(btn, {
+//         boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)", // Fades shadow out completely
+//         backgroundColor: "",
+//         duration: 0.3,
+//         ease: "power2.out",
+//       });
+//     }
 
-    if (btn.classList.contains("btn--wiggle")) {
-      gsap.to(btn, {
-        rotate: 0, // Snaps or rolls back to the starting angle
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
-  });
+//     if (btn.classList.contains("btn--wiggle")) {
+//       gsap.to(btn, {
+//         rotate: 0, // Snaps or rolls back to the starting angle
+//         duration: 0.3,
+//         ease: "power2.out",
+//       });
+//     }
+//   });
+// });
+
+gsap.to(".box", {
+  x: 900,
+  duration: 2,
+  delay: 0.3,
+  ease: "power2.out",
+  stagger: {
+    each: 0.4,
+    from: "center",
+    grid:"auto"
+  }
 });
-
