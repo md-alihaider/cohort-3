@@ -15,7 +15,7 @@ const AppRoutes = () => {
       element: <ProjectPage />,
     },
     {
-      path: "/agency",
+      path: "/agence",
       element: <AgencyPage />,
     },
   ]);
