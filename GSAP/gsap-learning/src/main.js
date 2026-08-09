@@ -1,4 +1,4 @@
-import './style.css'
+import "./style.css";
 import { gsap } from "gsap";
 
 // gsap.to(".box", {
@@ -8,7 +8,6 @@ import { gsap } from "gsap";
 //   ease: "power2.out",
 // });
 
-
 // gsap.to("#boxId", {
 //   x: 300,
 //   rotate: 360,
@@ -16,9 +15,8 @@ import { gsap } from "gsap";
 //   ease:"bounce.out"
 // })
 
-
 // const box = document.querySelector(".box")
-// to method start with default value to given value 
+// to method start with default value to given value
 // gsap.to(box, {
 //   x: 300,
 //   rotate: 360,
@@ -26,7 +24,7 @@ import { gsap } from "gsap";
 //   ease:"bounce.out"
 // })
 
-// from method it start with given value to start value or defaul value 
+// from method it start with given value to start value or defaul value
 // gsap.from(".box", {
 //   x: 300,
 //   rotate: 360,
@@ -34,16 +32,86 @@ import { gsap } from "gsap";
 //   ease: "bounce.out",
 // });
 
-// fromTo method combine both to and from method 
+// fromTo method combine both to and from method
 
-gsap.fromTo(".box", {
-  y: 200,
-  backgroundColor:"limegreen"
-}, {
-  y: 0,
-  x: 600,
-  rotate: 360,
-  backgroundColor: "lime",
-  duration: 3,
-  ease:"power1.in"
-})
+// gsap.fromTo(".box", {
+//   y: 200,
+//   backgroundColor:"limegreen"
+// }, {
+//   y: 0,
+//   x: 600,
+//   rotate: 360,
+//   backgroundColor: "lime",
+//   duration: 3,
+//   ease:"power1.in"
+// })
+
+// set method don't animate anything it just set or place things where you want
+
+// gsap.set(".box", {
+//   x: 400,
+//   y: 400,
+//   backgroundColor:"blue"
+// })
+
+// gsap.from(".box", {
+//   x: 400,
+//   duration: 3, // seconds
+//   delay: 0.3, // wait 0.3s before starting
+//   ease: "bounce.out",
+// });
+
+// gsap.fromTo(".box", {
+//   opacity:0,
+//   scale:0.5,
+// }, {
+//   opacity: 1,
+//   scale: 1,
+//   duration:3
+// })
+
+// const obj = {
+//   score:0
+// }
+
+// gsap.to(obj, {
+//   score: 500,
+//   duration: 3,
+//   onUpdate:()=> console.log(Math.round(obj.score))
+// })
+
+// gsap.to(".box", {
+//   x:"+=50"
+// })
+
+document.querySelectorAll(".btn").forEach((btn) => {
+  btn.addEventListener("mouseenter", () => {
+    gsap.to(btn, { scale: 1.08, duration: 0.3, ease: "back.out(2)" });
+    if (btn.classList.contains("btn--scale")) {
+      gsap.to(btn, {
+        backgroundColor: "limegreen",
+        color: "white",
+        fontSize: "1rem",
+        duration: 1.3,
+        ease:"elastic.inOut"
+      })
+    }
+    if (btn.classList.contains("btn--glow")) {
+      gsap.to(btn, {
+        boxShadow: "0px 10px 20px rgba(255, 0, 0, 0.94)",
+        duration: 0.3,
+        backgroundColor:"limegreen"
+      })
+    }
+    if (btn.classList.contains("btn--wiggle")) {
+      gsap.to(btn, {
+        yoyo: true,
+        repeat: 1,
+        rotate:180
+      })
+    }
+  });
+  btn.addEventListener("mouseleave", () => {
+    gsap.to(btn,{scale:1, duration:0.3, ease:"power2.out"})
+  })
+});
