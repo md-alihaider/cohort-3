@@ -24,10 +24,25 @@
   // obj.name = 90;
 // console.log(obj);
   
-const sum = (a:number, b:number):number => {
-  return a + b;
-}
+// const sum = (a:number, b:number):number => {
+//   return a + b;
+// }
 
-let res:number = sum(8, 9)
+// let res:number = sum(8, 9)
 
-console.log(res)
+// console.log(res)
+
+// const sum = (a: number) => (b: number)=>{
+//   if (b !== undefined) return sum(a + b)
+//   return a
+// }
+
+//Curriying fn
+// const sum = (a: number) => {
+//   return (b: number) => {
+//     if (b !== undefined) return sum(a + b);
+//     return a;
+//   };
+// }
+// let data = sum(7)(7)(8)(8)()
+// console.log(data)
