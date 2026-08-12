@@ -1,23 +1,9 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { Network, Cloud, Terminal, LogIn } from "lucide-react";
+import { useAuth } from "../../hooks/useAuth";
 
 const LoginPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-      remember: false,
-    },
-  });
-
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
-  };
+  const { handleSubmit,register,onLoginSubmit,errors,navigate} = useAuth();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#121015] text-white">
@@ -124,7 +110,7 @@ const LoginPage = () => {
 
           {/* ================= FORM ================= */}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-6">
             {/* EMAIL */}
 
             <div>
@@ -297,6 +283,7 @@ const LoginPage = () => {
           <p className="mt-6 text-center text-xs text-[#d0cbd3]">
             Don't have an account?{" "}
             <button
+              onClick={()=>navigate('/register')}
               type="button"
               className="
                 font-semibold

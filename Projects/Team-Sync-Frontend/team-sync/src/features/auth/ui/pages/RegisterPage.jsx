@@ -1,24 +1,11 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { User, Mail, Lock, Sparkles, Network } from "lucide-react";
+import { useAuth } from "../../hooks/useAuth";
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-    defaultValues: {
-      fullName: "",
-      email: "",
-      password: "",
-      terms: false,
-    },
-  });
+  const {register,handleSubmit,onRegisterSubmit,watch,errors,navigate} = useAuth()
 
   const password = watch("password", "");
 
@@ -40,9 +27,7 @@ const RegisterPage = () => {
     return "Strong password";
   };
 
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-  };
+  
 
   return (
     <div className="min-h-screen bg-[#121015] text-white">
@@ -55,7 +40,7 @@ const RegisterPage = () => {
           {/* Background */}
           <div className="absolute inset-0">
             <img
-              src="/images/ai-background.jpg"
+              src="https://img.magnific.com/free-vector/wavy-background-concept_23-2148497712.jpg?semt=ais_test_b&w=740&q=80"
               alt=""
               className="h-full w-full object-cover"
             />
@@ -127,7 +112,10 @@ const RegisterPage = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
+            <form
+              onSubmit={handleSubmit(onRegisterSubmit)}
+              className="space-y-7"
+            >
               {/* ==================================
                   FULL NAME
               ================================== */}
@@ -363,6 +351,7 @@ const RegisterPage = () => {
             <p className="mt-14 text-center text-[15px] text-[#c6c2ca]">
               Already have an account?{" "}
               <button
+                onClick={() => navigate("/")}
                 type="button"
                 className="font-semibold text-[#c9a9f3] hover:underline"
               >
