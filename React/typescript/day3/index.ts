@@ -46,3 +46,11 @@
 // }
 // let data = sum(7)(7)(8)(8)()
 // console.log(data)
+
+const sum = (...rest: number[])=> {
+  let data = rest.reduce((a,v)=>a+v,0)
+  return data
+}
+
+let res = sum(7,8,9,6,4,4,5)
+console.log(res)
