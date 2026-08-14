@@ -54,7 +54,7 @@ import { Button } from "@/components/Button/Button"
       </header>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Usage</h2>
+        <h2 className="text-2xl font-semibold text-(--text-color) ">Usage</h2>
         <ComponentDemo code={basicUsageCode}>
           <div className="flex gap-4 flex-wrap">
             <Button

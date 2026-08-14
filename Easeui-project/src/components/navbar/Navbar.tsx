@@ -9,15 +9,16 @@ import gsap from "gsap";
 import { Button } from "../Button";
 
 const navbarVariants = cva(
-  `w-full flex items-center justify-between px-6 py-4 rounded-md border border-gray-200 transition-all`,
+  "w-full flex items-center justify-between px-6 py-4 rounded-md border border-[var(--border-color)] transition-all",
   {
     variants: {
       variant: {
         dark: "bg-slate-900 text-white",
-        light: "bg-white text-gray-800 shadow",
+        light: "bg-[var(--card-bg)] text-[var(--text-color)] shadow",
         primary: "bg-indigo-600 text-white",
         glass: "backdrop-blur-md bg-white/10 text-white border border-white/20",
       },
+
       size: {
         default: "h-16",
         sm: "h-12",
@@ -25,11 +26,12 @@ const navbarVariants = cva(
         xl: "h-24",
       },
     },
+
     defaultVariants: {
       variant: "light",
       size: "default",
     },
-  }
+  },
 );
 
 interface NavbarProps

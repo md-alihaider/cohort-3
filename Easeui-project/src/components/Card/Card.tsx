@@ -15,13 +15,13 @@ const cardVariants = cva(
         outline:
           "border border-gray-300 bg-transparent text-gray-800 dark:border-gray-700",
       },
-      // hoverEffect: {
-      //   none: "",
-      //   scale: "hover:scale-[1.02]",
-      //   shadow: "hover:shadow-xl",
-      //   lift: "hover:-translate-y-1 hover:shadow-xl",
-      //   rotate: "hover:rotate-1",
-      // },
+      hoverEffect: {
+        none: "",
+        scale: "hover:scale-[1.02]",
+        shadow: "hover:shadow-xl",
+        lift: "hover:-translate-y-1 hover:shadow-xl",
+        rotate: "hover:rotate-1",
+      },
       size: {
         sm: "p-3 text-sm",
         md: "p-6 text-base",
@@ -71,24 +71,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const cardRef = useRef<HTMLDivElement | null>(null);
 
     // 🧠 Mouse Handlers
-    // const handleMouseEnter = () => {
-    //   const el = cardRef.current;
-    //   if (!el) return;
-    //   hoverAnimations[hoverAnimation]?.(el);
-    // };
-
-    // const handleMouseLeave = () => {
-    //   const el = cardRef.current;
-    //   if (!el) return;
-    //   gsap.to(el, {
-    //     scale: 1,
-    //     rotation: 0,
-    //     y: 0,
-    //     duration: 0.3,
-    //     ease: "power2.out",
-    //   });
-    // };
-
     const handleMouseEnter = () => {
       const el = cardRef.current;
       if (!el) return;
@@ -98,8 +80,26 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const handleMouseLeave = () => {
       const el = cardRef.current;
       if (!el) return;
-      hoverAnimations.reset(el);
+      gsap.to(el, {
+        scale: 1,
+        rotation: 0,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
     };
+
+    // const handleMouseEnter = () => {
+    //   const el = cardRef.current;
+    //   if (!el) return;
+    //   hoverAnimations[hoverAnimation]?.(el);
+    // };
+
+    // const handleMouseLeave = () => {
+    //   const el = cardRef.current;
+    //   if (!el) return;
+    //   hoverAnimations.reset(el);
+    // };
 
     const handleMouseDown = () => {
       const el = cardRef.current;
