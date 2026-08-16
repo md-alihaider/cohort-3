@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'helvetica neue';
+}
+html , body{
+    height: 100%;
+    width: 100%;
+}
+body{
+  padding: 10px;
+  background-color: black;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: red;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+.box1{
+  background-color: limegreen;
+}
+.box2{
+  background-color: yellow;
+}
+.box3{
+  background-color: blue;
+}
+.box4{
+  background-color: purple;
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#play{
+    background-color: green;
+}
+#pause{
+    background-color: red;
+}
+#restart{
+    background-color: blue;
+}
