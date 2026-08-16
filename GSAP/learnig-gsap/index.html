@@ -1,23 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>learnig-gsap</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="box box1"></div>
-      <div class="box box2"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>learnig-gsap</title>
+</head>
+
+<body>
+  <div id="app">
+    <section class="loader">
+      <div class="loader-count">
+        <h2>0%</h2>
+      </div>
+    </section>
+    <section class="hero-section">
+      <div class="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1785970942443-267736041d63?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="">
+      </div>
+      <section class="hero-content">
+        <div class="heading">
+          <h1>Matthew Stephenson</h1>
+        </div>
+        <div class="sub-heading">
+          <p>Build animation that feel alive, A hand-on GSAP course for 2026</p>
+        </div>
+      </section>
+
+    </section>
+    <!-- <div class="box box1"></div> -->
+    <!-- <div class="box box2"></div>
       <div class="box box3"></div>
       <div class="box box4"></div>
       <div class="controls">
         <button id="play">play</button>
         <button id="pause">pause</button>
+        <button id="reverse">reverse</button>
         <button id="restart">restart</button>
-      </div>
-    </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+      </div> -->
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

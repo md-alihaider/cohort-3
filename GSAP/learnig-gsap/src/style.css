@@ -1,60 +1,132 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'helvetica neue';
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Sekuya&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "helvetica neue";
 }
-html , body{
-    height: 100%;
-    width: 100%;
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
-body{
-  padding: 10px;
+body {
   background-color: black;
 }
 
-.box{
-    width: 100px;
-    height: 100px;
-    background: red;
-    margin: 15px;
-    border-radius: 10px;
+.box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  margin: 15px;
+  border-radius: 10px;
 }
 
-.box1{
+.box1 {
   background-color: limegreen;
 }
-.box2{
+.box2 {
   background-color: yellow;
 }
-.box3{
+.box3 {
   background-color: blue;
 }
-.box4{
+.box4 {
   background-color: purple;
 }
 
-.controls{
-    display: flex;
-    justify-content: center;
+.controls {
+  display: flex;
+  justify-content: center;
 }
 
-button{
-    margin: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
-#play{
-    background-color: green;
+#play {
+  background-color: green;
 }
-#pause{
-    background-color: red;
+#pause {
+  background-color: red;
 }
-#restart{
-    background-color: blue;
+#restart {
+  background-color: blue;
+}
+#reverse {
+  background-color: purple;
+}
+
+.loader {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-count h2 {
+  font-family: "Sekuya", system-ui;
+  font-size: 3rem;
+  color: whitesmoke;
+}
+
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  background-color: cyan;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.hero-bg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6rem;
+}
+
+.hero-content .heading h1 {
+  font-size: 6rem;
+  font-family: "Google Sans", system-ui;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-content .sub-heading p{
+  font-size: 1.5rem;
+  font-family: "Google Sans", system-ui; 
+}
+
+.heading, .sub-heading{
+  overflow: hidden;
 }
