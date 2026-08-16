@@ -1,5 +1,23 @@
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.css";
 import { gsap } from "gsap";
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.set(".box", {
+  x:-200
+})
+gsap.to(".box", {
+  x: 700,
+  duration: 1.5,
+  ease: "power4.out",
+  scrollTrigger: {
+    trigger: ".box",
+    start: "top 30%",
+    scrub:1,
+    markers:true
+  },
+});
+
 // const play = document.getElementById("play");
 // const pause = document.getElementById("pause");
 // const restart = document.getElementById("restart");
@@ -52,66 +70,66 @@ import { gsap } from "gsap";
 //   yoyo: true,
 // })
 
-const obj = {
-  value: 0,
-};
+// const obj = {
+//   value: 0,
+// };
 
-const counter = document.querySelector(".loader-count h2");
+// const counter = document.querySelector(".loader-count h2");
 
-gsap.to(obj, {
-  value: 100,
-  duration: 1.7,
-  ease: "none",
-  onUpdate: () => {
-    counter.textContent = `${obj.value.toFixed(0)}%`;
-  },
-  onComplete: () => {
-    gsap.to(counter, {
-      opacity: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      onComplete: () => {
-        tl.play();
-      },
-    });
-  },
-});
+// gsap.to(obj, {
+//   value: 100,
+//   duration: 1.7,
+//   ease: "none",
+//   onUpdate: () => {
+//     counter.textContent = `${obj.value.toFixed(0)}%`;
+//   },
+//   onComplete: () => {
+//     gsap.to(counter, {
+//       opacity: 0,
+//       duration: 1.2,
+//       ease: "power3.out",
+//       onComplete: () => {
+//         tl.play();
+//       },
+//     });
+//   },
+// });
 
-const tl = gsap.timeline({ paused: true });
+// const tl = gsap.timeline({ paused: true });
 
-gsap.set([".heading h1", ".sub-heading p"], {
-  yPercent: 110,
-});
+// gsap.set([".heading h1", ".sub-heading p"], {
+//   yPercent: 110,
+// });
 
-tl.to(".loader", {
-  yPercent: 100,
-  duration: 1.2,
-  ease: "expo.out",
-})
-  .from(
-    ".hero-bg img",
-    {
-      scale: 1.5,
-      duration: 1.23,
-      ease: "expo.out",
-    },
-    "-=1.1",
-  )
-  .to(
-    ".heading h1",
-    {
-      yPercent: 0,
-      duration: 1.2,
-      ease: "power3.out",
-    },
-    "-=0.9",
-  )
-  .to(
-    ".sub-heading p",
-    {
-      yPercent: 0,
-      duration: 1.2,
-      ease: "power3.out",
-    },
-    "-=0.8",
-  );
+// tl.to(".loader", {
+//   yPercent: 100,
+//   duration: 1.2,
+//   ease: "expo.out",
+// })
+//   .from(
+//     ".hero-bg img",
+//     {
+//       scale: 1.5,
+//       duration: 1.23,
+//       ease: "expo.out",
+//     },
+//     "-=1.1",
+//   )
+//   .to(
+//     ".heading h1",
+//     {
+//       yPercent: 0,
+//       duration: 1.2,
+//       ease: "power3.out",
+//     },
+//     "-=0.9",
+//   )
+//   .to(
+//     ".sub-heading p",
+//     {
+//       yPercent: 0,
+//       duration: 1.2,
+//       ease: "power3.out",
+//     },
+//     "-=0.8",
+//   );
