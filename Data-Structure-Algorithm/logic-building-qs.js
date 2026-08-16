@@ -117,7 +117,6 @@ let prompt = require("prompt-sync")();
 // const res = factOfGivenNum(number);
 // console.log(res);
 
-
 //10 Find and print the product of all digits of a given number.
 // const productOfDigits = (num) => {
 //   if (num === 0) return 0;
@@ -135,4 +134,92 @@ let prompt = require("prompt-sync")();
 // console.log("==========Print the product of all digits of a given number==========");
 // const number = Number(prompt("Enter Number: "));
 // const res = productOfDigits(number);
+// console.log(res);
+
+//11 Count and print the total number of digits in a given number.
+// const totalNumOfDigit = (num) => {
+//   let totalDigitCount = 0;
+//   if (num === 0) return 1;
+//   let tempNumber = Math.abs(num);
+//   while (tempNumber > 0) {
+//     totalDigitCount += 1;
+//     tempNumber = Math.floor(tempNumber / 10);
+//   }
+//   return totalDigitCount;
+// };
+// const totalNumOfDigitMath = (num) => {
+//   if (num === 0) return 1;
+//   return Math.floor(Math.log10(Math.abs(num))) + 1;
+// };
+// console.log(
+//   "==========Print the total number of digits in a given number==========",
+// );
+// const number = Number(prompt("Enter Number: "));
+// const res = totalNumOfDigitMath(number);
+// console.log(res);
+
+//12 Reverse the given number and print the reversed value.
+// const reversingNumber = (num) => {
+//   let reversed = 0;
+//   let tempNumber = Math.abs(num)
+//   while (tempNumber > 0) {
+//     let lastDigit = tempNumber % 10;
+//     reversed = (reversed * 10) + lastDigit;
+//     tempNumber = Math.floor(tempNumber/10)
+//   }
+//   return num < 0 ? -reversed : reversed;
+// }
+
+// console.log(
+//   "==========Reverse the given number and print the reversed value==========",
+// );
+// const number = Number(prompt("Enter Number: "));
+// const res = reversingNumber(number);
+// console.log(res);
+
+//13 Check whether the given number is a palindrome.
+// const checkPalindrome = (num) => {
+//   let reversed = 0;
+//   let tempNumber = Math.abs(num);
+//   while (tempNumber > 0) {
+//     let lastDigit = tempNumber % 10;
+//     reversed = reversed * 10 + lastDigit;
+//     tempNumber = Math.floor(tempNumber / 10);
+//   }
+//   if (reversed === num) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// console.log(
+//   "==========Check whether the given number is a palindrome.==========",
+// );
+// const number = Number(prompt("Enter Number: "));
+// const res = checkPalindrome(number);
+// if (res) {
+//   console.log(`${number} is Palindrom.`)
+// } else {
+//   console.log(`${number} is NOT Palindrom.`)
+// }
+
+
+//14 Find and print the sum of digits of the given number.
+// const sumOfGivenDigit = (num) => {
+//   let total = 0
+//   let tempNumber = Math.abs(num)
+//   while (tempNumber > 0) {
+//     let lastDigit = tempNumber % 10;
+//     total += lastDigit;
+//     tempNumber = Math.floor(tempNumber/10)
+//   }
+//   return total
+// }
+
+// console.log(
+//   "==========Find and print the sum of digits of the given number==========",
+// );
+// const number = Number(prompt("Enter Number: "));
+// const res = sumOfGivenDigit(number);
 // console.log(res);
