@@ -56,40 +56,47 @@ app.get("/students/:id", (req, res) => {
 app.put("/students/:id", (req, res) => {
   const id = Number(req.params.id);
   const { name, age, course } = req.body;
-  let updatedStudent = students.map((val) =>
+  const student = students.find((val) => val.id === id);
+  if (!student) {
+    return res.status(404).send({
+      message: "Student not found.",
+    });
+  }
+  students = students.map((val) =>
     val.id === id ? { ...val, name, age, course } : val,
   );
-  res.send(updatedStudent)
+  res.send({
+    message: "Student updated successfully.",
+    student: students.find((student) => student.id === id),
+  });
 });
 
-// DELETE /students/:id 
+// DELETE /students/:id
 app.delete("/students/:id", (req, res) => {
-  const id = Number(req.params.id)
-  const studentIndex = students.findIndex((val) => val.id === id)
+  const id = Number(req.params.id);
+  const studentIndex = students.findIndex((val) => val.id === id);
   if (studentIndex === -1) {
     res.status(404).send({
-      message:"Student not found."
-    })
+      message: "Student not found.",
+    });
   }
-  let deletedStudent = students.splice(studentIndex,1)
+  let deletedStudent = students.splice(studentIndex, 1);
   res.status(200).send({
-    message:"Student deleted successfully.",
-    student:deletedStudent,
-  })
-})
+    message: "Student deleted successfully.",
+    student: deletedStudent,
+  });
+});
 
-// GET /students/course/:course 
+// GET /students/course/:course
 app.get("/students/course/:course", (req, res) => {
-  let course = req.params.course
-  const studentWithCourse = students.filter(
-    (val) => val.course === course,
-  );
+  let course = req.params.course;
+  const studentWithCourse = students.filter((val) => val.course === course);
   if (studentWithCourse) {
-    res.status(200).send(studentWithCourse)
+    res.status(200).send(studentWithCourse);
   } else {
     res.status(404).send({
-      message:"Student with this course not found."
-    })
+      message: "Student with this course not found.",
+    });
   }
 });
 
