@@ -76,7 +76,7 @@ app.delete("/students/:id", (req, res) => {
   const id = Number(req.params.id);
   const studentIndex = students.findIndex((val) => val.id === id);
   if (studentIndex === -1) {
-    res.status(404).send({
+    return res.status(404).send({
       message: "Student not found.",
     });
   }
@@ -91,7 +91,7 @@ app.delete("/students/:id", (req, res) => {
 app.get("/students/course/:course", (req, res) => {
   let course = req.params.course;
   const studentWithCourse = students.filter((val) => val.course === course);
-  if (studentWithCourse) {
+  if (studentWithCourse.length > 0) {
     res.status(200).send(studentWithCourse);
   } else {
     res.status(404).send({
