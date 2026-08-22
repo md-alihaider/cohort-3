@@ -22,6 +22,7 @@ export interface FloatingLabelProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "size"
   > {
+  label?: string;
   size?: "sm" | "md" | "lg";
 }
 
