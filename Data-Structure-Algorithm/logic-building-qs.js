@@ -204,7 +204,6 @@ let prompt = require("prompt-sync")();
 //   console.log(`${number} is NOT Palindrom.`)
 // }
 
-
 //14 Find and print the sum of digits of the given number.
 // const sumOfGivenDigit = (num) => {
 //   let total = 0
@@ -223,3 +222,25 @@ let prompt = require("prompt-sync")();
 // const number = Number(prompt("Enter Number: "));
 // const res = sumOfGivenDigit(number);
 // console.log(res);
+
+//15 Check whether the given number is an Armstrong number.
+const isArmstrongNum = (num) => {
+  let total = 0;
+  let tempNumber = Math.abs(num);
+
+  const power = num.toString().length;
+
+  while (tempNumber > 0) {
+    let lastDigit = tempNumber % 10;
+    total += Math.pow(lastDigit, power);
+    tempNumber = Math.floor(tempNumber / 10);
+  }
+  return total === num;
+};
+
+console.log(
+  "==========Check whether the given number is an Armstrong number==========",
+);
+const number = Number(prompt("Enter Number: "));
+const res = isArmstrongNum(number);
+console.log(res);
