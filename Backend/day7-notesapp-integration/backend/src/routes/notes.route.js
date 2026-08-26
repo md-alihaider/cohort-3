@@ -15,7 +15,7 @@ const router = express.Router();
 router.post("/create", createNotesController);
 
 //read
-router.get("/allNotes", getAllNotesController);
+router.get("/allnotes", getAllNotesController);
 
 //read one
 router.get("/:id", getSingleNoteController);
