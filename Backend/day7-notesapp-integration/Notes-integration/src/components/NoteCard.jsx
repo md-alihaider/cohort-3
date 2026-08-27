@@ -1,4 +1,4 @@
-const NoteCard = ({ note,deleteNote,noteForUpdate }) => {
+const NoteCard = ({ note, deleteNotes, noteForUpdate }) => {
   return (
     <div className="w-[30%] border border-black p-4 flex flex-col gap-3 rounded-xl">
       <h1>{note.title}</h1>
@@ -8,10 +8,18 @@ const NoteCard = ({ note,deleteNote,noteForUpdate }) => {
           : note.description}
       </p>
       <div className="flex justify-between">
-        <button onClick={() => noteForUpdate(note)} className=" bg-yellow-600 p-2 text-white rounded">
+        <button
+          onClick={() => noteForUpdate(note)}
+          className=" bg-yellow-600 p-2 text-white rounded"
+        >
           Update
         </button>
-        <button onClick={() => deleteNote(note._id)} className=" bg-red-700 p-2 text-white rounded">Delete</button>
+        <button
+          onClick={() => deleteNotes(note._id)}
+          className=" bg-red-700 p-2 text-white rounded"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
