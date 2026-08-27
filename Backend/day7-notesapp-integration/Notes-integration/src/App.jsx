@@ -7,13 +7,28 @@ const App = () => {
     description: "",
   });
   const [allnotes, setAllnotes] = useState([]);
-
+  const [isDataForUpdate, setIsDataForUpdate] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //api call
-    let res = await axios.post("http://localhost:3000/notes/create", formValue);
-    console.log(res);
+    if (isDataForUpdate) {
+      //update api
+      let res = await axios.put(
+        `http://localhost:3000/notes/${isDataForUpdate}`,
+        formValue,
+      );
+      console.log(res);
+      setIsDataForUpdate(null);
+    } else {
+      //api call for create
+      let res = await axios.post(
+        "http://localhost:3000/notes/create",
+        formValue,
+      );
+      console.log(res);
+    }
+
+    
     getAllNotes();
     setFormValue({
       title: "",
@@ -50,6 +65,11 @@ const App = () => {
 
   const noteForUpdate = (note) => {
     console.log(note)
+    setIsDataForUpdate(note._id)
+    setFormValue({
+      title: note.title,
+      description: note.description,
+    })
   }
   return (
     <div className=" h-screen p-5 flex flex-col gap-5">
@@ -79,7 +99,7 @@ const App = () => {
           placeholder="description"
         />
         <button className=" bg-blue-600 p-2 text-white rounded hover:bg-blue-700">
-          Add Note
+         {isDataForUpdate ? "Update Note" : "Add Note"}
         </button>
       </form>
 
