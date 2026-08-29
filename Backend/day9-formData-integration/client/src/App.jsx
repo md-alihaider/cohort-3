@@ -1,16 +1,20 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 const App = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, } = useForm();
 
   const submitHandler = async (data) => {
-    console.log(data)
+    console.log(data);
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
-    formData.append("images", data.images);
+    // loop through images and append them to formData
+    for (let i = 0; i < data.images.length; i++) {
+      formData.append("images", data.images[i]);
+    }
 
     await axios.post("http://localhost:3000/user/create", formData);
+    
   };
 
   return (
