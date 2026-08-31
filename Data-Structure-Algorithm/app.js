@@ -149,7 +149,7 @@ let prompt = require("prompt-sync")();
 // console.log("Payable amount is " + payableAmount);
 
 //Q16 Bijli bill
-let unit = Number(prompt("Enter your unit: ")); //260
+// let unit = Number(prompt("Enter your unit: ")); //260
 
 // if (unit > 0 && unit <= 100) console.log(unit * 4.2)
 // else if (unit > 100 && unit <= 200) {
@@ -160,11 +160,60 @@ let unit = Number(prompt("Enter your unit: ")); //260
 //   console.log((100*4.2)+(100*6)+(200*8)+(unit-400)*13)
 // }
 
-if (unit > 0 && unit <= 100) console.log(unit * 4.2);
-else if (unit > 100 && unit <= 200) {
-  console.log(100 * 4.2 + (unit - 100) * 6);
-} else if (unit > 200 && unit <= 400) {
-  console.log(100 * 4.2 + 100 * 6 + (unit - 200) * 8);
-} else {
-  console.log(100 * 4.2 + 100 * 6 + 200 * 8 + (unit - 400) * 13);
+// let amount = 0
+
+// if (unit > 400) {
+//   amount = amount + (unit - 400) * 13
+//   unit = 400
+// }
+// if (unit > 200) {
+//   amount = amount + (unit - 200) * 8
+//   unit = 200
+// }
+// if (unit > 100) {
+//   amount = amount + (unit - 100) * 6
+//   unit = 100
+// }
+// if (unit > 0) {
+//   amount = amount + unit * 4.2
+// }
+
+// console.log(amount)
+
+
+let day = Number(prompt("Enter day: "))
+
+switch (day) {
+  case 1: {
+    console.log('Monday')
+    break
+  }
+  case 2: {
+    console.log('Tuesday')
+    break
+  }
+  case 3: {
+    console.log('Wednesday')
+    break
+  }
+  case 4: {
+    console.log('Thursday')
+    break
+  }
+  case 5: {
+    console.log('Friday')
+    break
+  }
+  case 6: {
+    console.log('Saturday')
+    break
+  }
+  case 7: {
+    console.log('Sunday')
+    break
+  }
+  default: {
+    console.log('Invalid day')
+  }
+  
 }
