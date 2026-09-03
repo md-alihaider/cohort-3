@@ -2,6 +2,8 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
 import { authenticate } from "../middleware/auth.middleware.js";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 app.use(express.json());
 
@@ -30,7 +32,7 @@ app.post("/api/auth/register", async (req, res) => {
       id: user._id,
     },
     //jwt secret
-    "05536170cd7918fa8190d04b7eaf748a62817b20f0d5271d03607462bd55f6aac8c92dcc5e695e0e70b059ecd763773f",
+    process.env.JWT_SECRET,
   );
 
   //step 4 send response to user
