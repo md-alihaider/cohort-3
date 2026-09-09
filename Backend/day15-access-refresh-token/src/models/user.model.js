@@ -4,14 +4,14 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minLength: [3, "Name must be at least 3 character long"],
-    maxLength: [50, "Name must be at most 50 character long"],
+    minLength: [3, "Name must be at least 3 characters long"],
+    maxLength: [50, "Name must be at most 50 characters long"],
   },
   email: {
-    typeL: String,
+    type: String,
     required: true,
     unique: true,
-    match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   },
   passwordHash: {
     type: String,
@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+const userModel = mongoose.model("users", userSchema);
 
-const userModel = mongoose.model("users",userSchema)
-
-export default userModel
+export default userModel;
