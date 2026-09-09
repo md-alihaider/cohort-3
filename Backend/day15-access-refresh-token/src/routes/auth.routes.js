@@ -1,7 +1,11 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import userModel from "../models/user.model.js";
-import { genrateTokens, verifyAccessToken } from "../utils/auth.js";
+import {
+  genrateTokens,
+  verifyAccessToken,
+  verifyRefreshTokn,
+} from "../utils/auth.js";
 
 const router = Router();
 
@@ -61,13 +65,12 @@ router.post("/register", async (req, res) => {
 /**
  * @GET /api/auth/me  to get user detail
  */
-
 router.get("/me", async (req, res) => {
   //recieving accessToken from req in header
   const accessToken = req.headers.authorization?.split(" ")[1];
 
   try {
-    //decoding the token to get info 
+    //decoding the token to get info
     const decodeed = verifyAccessToken(accessToken);
 
     //finding user from db
@@ -86,6 +89,65 @@ router.get("/me", async (req, res) => {
   } catch (error) {
     return res.status(401).json({
       message: "Unauthorized, Invalid or expired access token",
+    });
+  }
+});
+
+/**
+ * @POST /api/auth/refresh
+ */
+
+router.post("/refresh", async (req, res) => {
+  //reciev refreshToken from cookei
+  const refreshToken = req.cookies.refreshToken;
+
+  //if not return
+  if (!refreshToken) {
+    return res.status(401).json({
+      message: "Unauthorized, refresh token not found",
+    });
+  }
+
+  try {
+    // decoding token to get info
+    const decoded = await verifyRefreshTokn(refreshToken);
+
+    //find user from db
+    const user = await userModel.findById(decoded.id);
+
+    //check if user refresh token and req refresh token is same or not if not make user refreshToken null and save user
+    if (refreshToken !== user.refreshToken) {
+      user.refreshToken = null;
+      await user.save();
+
+      return res.status(401).json({
+        message: "Unauthorized, refresh token mismatch",
+      });
+    }
+
+    //generate new tokens
+    const { accessToken, refreshToken: newRefreshToken } = genrateTokens({
+      userId: user._id,
+    });
+    
+    //set new refresh token in cookie
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+    });
+
+    //set new access token in db
+    user.refreshToken = newRefreshToken;
+    await user.save();
+    
+    //send res
+    res.status(200).json({
+      message: "Token Refreshed Successfully",
+      accessToken,
+    });
+
+  } catch (error) {
+    return res.status(401).json({
+      message: "Unauthorized, Invalid or expired refresh token",
     });
   }
 });
