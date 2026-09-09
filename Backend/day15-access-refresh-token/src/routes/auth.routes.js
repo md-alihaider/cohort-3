@@ -1,10 +1,13 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import userModel from "../models/user.model.js";
-import { genrateTokens } from "../utils/auth.js";
+import { genrateTokens, verifyAccessToken } from "../utils/auth.js";
 
 const router = Router();
 
+/**
+ * @POST /api/auth/register
+ */
 router.post("/register", async (req, res) => {
   //receive payload
   const { name, email, password } = req.body;
@@ -25,7 +28,6 @@ router.post("/register", async (req, res) => {
     });
   }
 
-
   //if not create user and hash password
   const user = await userModel.create({
     name,
@@ -35,6 +37,10 @@ router.post("/register", async (req, res) => {
 
   //create accessToken and refreshToken
   const { accessToken, refreshToken } = genrateTokens({ userId: user._id });
+
+  //set refreshToken in db and save user
+  user.refreshToken = refreshToken;
+  await user.save();
 
   //set refresh token in cookie
   res.cookie("refreshToken", refreshToken, {
@@ -50,6 +56,38 @@ router.post("/register", async (req, res) => {
     },
     accessToken,
   });
+});
+
+/**
+ * @GET /api/auth/me  to get user detail
+ */
+
+router.get("/me", async (req, res) => {
+  //recieving accessToken from req in header
+  const accessToken = req.headers.authorization?.split(" ")[1];
+
+  try {
+    //decoding the token to get info 
+    const decodeed = verifyAccessToken(accessToken);
+
+    //finding user from db
+    const user = await userModel.findById(decodeed.id);
+
+    //sending res
+    res.status(200).json({
+      message: "User fetched Successfully",
+      data: {
+        user: {
+          name: user.name,
+          email: user.email,
+        },
+      },
+    });
+  } catch (error) {
+    return res.status(401).json({
+      message: "Unauthorized, Invalid or expired access token",
+    });
+  }
 });
 
 export default router;

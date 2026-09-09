@@ -12,3 +12,8 @@ export const genrateTokens = ({ userId }) => {
 
   return { accessToken, refreshToken };
 };
+
+export function verifyAccessToken(token) {
+  const decodeed = jwt.verify(token, config.ACCESS_TOKEN_SECRET);
+  return decodeed;
+}
