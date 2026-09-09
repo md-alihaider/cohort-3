@@ -69,12 +69,19 @@ router.get("/me", async (req, res) => {
   //recieving accessToken from req in header
   const accessToken = req.headers.authorization?.split(" ")[1];
 
+  //if not return
+  if (!accessToken) {
+    return res.status(401).json({
+      message: "Unauthorized, access token not found",
+    });
+  }
+
   try {
     //decoding the token to get info
-    const decodeed = verifyAccessToken(accessToken);
+    const decoded = verifyAccessToken(accessToken);
 
     //finding user from db
-    const user = await userModel.findById(decodeed.id);
+    const user = await userModel.findById(decoded.id);
 
     //sending res
     res.status(200).json({
@@ -110,7 +117,7 @@ router.post("/refresh", async (req, res) => {
 
   try {
     // decoding token to get info
-    const decoded = await verifyRefreshTokn(refreshToken);
+    const decoded = verifyRefreshTokn(refreshToken);
 
     //find user from db
     const user = await userModel.findById(decoded.id);
@@ -129,7 +136,7 @@ router.post("/refresh", async (req, res) => {
     const { accessToken, refreshToken: newRefreshToken } = genrateTokens({
       userId: user._id,
     });
-    
+
     //set new refresh token in cookie
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
@@ -138,13 +145,12 @@ router.post("/refresh", async (req, res) => {
     //set new access token in db
     user.refreshToken = newRefreshToken;
     await user.save();
-    
+
     //send res
     res.status(200).json({
       message: "Token Refreshed Successfully",
       accessToken,
     });
-
   } catch (error) {
     return res.status(401).json({
       message: "Unauthorized, Invalid or expired refresh token",
