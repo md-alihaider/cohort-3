@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import useApi from "../../shared/api";
 
 const Register = () => {
   const auth = useAuth();
   const navigate = useNavigate();
+  const api = useApi()
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState(null);
 
@@ -17,6 +19,8 @@ const Register = () => {
     setError(null);
     try {
       console.log(form);
+      const res = await api.post("/auth/register",form)
+      console.log(res.data)
     } catch (error) {
       setError(error?.message || "Register Failed");
     }
