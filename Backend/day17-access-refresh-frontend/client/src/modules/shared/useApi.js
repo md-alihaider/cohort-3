@@ -21,6 +21,20 @@ const useApi = () => {
       return Promise.reject(error);
     },
   );
+
+  api.interceptors.response.use(
+    response => response,
+    async error => {
+      if (error.response && error.response.status === 401) {
+        console.log("Unauthorized, need to refresh token")
+        const res = await api.post('/auth/refresh')
+        console.log("Refreshing access token",res)
+        authContext.setAccessToken(res.data.accessToken)
+        error.config.headers.Authorization = `Bearer ${res.data.accessToken}`
+        return api(error.config)
+      }
+    }
+  )
   return api;
 };
 

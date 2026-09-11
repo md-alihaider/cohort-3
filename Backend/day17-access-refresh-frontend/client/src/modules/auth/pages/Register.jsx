@@ -1,12 +1,14 @@
-import { useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import useApi from "../../shared/useApi";
+import { useAuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router";
 
 const Register = () => {
-  const auth = useAuth();
+  const api = useApi();
+  const auth = useAuthContext();
+
   const navigate = useNavigate();
-  const api = useApi()
+
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState(null);
 
@@ -19,8 +21,11 @@ const Register = () => {
     setError(null);
     try {
       console.log(form);
-      const res = await api.post("/auth/register",form)
-      console.log(res.data)
+      const res = await api.post("/auth/register", form);
+      console.log(res.data);
+      auth.setAccessToken(res.data.accessToken);
+      auth.setUser(res.data.data.user);
+      navigate("/profile");
     } catch (error) {
       setError(error?.message || "Register Failed");
     }
