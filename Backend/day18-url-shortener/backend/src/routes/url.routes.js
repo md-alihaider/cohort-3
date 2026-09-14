@@ -1,4 +1,6 @@
 import express from "express";
+import generateCode from "../utils/generateCode.js";
+import urlModel from "../models/url.model.js";
 const router = express.Router();
 
 /**'
@@ -27,6 +29,36 @@ router.post("/", async (req, res) => {
       error: "URL is too long",
     });
   }
+
+  const code = generateCode();
+
+  const newUrl = await urlModel.create({
+    originalUrl: url,
+    shortCode: code,
+  });
+
+  return res.status(201).json({
+    message: "URL Shortened Successfully",
+    data: {
+      originalUrl: newUrl.originalUrl,
+      shortCode: newUrl.shortCode,
+    },
+  });
+});
+
+/**
+ * @GET /api/url
+ */
+
+router.get("/", async (req, res) => {
+  const urls = await urlModel.find();
+
+  return res.status(200).json({
+    message: "URLs fetched successfully",
+    data: {
+      urls, 
+    },
+  });
 });
 
 export default router;
