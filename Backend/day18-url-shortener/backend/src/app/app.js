@@ -1,5 +1,9 @@
-import express from 'express'
+import express from "express";
+import urlRoutes from "../routes/url.routes.js";
 
-const app = express()
+const app = express();
+app.use(express.json());
 
-export default app
+app.use("/api/url", urlRoutes);
+
+export default app;
