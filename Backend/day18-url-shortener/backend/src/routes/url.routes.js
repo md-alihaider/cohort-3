@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**'
  * @POST /api/url
- * req.body = {url: "https://logurl.com"}
+ * req.body = {url: "https://longurl.com"}
  */
 
 router.post("/", async (req, res) => {
@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
     });
   }
 
+  //Generate 6 character short code for the URL
   const code = generateCode();
 
   const newUrl = await urlModel.create({
@@ -56,8 +57,30 @@ router.get("/", async (req, res) => {
   return res.status(200).json({
     message: "URLs fetched successfully",
     data: {
-      urls, 
+      urls,
     },
+  });
+});
+
+/**
+ * @DELETE /api/url/:id
+ */
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const url = await urlModel.findById(id);
+
+  if (!url) {
+    return res.status(404).json({
+      message: "URL not found",
+    });
+  }
+
+  await urlModel.findByIdAndDelete(id);
+
+  return res.status(200).json({
+    message: "URL deleted successfully",
   });
 });
 

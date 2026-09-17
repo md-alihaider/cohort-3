@@ -1,5 +1,3 @@
-import crypto from "crypto";
-
 /**
  * Generate a 6 character long unique short code for URLs. Which only contains a-z, A-Z or 0-9.
  */
@@ -15,5 +13,4 @@ const generateCode = () => {
   return shortCode;
 };
 
-
-export default generateCode
+export default generateCode;

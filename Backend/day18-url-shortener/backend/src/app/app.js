@@ -6,6 +6,11 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/url", urlRoutes);
+
+/*
+ * @GET /:code
+ * http://localhost:3000/shortCode => Redirect to original URL
+ */ 
 app.get("/:code", async (req, res) => {
   const { code } = req.params;
 
