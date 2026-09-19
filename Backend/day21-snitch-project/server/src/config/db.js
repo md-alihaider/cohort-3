@@ -1,12 +1,11 @@
-import mongoose from 'mongoose'
-import { config } from './config.js'
-
+import mongoose from "mongoose";
+import { config } from "./config.js";
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(config.MONGO_URI)
-    console.log("Connected to MongoDB")
+    await mongoose.connect(config.MONGO_URI);
+    console.log("Connected to Database");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
