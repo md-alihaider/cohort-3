@@ -12,7 +12,7 @@ export const register = async (req, res) => {
   //recieve payload
   const { email, name, password } = req.body;
 
-  //check if user exist already 
+  //check if user exist already
   const isUserAlreadyExists = await userModel.findOne({ email });
 
   if (isUserAlreadyExists) {
@@ -27,7 +27,7 @@ export const register = async (req, res) => {
     });
   }
 
-  //if not then create user 
+  //if not then create user
   const user = userModel.create({
     email,
     name,
@@ -49,6 +49,10 @@ export const register = async (req, res) => {
     httpOnly: true,
   });
 
+  await userModel.findByIdAndUpdate((await user)._id, {
+    refreshToken,
+  });
+
   //and send accessToken in response
   res.status(201).json({
     message: "User register successfully",
@@ -57,6 +61,63 @@ export const register = async (req, res) => {
         email: (await user).email,
         name: (await user).name,
         id: (await user)._id,
+      },
+      accessToken,
+    },
+  });
+};
+
+/**
+ * @description Login an user and create new set of access and refresh Token
+ */
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await userModel.findOne({ email });
+  if (!user) {
+    return res.status(400).json({
+      message: "Invalid email or password",
+    });
+  }
+
+  const isPasswordValid = await bcryptjs.compare(password, user.passwordHash);
+  if (!isPasswordValid) {
+    return res.status(400).json({
+      message: "Invalid email or password",
+    });
+  }
+
+  const accessToken = createAccessToken({
+    userId: user._id,
+    role: user.role,
+  });
+
+  const refershToken = createRefreshToken({
+    userId: user._id,
+    role: user.role,
+  });
+
+  await userModel.findOneAndUpdate(
+    {
+      email,
+    },
+    {
+      refershToken,
+    },
+  );
+
+  res.cookie("refreshToken", refershToken, {
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    message: "user loggedIn successfully",
+    data: {
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name,
       },
       accessToken,
     },
