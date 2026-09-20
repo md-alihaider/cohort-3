@@ -32,7 +32,7 @@ export const register = async (req, res) => {
   }
 
   //if not then create user
-  const user = userModel.create({
+  const user = await userModel.create({
     email,
     name,
     passwordHash: await bcryptjs.hash(password, 12),
@@ -62,9 +62,9 @@ export const register = async (req, res) => {
     message: "User register successfully",
     data: {
       user: {
-        email: (await user).email,
-        name: (await user).name,
-        id: (await user)._id,
+        email: user.email,
+        name: user.name,
+        id: user._id,
       },
       accessToken,
     },
@@ -97,24 +97,21 @@ export const login = async (req, res) => {
     role: user.role,
   });
 
-  const refershToken = createRefreshToken({
+  const refreshToken = createRefreshToken({
     userId: user._id,
     role: user.role,
   });
 
   await userModel.findOneAndUpdate(
+    { email },
     {
-      email,
-    },
-    {
-      refershToken,
+      refreshToken,
     },
   );
 
-  res.cookie("refreshToken", refershToken, {
+  res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
   });
-
   res.status(200).json({
     message: "user loggedIn successfully",
     data: {
@@ -146,7 +143,13 @@ export const refresh = async (req, res) => {
     const { userId, role } = decoded;
     const user = await userModel.findById(userId);
 
-    if (refreshToken != user.refreshToken) {
+    if (!user) {
+      return res.status(401).json({
+        message: "User not found",
+      });
+    }
+
+    if (refreshToken !== user.refreshToken) {
       await userModel.findByIdAndUpdate(user._id, {
         refreshToken: null,
       });
@@ -160,16 +163,16 @@ export const refresh = async (req, res) => {
       userId,
       role,
     });
-    const newRefershToken = createRefreshToken({
+    const newRefreshToken = createRefreshToken({
       userId,
       role,
     });
 
     await userModel.findByIdAndUpdate(user._id, {
-      refreshToken: newRefershToken,
+      refreshToken: newRefreshToken,
     });
 
-    res.cookie("refreshToken", newRefershToken, {
+    res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
     });
 
@@ -189,4 +192,20 @@ export const refresh = async (req, res) => {
       message: "Invalid refresh token",
     });
   }
+};
+
+export const getMe = async (req, res) => {
+  const { userId, role } = req.user;
+  const user = await userModel.findById(userId);
+
+  res.status(200).json({
+    message: "User data fetched successfully",
+    data: {
+      user: {
+        email: user.email,
+        name: user.name,
+        id: user._id,
+      },
+    },
+  });
 };
