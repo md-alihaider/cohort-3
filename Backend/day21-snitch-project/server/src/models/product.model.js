@@ -53,7 +53,11 @@ const productSchema = new mongoose.Schema({
   ],
   seller: {
     type: mongoose.Types.ObjectId,
-    ref: "users",
+    ref: "users", //from which collection we are referencing and geting the id
     required: true,
   }
 });
+
+
+const productModel = mongoose.model("products", productSchema);
+export default productModel;
