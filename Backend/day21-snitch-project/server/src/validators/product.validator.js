@@ -28,7 +28,7 @@ export const createProductValidator = [
     .exists()
     .withMessage("Price is Required")
     .bail()
-    .isFloat({ min: 0})
+    .isFloat({ min: 0 })
     .withMessage("Price must be a floating Value and must be greater than 0"),
   body("price.currency")
     .exists()
@@ -37,7 +37,6 @@ export const createProductValidator = [
     .isString()
     .withMessage("Currency must be a String Value")
     .bail()
-    .trim()
     .isIn(["INR", "USD"])
     .withMessage("Currency must be INR or USD"),
 ];
