@@ -12,7 +12,7 @@ export const createProductValidator = [
     .isLength({ min: 2, max: 100 })
     .withMessage("Title length must be between 2 to 100 characters")
     .bail()
-    .isAlpha("en-US", { ignore: " " })
+    .isAlpha("en-US", { ignore: " -" })
     .withMessage("Title must contain only alphabets"),
   body("description")
     .exists()
@@ -39,4 +39,39 @@ export const createProductValidator = [
     .bail()
     .isIn(["INR", "USD"])
     .withMessage("Currency must be INR or USD"),
+  body("sizes")
+    .exists()
+    .withMessage("Sizes is Required")
+    .bail()
+    .isArray()
+    .withMessage("Sizes must be an Array of object"),
+  body("sizes.*.size")
+    .exists()
+    .withMessage("Size must be present in every entry of sizes array")
+    .bail()
+    .isString()
+    .withMessage("Size must be a String Value")
+    .bail()
+    .trim()
+    .isIn(["XS", "S", "M", "L", "XL", "XXL"])
+    .withMessage("Size must be one of XS, S, M, L, XL, XXL"),
+  body("sizes.*.stock")
+    .exists()
+    .withMessage("Stock must be present in every entry of sizes array")
+    .bail()
+    .isInt({ min: 0 })
+    .withMessage("Stock must be an Integer Value and must be greater than 0")
+    .bail(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        message: "Invalid data",
+        errors: errors.array(),
+      });
+    }
+
+    next();
+  },
 ];
