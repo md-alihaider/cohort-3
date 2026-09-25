@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createProductValidator } from "../validators/product.validator.js";
 import { authenticate } from "../middlewares/auth.middleware.js";
-import { createProduct } from "../controller/product.controller.js";
+import { createProduct, getAllProduct } from "../controller/product.controller.js";
 import multer from "multer";
 
 const upload = multer({
@@ -42,5 +42,13 @@ router.post(
   createProductValidator,
   createProduct,
 );
+
+/**
+ * @method GET
+ * @endpoint /api/products
+ * @description Read all products form db
+ * @access user
+ */
+router.get("/",authenticate,getAllProduct)
 
 export default router;
