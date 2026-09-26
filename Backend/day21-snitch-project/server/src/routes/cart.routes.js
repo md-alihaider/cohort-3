@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {addToCartValidator}  from '../validators/cart.validator.js'
 import { authenticate } from '../middlewares/auth.middleware.js';
+import { addToCart } from '../controller/cart.controller.js';
 
 const router = Router()
 
@@ -11,6 +12,14 @@ const router = Router()
  * @description Add product to user's cart
  * @params req.body = {productId,quantity,size}
  */
-router.post("/",authenticate ,addToCartValidator);
+router.post("/", authenticate, addToCartValidator, addToCart);
+
+/**
+ * @method GET
+ * @endpoint /api/cart
+ * @access Authenticate user
+ * @description Get the user's cart
+ */
+router.get("/",authenticate,)
 
 export default router
