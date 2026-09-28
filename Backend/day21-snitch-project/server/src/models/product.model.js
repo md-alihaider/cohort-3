@@ -55,7 +55,11 @@ const productSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "users", //from which collection we are referencing and geting the id
     required: true,
-  }
+  },
+  published: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 
