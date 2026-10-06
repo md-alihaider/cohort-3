@@ -1,4 +1,4 @@
-# Day 29 - MongoDB Aggregation Pipeline
+# Day 30 - MongoDB Aggregation Pipeline
 
 This project is structured around the uploaded MongoDB Sample Mflix `movies` dataset.
 
@@ -33,7 +33,7 @@ npm run seed
 npm run dev
 ```
 
-Database: `day29_aggregation`
+Database: `day30_aggregation`
 
 Collection: `movies`
 
