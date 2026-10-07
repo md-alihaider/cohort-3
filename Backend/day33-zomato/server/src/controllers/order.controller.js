@@ -108,6 +108,7 @@ async function getRestaurantOrders(req, res) {
     filter.status = String(req.query.status);
   }
 
+  console.time("getRestaurantOrders");
   const [orders, total] = await Promise.all([
     Order.find(filter)
       .sort({ createdAt: -1 })
@@ -116,6 +117,7 @@ async function getRestaurantOrders(req, res) {
       .populate("customer", "name"),
     Order.countDocuments(filter),
   ]);
+  console.timeEnd("getRestaurantOrders");
 
   res.json({ page, limit, total, totalPages: Math.ceil(total / limit), orders });
 }

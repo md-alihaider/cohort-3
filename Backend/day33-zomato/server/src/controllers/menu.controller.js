@@ -4,10 +4,12 @@ const findOwnedRestaurant = require("../utils/ownership");
 
 // GET /api/restaurants/:id/menu?category=Starters&isVeg=true
 async function getMenu(req, res) {
+  console.time("getMenu:restaurant");
   const restaurant = await Restaurant.findById(req.params.id);
   if (!restaurant) {
     return res.status(404).json({ message: "Restaurant not found" });
   }
+  console.timeEnd("getMenu:restaurant");
 
   const filter = { restaurant: restaurant._id };
   if (req.query.category) {
@@ -16,8 +18,10 @@ async function getMenu(req, res) {
   if (req.query.isVeg !== undefined) {
     filter.isVeg = req.query.isVeg === "true";
   }
-
+  
+  console.time("getMenu:menuItems");
   const menuItems = await MenuItem.find(filter).sort({ category: 1, name: 1 });
+  console.timeEnd("getMenu:menuItems");
   res.json({ restaurant: { id: restaurant._id, name: restaurant.name }, count: menuItems.length, menuItems });
 }
 
