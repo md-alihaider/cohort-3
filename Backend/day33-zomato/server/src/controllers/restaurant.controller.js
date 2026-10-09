@@ -251,6 +251,9 @@ async function getTopCustomers(req, res) {
       },
     },
     {
+      $limit: 3,
+    },
+    {
       $lookup: {
         from: "users",
         localField: "_id",
@@ -272,9 +275,6 @@ async function getTopCustomers(req, res) {
         path: "$user",
         preserveNullAndEmptyArrays: true,
       },
-    },
-    {
-      $limit: 3,
     },
   ]);
 
