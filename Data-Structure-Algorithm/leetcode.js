@@ -48,18 +48,62 @@ let prompt = require("prompt-sync")();
 
 // console.log(unique)
 
-const removeDuplicate = (nums) => {
-  let k = 1
-  for (let i = 1; i < nums.length; i++){
-    if (nums[i] !== nums[k - 1]) {
-      nums[k] = nums[i]
-      k++
+// const removeDuplicate = (nums) => {
+//   let k = 1
+//   for (let i = 1; i < nums.length; i++){
+//     if (nums[i] !== nums[k - 1]) {
+//       nums[k] = nums[i]
+//       k++
+//     }
+//   }
+//   return k
+// };
+
+// const nums = [1, 1, 2, 2, 3, 3];
+
+// const result = removeDuplicate(nums);
+// console.log(result)
+
+// DSA Session 3 — Move Zeroes Goal: Move all zeroes to the end while keeping the order of non-zero elements unchanged.
+
+//brute force
+// const nums = [0, 1, 0, 3, 12];
+// const result = []
+
+// for (let i = 0; i < nums.length; i++){
+//   if (nums[i] !== 0) {
+//     result.push(nums[i])
+//   }
+// }
+
+// for (let i = 0; i < nums.length; i++){
+//   if (nums[i] === 0) {
+//     result.push(nums[i])
+//   }
+// }
+
+// console.log(result)
+
+//two-pointer technique
+
+const moveZeroes = function (nums) {
+  let j = 0;
+
+  // Step 1: Move all non-zero elements to the front
+  for (let i = 0; i < nums.length; i++){
+    if (nums[i] !== 0) {
+      nums[j] = nums[i]
+      j++
     }
   }
-  return k
+  // Step 2: Fill the remaining positions with zeros
+  for (let i = j; i < nums.length; i++){
+    nums[i] = 0
+  }
+  return nums
 };
+const nums = [0, 1, 0, 3, 12];
+const result = moveZeroes(nums)
 
-const nums = [1, 1, 2, 2, 3, 3];
-
-const result = removeDuplicate(nums);
 console.log(result)
+
