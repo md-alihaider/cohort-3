@@ -86,24 +86,27 @@ let prompt = require("prompt-sync")();
 
 //two-pointer technique
 
-const moveZeroes = function (nums) {
-  let j = 0;
+// const moveZeroes = function (nums) {
+//   let j = 0;
 
-  // Step 1: Move all non-zero elements to the front
-  for (let i = 0; i < nums.length; i++){
-    if (nums[i] !== 0) {
-      nums[j] = nums[i]
-      j++
-    }
-  }
-  // Step 2: Fill the remaining positions with zeros
-  for (let i = j; i < nums.length; i++){
-    nums[i] = 0
-  }
-  return nums
-};
-const nums = [0, 1, 0, 3, 12];
-const result = moveZeroes(nums)
+//   // Step 1: Move all non-zero elements to the front
+//   for (let i = 0; i < nums.length; i++){
+//     if (nums[i] !== 0) {
+//       nums[j] = nums[i]
+//       j++
+//     }
+//   }
+//   // Step 2: Fill the remaining positions with zeros
+//   for (let i = j; i < nums.length; i++){
+//     nums[i] = 0
+//   }
+//   return nums
+// };
+// const nums = [0, 1, 0, 3, 12];
+// const result = moveZeroes(nums)
 
-console.log(result)
+// console.log(result)
 
+
+
+// 4. Rotate Array Goal: Rotate the array to the right by k steps.
