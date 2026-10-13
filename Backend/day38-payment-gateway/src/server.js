@@ -1,5 +1,5 @@
 import app from './app/app.js'
-import connectDB from './app/config/db.js'
+import connectDB from './config/db.js'
 
 await connectDB()
 
