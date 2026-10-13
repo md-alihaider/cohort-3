@@ -7,14 +7,20 @@ const paymentSchema = new mongoose.Schema(
     signature: { type: String },
     amount: { type: Number, required: true }, // in paise
     currency: { type: String, default: "INR" },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+      required: true,
+    },
     status: {
       type: String,
       enum: ["pending", "completed", "failed"],
       default: "pending",
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
-
 
 export default mongoose.model("Payment", paymentSchema);
