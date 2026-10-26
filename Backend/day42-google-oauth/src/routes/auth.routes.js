@@ -1,5 +1,7 @@
 import { Router } from "express";
 import passport from "../config/passport.js";
+import userModel from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -24,6 +26,32 @@ router.get(
     session: false,
     failureRedirect: "/",
   }),
+  async (req, res) => {
+    const user = req.user;
+    const email = user.emails[0].value;
+
+    const isUserExist = await userModel.findOne({ email });
+
+    // -------------Handle user login----------------
+    if (isUserExist) {
+      const token = jwt.sign({ id: isUserExist._id }, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
+      return res.status(200).json({ token });
+    }
+
+    // -------------Handle user signup----------------
+    const newUser = await userModel.create({
+      fullname: user.displayName,
+      email,
+      googleId: user.id,
+    });
+
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    return res.status(200).json({ token }); 
+  },
 );
 
 export default router;

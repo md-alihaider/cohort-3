@@ -11,7 +11,7 @@ passport.use(
     // Runs AFTER Passport exchanged the code and fetched the profile
     async (accessToken, refreshToken, profile, done) => {
       try {
-        return done(null, user);
+        return done(null, profile);
       } catch (err) {
         return done(err);
       }
