@@ -11,9 +11,14 @@ public class Main {
 
         MenuItem paneer = new MenuItem();
         paneer.name = "Paneer Tikka";
-        paneer.price = 250;    
+        paneer.price = 250;
+        
+        MenuItem biryani = new MenuItem();
+        biryani.name = "Chicken Biryani";
+        biryani.price = 300;
 
          System.out.println(dosa.name + " costs " + dosa.price);
          System.out.println(paneer.name + " costs " + paneer.price);
+         System.out.println(biryani.name + " costs " + biryani.price);
     }
 }
