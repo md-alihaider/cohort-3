@@ -10,9 +10,9 @@ const LoginPage = () => {
       {/* ================= BACKGROUND GLOW ================= */}
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 bottom-[-100px] h-[450px] w-[450px] rounded-full bg-[#4b3c70]/10 blur-[120px]" />
+        <div className="absolute -left-40 bottom-25 h-112.5 w-112.5 rounded-full bg-[#4b3c70]/10 blur-[120px]" />
 
-        <div className="absolute right-[-150px] top-[-100px] h-[500px] w-[500px] rounded-full bg-[#5d4690]/10 blur-[130px]" />
+        <div className="absolute right-37.5 top-25 h-125 w-125 rounded-full bg-[#5d4690]/10 blur-[130px]" />
       </div>
 
       {/* ================= MAIN ================= */}
@@ -22,7 +22,7 @@ const LoginPage = () => {
 
         <div
           className="
-            w-full max-w-[430px]
+            w-full max-w-107.5
             rounded-xl
             border border-[#2d2a31]
             bg-[#1b191e]
@@ -60,7 +60,7 @@ const LoginPage = () => {
             <button
               type="button"
               className="
-                flex h-[42px] items-center justify-center gap-2
+                flex h-10.5 items-center justify-center gap-2
                 rounded-lg
                 border border-[#3b383f]
                 bg-[#29272d]
@@ -77,7 +77,7 @@ const LoginPage = () => {
             <button
               type="button"
               className="
-                flex h-[42px] items-center justify-center gap-2
+                flex h-10.5 items-center justify-center gap-2
                 rounded-lg
                 border border-[#3b383f]
                 bg-[#29272d]
@@ -132,7 +132,7 @@ const LoginPage = () => {
                 type="email"
                 placeholder="name@company.com"
                 className={`
-                  h-[42px]
+                  h-10.5
                   w-full
                   rounded-lg
                   border
@@ -196,7 +196,7 @@ const LoginPage = () => {
                 type="password"
                 placeholder="••••••••"
                 className={`
-                  h-[42px]
+                  h-10.5
                   w-full
                   rounded-lg
                   border
@@ -252,7 +252,7 @@ const LoginPage = () => {
             <button
               type="submit"
               className="
-                flex h-[51px]
+                flex h-12.75
                 w-full
                 items-center
                 justify-center
@@ -329,8 +329,8 @@ const LoginPage = () => {
             bottom-24
             right-20
             hidden
-            h-[245px]
-            w-[245px]
+            h-61.25
+            w-61.25
             overflow-hidden
             rounded-xl
             opacity-[0.12]
@@ -351,7 +351,7 @@ const LoginPage = () => {
               rounded-[45%]
               border
               border-[#8d6ac5]
-              rotate-[35deg]
+              rotate-35
               blur-[1px]
             "
           />

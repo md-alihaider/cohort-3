@@ -8,7 +8,7 @@ export const loginEmployee = createAsyncThunk(
       const res = await axiosInstance.post("/auth/login", credentials);
       return res.data;
     } catch (error) {
-      return thunkApi.rejectwithValue(error);
+      return thunkApi.rejectWithValue(error);
     }
   },
-);
+);  

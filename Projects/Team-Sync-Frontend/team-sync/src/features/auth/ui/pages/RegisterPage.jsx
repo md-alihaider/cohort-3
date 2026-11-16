@@ -5,7 +5,8 @@ import { useAuth } from "../../hooks/useAuth";
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const {register,handleSubmit,onRegisterSubmit,watch,errors,navigate} = useAuth()
+  const { register, handleSubmit, onRegisterSubmit, watch, errors, navigate } =
+    useAuth();
 
   const password = watch("password", "");
 
@@ -27,8 +28,6 @@ const RegisterPage = () => {
     return "Strong password";
   };
 
-  
-
   return (
     <div className="min-h-screen bg-[#121015] text-white">
       {/* Main */}
@@ -48,7 +47,7 @@ const RegisterPage = () => {
             {/* Dark overlays */}
             <div className="absolute inset-0 bg-[#071329]/40" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0e101c] via-transparent to-[#071329]/20" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0e101c] via-transparent to-[#071329]/20" />
           </div>
 
           {/* Logo */}
@@ -100,7 +99,7 @@ const RegisterPage = () => {
             RIGHT PANEL
         ======================================== */}
         <section className="flex items-center justify-center px-6 py-14 sm:px-10 lg:px-16 xl:px-24">
-          <div className="w-full max-w-[492px]">
+          <div className="w-full max-w-123">
             {/* Heading */}
             <div className="mb-9">
               <h1 className="text-3xl font-bold tracking-tight sm:text-[34px]">
@@ -133,7 +132,7 @@ const RegisterPage = () => {
                   <input
                     type="text"
                     placeholder="Enter your full name"
-                    className={`h-[60px] w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
+                    className={`h-15 w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
                       errors.fullName ? "border-red-500" : "border-[#4a4650]"
                     }`}
                     {...register("fullName", {
@@ -170,7 +169,7 @@ const RegisterPage = () => {
                   <input
                     type="email"
                     placeholder="name@company.com"
-                    className={`h-[60px] w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
+                    className={`h-15 w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
                       errors.email ? "border-red-500" : "border-[#4a4650]"
                     }`}
                     {...register("email", {
@@ -207,7 +206,7 @@ const RegisterPage = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className={`h-[60px] w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
+                    className={`h-15 w-full rounded-lg border bg-[#1c1a1f] pl-16 pr-5 text-[16px] text-white outline-none transition placeholder:text-[#5d5965] focus:border-[#a982df] ${
                       errors.password ? "border-red-500" : "border-[#4a4650]"
                     }`}
                     {...register("password", {
@@ -227,7 +226,7 @@ const RegisterPage = () => {
                       {[1, 2, 3, 4].map((bar) => (
                         <div
                           key={bar}
-                          className={`h-[5px] flex-1 rounded-full transition-all ${
+                          className={`h-1.25 flex-1 rounded-full transition-all ${
                             bar <= Math.ceil((strength / 5) * 4)
                               ? "bg-[#c9a8f5]"
                               : "bg-[#29262e]"
@@ -262,7 +261,7 @@ const RegisterPage = () => {
                     })}
                   />
 
-                  <span className="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#514d57] bg-[#1c1a1f] peer-checked:border-[#a87be2] peer-checked:bg-[#8d64c9]">
+                  <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#514d57] bg-[#1c1a1f] peer-checked:border-[#a87be2] peer-checked:bg-[#8d64c9]">
                     <svg
                       viewBox="0 0 24 24"
                       className="hidden h-3.5 w-3.5 text-white peer-checked:block"
@@ -305,7 +304,7 @@ const RegisterPage = () => {
               ================================== */}
               <button
                 type="submit"
-                className="h-[58px] w-full rounded-lg bg-gradient-to-r from-[#7655b8] to-[#c1a5f4] text-[16px] font-bold text-[#171020] shadow-[0_8px_25px_rgba(141,100,201,0.15)] transition hover:brightness-110 active:scale-[0.99]"
+                className="h-14.5 w-full rounded-lg bg-linear-to-r from-[#7655b8] to-[#c1a5f4] text-[16px] font-bold text-[#171020] shadow-[0_8px_25px_rgba(141,100,201,0.15)] transition hover:brightness-110 active:scale-[0.99]"
               >
                 Create Account
               </button>
@@ -329,7 +328,7 @@ const RegisterPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <button
                   type="button"
-                  className="flex h-[60px] items-center justify-center gap-3 rounded-lg border border-[#4a4650] bg-transparent text-[16px] transition hover:bg-[#1c1a20]"
+                  className="flex h-15 items-center justify-center gap-3 rounded-lg border border-[#4a4650] bg-transparent text-[16px] transition hover:bg-[#1c1a20]"
                 >
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#151515] text-xs">
                     G
@@ -339,7 +338,7 @@ const RegisterPage = () => {
 
                 <button
                   type="button"
-                  className="flex h-[60px] items-center justify-center gap-3 rounded-lg border border-[#4a4650] bg-transparent text-[16px] transition hover:bg-[#1c1a20]"
+                  className="flex h-15 items-center justify-center gap-3 rounded-lg border border-[#4a4650] bg-transparent text-[16px] transition hover:bg-[#1c1a20]"
                 >
                   <Network size={18} />
                   SSO
@@ -365,7 +364,7 @@ const RegisterPage = () => {
       {/* ========================================
           FOOTER
       ======================================== */}
-      <footer className="flex min-h-[88px] items-center justify-between border-t border-[#25222a] px-6 lg:px-12">
+      <footer className="flex min-h-22   items-center justify-between border-t border-[#25222a] px-6 lg:px-12">
         <h2 className="text-xl font-bold">Synthetix AI</h2>
 
         <nav className="hidden items-center gap-7 text-xs text-[#c0bbc5] md:flex">
