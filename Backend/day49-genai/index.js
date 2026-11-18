@@ -58,24 +58,17 @@ const agent = createAgent({
   tools: [createEventTool, getEventTool],
 });
 
+const messages = [];
+
 while (true) {
   const userInput = await readline.question("Enter your input: ");
-
-  const stream = await agent.stream(
-    {
-      messages: [
-        {
-          role: "user",
-          content: userInput,
-        },
-      ],
-    },
-    { streamMode: "messages" },
-  );
-
+  messages.push({ role: "user", content: userInput });
+  const stream = await agent.stream({ messages }, { streamMode: "messages" });
+  let aiMessages = "";
   for await (const [chunk, metadata] of stream) {
+    aiMessages += chunk.content;
     process.stdout.write(chunk.content);
   }
-
+  messages.push({ role: "assistant", content: aiMessages });
   process.stdout.write("\n");
 }
