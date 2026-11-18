@@ -1,8 +1,47 @@
 import { ChatGroq } from "@langchain/groq";
 import dotenv from "dotenv";
 import rl from "readline/promises";
+import { tool, createAgent } from "langchain";
+import * as z from "zod";
 
 dotenv.config();
+
+const events = [];
+const createEventTool = tool(
+  //first fun
+  async function ({ date, title, description }) {
+    console.log("Creating event:", { date, title, description });
+    events.push({
+      date,
+      title,
+      description,
+    });
+    return "Event Created.";
+  },
+
+  // then fun detail and detail about arguments and we are zod for tell format of data
+  {
+    name: "createEvent",
+    description: "Create a new event with a date, title, and description",
+    schema: z.object({
+      date: z.string(),
+      title: z.string(),
+      description: z.string(),
+    }),
+  },
+);
+
+const getEventTool = tool(
+  async function ({}) {
+    console.log("Retrieving Events: ", events);
+    return events;
+  },
+  {
+    name: "getEvents",
+    description: "Retrieve all Events",
+    schema: z.object({}),
+  },
+);
 
 const readline = rl.createInterface({
   input: process.stdin,
@@ -14,23 +53,29 @@ const model = new ChatGroq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-const messages = [];
+const agent = createAgent({
+  model,
+  tools: [createEventTool, getEventTool],
+});
 
 while (true) {
   const userInput = await readline.question("Enter your input: ");
 
-  messages.push({ role: "user", content: userInput });
+  const stream = await agent.stream(
+    {
+      messages: [
+        {
+          role: "user",
+          content: userInput,
+        },
+      ],
+    },
+    { streamMode: "messages" },
+  );
 
-  const stream = await model.stream(messages);
-
-  let aiMessages = "";
-  for await (const chunk of stream) {
-    aiMessages += chunk.content;
+  for await (const [chunk, metadata] of stream) {
     process.stdout.write(chunk.content);
   }
-  messages.push({
-    role: "assistant",
-    content: aiMessages,
-  });
+
   process.stdout.write("\n");
 }
