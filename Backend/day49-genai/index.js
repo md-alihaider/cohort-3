@@ -19,7 +19,7 @@ const createEventTool = tool(
     return "Event Created.";
   },
 
-  // then fun detail and detail about arguments and we are zod for tell format of data
+  // then fun detail
   {
     name: "createEvent",
     description: "Create a new event with a date, title, and description",
