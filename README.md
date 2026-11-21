@@ -2,7 +2,7 @@
 
 Welcome to my **Cohort 3** repository!
 
-This repository contains the projects, assignments, challenges, experiments, and learning work I have completed during my **Job Ready Cohort at Sheryians Coding School**.
+This repository contains the projects, assignments, challenges, experiments,and learning work I have completed during my **Job Ready Cohort at Sheryians Coding School**.
 
 The repository started with HTML/CSS assignments and has grown into a collection of frontend, backend, full-stack, authentication, API, database, and MongoDB projects.
 
