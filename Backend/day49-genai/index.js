@@ -53,6 +53,8 @@ const model = new ChatGroq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+// ai does not call tool it request and createAgent fun of langchain help with that it call tool and give it response to ai
+
 const agent = createAgent({
   model,
   tools: [createEventTool, getEventTool],
