@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import rl from "readline/promises";
 import { tool, createAgent } from "langchain";
 import * as z from "zod";
+import { StateGraph, START, END } from "@langchain/langgraph";
 
 dotenv.config();
 
@@ -53,12 +54,71 @@ const model = new ChatGroq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+//-------------------LLM Node--------------------------
+const LLMNode = async (state) => {
+  console.log("LLMNode state: ", state);
+
+  return {
+    messages: [
+      ...state.messages,
+      {
+        role: "assistant",
+        content: "Hello, User!",
+      },
+    ],
+  };
+};
+
+// first need to tell the state of data to make graph
+const graph = new StateGraph(
+  z.object({
+    messages: z.array(z.any()),
+  }),
+)
+  .addNode("LLMNode", LLMNode)
+  .addEdge(START, "LLMNode")
+  .addEdge("LLMNode", END)
+  .compile();
+
+const graphResult = await graph.invoke({
+  messages: [
+    {
+      role: "user",
+      content: "Hell, World!",
+    },
+  ],
+});
+
+console.log("Graph result: ", graphResult);
+
 // ai does not call tool it request and createAgent fun of langchain help with that it call tool and give it response to ai
 
-const agent = createAgent({
-  model,
-  tools: [createEventTool, getEventTool],
-});
+// const agent = createAgent({
+//   model,
+//   tools: [createEventTool, getEventTool],
+// });
+
+// while (true) {
+//   const userInput = await readline.question("Enter your input: ");
+
+//   const stream = await agent.stream(
+//     {
+//       messages: [
+//         {
+//           role: "user",
+//           content: userInput,
+//         },
+//       ],
+//     },
+//     { streamMode: "messages" },
+//   );
+
+//   for await (const [chunk] of stream) {
+//     process.stdout.write(chunk.content);
+//   }
+
+//   process.stdout.write("\n");
+// }
 
 // const messages = [];
 
@@ -75,8 +135,8 @@ const agent = createAgent({
 //   process.stdout.write("\n");
 // }
 
-const userInput = await readline.question("Enter your input: ");
-const response = await agent.invoke({
-  messages: [{ role: "user", content: userInput }],
-});
-console.log(response);
+// const userInput = await readline.question("Enter your input: ");
+// const response = await agent.invoke({
+//   messages: [{ role: "user", content: userInput }],
+// });
+// console.log(response);
